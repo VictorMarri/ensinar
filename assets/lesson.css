@@ -1,0 +1,287 @@
+/* Folha de estilo compartilhada de todas as aulas e referências.
+   Inspiração: Tufte — tipografia serifada, margens largas, cor contida,
+   e tudo tem que imprimir bem. */
+
+:root {
+  --ink: #1a1a18;
+  --ink-soft: #5c5c56;
+  --ink-faint: #8a8a82;
+  --paper: #fffef9;
+  --rule: #e0ded3;
+  --accent: #8a3324;      /* vermelho terroso, usado com parcimônia */
+  --accent-soft: #f5ece9;
+  --good: #2c5f2d;
+  --good-soft: #eaf2ea;
+  --bad: #8a3324;
+  --bad-soft: #f9eceb;
+  --measure: 38rem;
+}
+
+/* PAPEL CLARO, SEMPRE — e é decisão, não esquecimento.
+
+   Havia aqui um tema escuro (`prefers-color-scheme: dark` e
+   `[data-theme="dark"]`). Foi removido por dois motivos:
+
+   1. A aula é documento de estudo, não aplicativo. Ela é lida de dia, é
+      impressa, e volta a ser aberta meses depois. Papel claro é o estado em
+      que ela é revista e é o estado em que ela sai na impressora.
+   2. O tema escuro custava caro no desenho: manter a paleta legível nas duas
+      superfícies limitava o diagrama a TRÊS cores. Sem ele, cinco cores
+      passam no validador. Ver regra 1 de `diagrama.css`.
+
+   Ou seja: o fundo claro não é gosto, é o que paga as cores do desenho.
+   Reintroduzir tema escuro custa duas cores — se um dia for reintroduzido,
+   revalide a paleta contra #16161a antes. */
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: et-book, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.62;
+  color: var(--ink);
+  background: var(--paper);
+  margin: 0 auto;
+  padding: 4rem 1.5rem 8rem;
+  max-width: var(--measure);
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- Cabeçalho ---- */
+
+.eyebrow {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 .6rem;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 2.3rem;
+  line-height: 1.15;
+  margin: 0 0 .5rem;
+  letter-spacing: -.01em;
+}
+
+.subtitle {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.2rem;
+  margin: 0 0 2.5rem;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 3rem 0 .8rem;
+  letter-spacing: -.005em;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.08rem;
+  margin: 2rem 0 .5rem;
+}
+
+p { margin: 0 0 1.1rem; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 90%;
+  padding-bottom: .05em;
+}
+a:hover { background-color: var(--accent-soft); }
+
+strong { font-weight: 600; }
+
+code, .mono {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  font-size: .84em;
+  background: var(--accent-soft);
+  padding: .1em .35em;
+  border-radius: 3px;
+}
+
+/* ---- Nota lateral (vira nota de rodapé no mobile) ---- */
+
+.sidenote {
+  float: right;
+  clear: right;
+  width: 15rem;
+  margin-right: -17.5rem;
+  margin-top: .3rem;
+  margin-bottom: 1rem;
+  font-size: .85rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  font-style: normal;
+}
+
+@media (max-width: 1180px) {
+  .sidenote {
+    float: none;
+    width: auto;
+    margin: 1rem 0 1.4rem;
+    padding-left: .9rem;
+    border-left: 2px solid var(--rule);
+  }
+}
+
+/* ---- Citação de fonte ---- */
+
+.cite {
+  font-size: .8rem;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+.cite a { background-image: linear-gradient(var(--ink-faint), var(--ink-faint)); }
+
+/* ---- Destaque ---- */
+
+.callout {
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  padding: 1rem 1.2rem;
+  margin: 1.8rem 0;
+  font-size: 1.02rem;
+}
+.callout p:last-child { margin-bottom: 0; }
+.callout .label {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: .4rem;
+}
+
+/* ---- Tabelas ---- */
+
+.table-wrap { overflow-x: auto; margin: 1.8rem 0; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: .88rem;
+}
+th, td {
+  text-align: left;
+  padding: .55rem .7rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+th {
+  font-weight: 600;
+  font-size: .72rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-bottom: 1.5px solid var(--ink-soft);
+  white-space: nowrap;
+}
+tbody tr:last-child td { border-bottom: none; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ---- Quiz ---- */
+
+.quiz {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.3rem 1.4rem;
+  margin: 2rem 0;
+  background: var(--paper);
+}
+.quiz .q-num {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: .5rem;
+}
+.quiz .q-text { font-size: 1.08rem; margin-bottom: 1rem; }
+
+.quiz button.opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: .93rem;
+  line-height: 1.4;
+  padding: .7rem .9rem;
+  margin-bottom: .5rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background .12s, border-color .12s;
+}
+.quiz button.opt:hover:not(:disabled) { border-color: var(--ink-soft); }
+.quiz button.opt:disabled { cursor: default; }
+.quiz button.opt.correct { border-color: var(--good); background: var(--good-soft); }
+.quiz button.opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.quiz button.opt.muted { opacity: .45; }
+
+.quiz .feedback {
+  margin-top: .9rem;
+  padding: .8rem .95rem;
+  border-radius: 4px;
+  font-size: .95rem;
+  line-height: 1.5;
+  display: none;
+}
+.quiz .feedback.show { display: block; }
+.quiz .feedback.ok { background: var(--good-soft); border-left: 3px solid var(--good); }
+.quiz .feedback.no { background: var(--bad-soft); border-left: 3px solid var(--bad); }
+.quiz .feedback p:last-child { margin-bottom: 0; }
+
+.quiz-score {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: .85rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+/* ---- Rodapé ---- */
+
+.footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: .9rem;
+  color: var(--ink-soft);
+}
+.footer h3 { margin-top: 0; color: var(--ink); }
+
+.next-up {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: .85rem;
+}
+
+/* ---- Impressão ---- */
+
+@media print {
+  :root {
+    --ink: #000; --ink-soft: #444; --ink-faint: #666;
+    --paper: #fff; --rule: #ccc; --accent: #000; --accent-soft: #f2f2f2;
+    --good: #000; --good-soft: #f2f2f2; --bad: #000; --bad-soft: #f2f2f2;
+  }
+  body { font-size: 10.5pt; padding: 0; max-width: none; }
+  .quiz button.opt { border: 1px solid #999; }
+  .quiz .feedback { display: block !important; }
+  .sidenote { float: none; width: auto; margin: .8rem 0; border-left: 2px solid #ccc; padding-left: .8rem; }
+  a { background: none; text-decoration: underline; }
+  h2, h3 { break-after: avoid; }
+  .quiz, table, .callout { break-inside: avoid; }
+}

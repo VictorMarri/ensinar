@@ -1,0 +1,155 @@
+/* Mapa de analogia — componente reutilizável.
+ *
+ * Mostra lado a lado "no mundo real" e "no Claude Code", uma linha por
+ * propriedade. Serve para qualquer aula construída sobre uma metáfora
+ * sustentada.
+ *
+ * Uso:
+ *
+ *   <div class="analogy">
+ *     <div class="analogy-head">
+ *       <span>O estagiário</span><span>O subagent</span>
+ *     </div>
+ *     <div class="analogy-row">
+ *       <div class="analogy-real">Ele sai da sala.</div>
+ *       <div class="analogy-tech">Janela de contexto própria e vazia.</div>
+ *     </div>
+ *     <p class="analogy-note">Fonte: …</p>
+ *   </div>
+ *
+ * Variante `.analogy.breaks` para a seção onde a metáfora falha — muda o
+ * acento de neutro para "cuidado". Toda analogia honesta declara seus limites,
+ * e o componente existe para tornar isso um hábito de autoria.
+ *
+ * Depende das variáveis de `lesson.css`. Empilha no celular e imprime limpo.
+ */
+
+.analogy {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+
+.analogy-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  padding: 0.7rem 1.2rem;
+  background: var(--rule);
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.analogy-head span:last-child {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.analogy-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  padding: 0.95rem 1.2rem;
+  border-top: 1px solid var(--rule);
+  align-items: start;
+}
+
+.analogy-row:first-of-type {
+  border-top: none;
+}
+
+.analogy-real,
+.analogy-tech {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.analogy-real {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.analogy-tech {
+  color: var(--ink);
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+/* A seta vive no lado técnico para não quebrar quando empilha. */
+.analogy-tech::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-style: normal;
+}
+
+.analogy-tech code {
+  font-size: 0.86em;
+}
+
+/* Linha em destaque: a propriedade que a analogia prevê e a doc confirma. */
+.analogy-row.key {
+  background: var(--accent-soft);
+}
+
+.analogy-row.key .analogy-tech {
+  font-weight: 600;
+}
+
+.analogy-note {
+  margin: 0;
+  padding: 0.6rem 1.2rem 0.8rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+}
+
+.analogy-note a {
+  color: inherit;
+}
+
+/* Onde a metáfora quebra. */
+.analogy.breaks .analogy-head {
+  background: var(--bad-soft);
+}
+
+.analogy.breaks .analogy-tech::before {
+  content: "✕";
+  color: var(--bad);
+}
+
+.analogy.breaks .analogy-row.key {
+  background: var(--bad-soft);
+}
+
+@media (max-width: 640px) {
+  .analogy-head {
+    display: none;
+  }
+
+  .analogy-row {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+}
+
+@media print {
+  .analogy {
+    break-inside: avoid;
+  }
+
+  .analogy-row.key,
+  .analogy-head {
+    background: transparent;
+  }
+
+  .analogy-head {
+    border-bottom: 1px solid var(--rule);
+  }
+}

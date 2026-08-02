@@ -150,21 +150,23 @@ Aulas são montadas com componentes reusáveis em `assets/`: folha de estilo, qu
 
 **Reuso é o padrão, não a exceção.** Leia `assets/` antes de escrever qualquer aula. Se precisar de algo novo e reusável, escreva como componente e linke — nunca inline código que a próxima aula duplicaria.
 
-A cópia canônica dos componentes desta skill mora em [`assets/`](./assets/) — copie de lá. Os herdados das trilhas antigas ainda vêm de `~/learning/claude-config/assets/`.
+**Todos os componentes moram em [`assets/`](./assets/) desta skill.** É de lá que se copia para uma trilha nova — a skill é autossuficiente, não depende de nenhuma trilha existir.
 
-⚠️ **Cada trilha tem a própria cópia de cada componente** — não há arquivo compartilhado. Mexeu num componente, propague para todas as trilhas que já o usam, senão a aula 3 de uma trilha fica com regra diferente da aula 3 da outra. Hoje são quatro: `claude-models`, `claude-config`, `claude-subagents`, `github-stacked-prs`. Confira com:
-`md5sum ~/learning/*/assets/<componente>` — todas têm que bater.
+| Arquivo | Serve pra |
+|---|---|
+| `lesson.css` | Base de tudo. Papel claro, sem tema escuro. Classes: `.eyebrow`, `.subtitle`, `.callout`, `.cite`, `.sidenote`, `.quiz`, `.quiz-score`, `.footer`, `.next-up`. |
+| `quiz.js` | Quiz com feedback imediato e ordem embaralhada. |
+| `analogy.css` | A analogia de abertura. **Obrigatório em toda aula.** |
+| `figure.css` | A moldura do desenho: scroll no celular, impressão. |
+| `diagrama.css` | **As cores das partes.** Cinco papéis fixos e validados, legenda, impressão por padrão de traço. |
+| `decide.css` | Árvore de decisão binária, pra aula cujo produto é "no caso X, escolha Y". |
+| `duo.css` | Comparação lado a lado. |
+| `transcript.css` | Transcrição de terminal / conversa. |
 
-| Arquivo | Serve pra | Vem de |
-|---|---|---|
-| `lesson.css` | Base de tudo. Classes: `.eyebrow`, `.subtitle`, `.callout`, `.cite`, `.sidenote`, `.quiz`, `.quiz-score`, `.footer`, `.next-up`. | trilhas |
-| `quiz.js` | Quiz com feedback imediato e ordem embaralhada. | trilhas |
-| `analogy.css` | A analogia de abertura. **Obrigatório em toda aula.** | trilhas |
-| `figure.css` | A moldura do desenho: scroll no celular, impressão. | trilhas |
-| `diagrama.css` | **As cores das partes.** Cinco papéis fixos e validados, legenda, impressão por padrão de traço. | esta skill |
-| `decide.css` | Árvore de decisão binária, pra aula cujo produto é "no caso X, escolha Y". | trilhas |
-| `duo.css` | Comparação lado a lado. | trilhas |
-| `transcript.css` | Transcrição de terminal / conversa. | trilhas |
+**Componente é o que serve a qualquer tema.** Simulador amarrado a um assunto — um medidor de janela de contexto, um tabuleiro tático — mora na trilha que o usa, em `~/learning/<tema>/assets/`, e não sobe pra cá. O teste: outro tema usaria isso? Se não, é da trilha.
+
+⚠️ **Cada trilha tem a própria cópia de cada componente** — não há arquivo compartilhado. Mexeu num componente aqui, propague para todas as trilhas que já o usam, senão a aula 3 de uma trilha fica com regra diferente da aula 3 da outra. Hoje são quatro: `claude-models`, `claude-config`, `claude-subagents`, `github-stacked-prs`. Confira com:
+`md5sum ~/.claude/skills/ensinar/assets/<componente> ~/learning/*/assets/<componente>` — todas têm que bater.
 
 ⚠️ `lesson.css` **não tem** `.score` — o nome certo é `.quiz-score`. A aula 1 de `claude-config` usa o errado e o placar sai sem estilo.
 

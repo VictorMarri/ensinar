@@ -1,0 +1,108 @@
+/* Contraste lado a lado — componente reutilizável.
+ *
+ * Duas categorias mutuamente exclusivas, apresentadas em paralelo para que a
+ * diferença entre elas seja lida de uma vez, não construída parágrafo a
+ * parágrafo. Diferente de `decide.css`, que é uma ÁRVORE (sequência de
+ * perguntas binárias): aqui não há percurso, há oposição.
+ *
+ * Uso:
+ *
+ *   <div class="duo">
+ *     <div class="duo-side a">
+ *       <span class="duo-label">Pede</span>
+ *       <p class="duo-lede">vira texto no contexto</p>
+ *       <p>O Claude lê e provavelmente obedece…</p>
+ *       <p class="duo-eg">CLAUDE.md · skills · output styles</p>
+ *     </div>
+ *     <div class="duo-side b">
+ *       <span class="duo-label">Garante</span>
+ *       <p class="duo-lede">vira código do harness</p>
+ *       <p>Roda fora do modelo, sempre…</p>
+ *       <p class="duo-eg">hooks · permissions · env</p>
+ *     </div>
+ *   </div>
+ *
+ * Regra de autoria: os dois lados devem ter comprimento parecido. Um lado
+ * visivelmente mais longo comunica "este é o certo" pela forma, e aí o
+ * componente vira argumento em vez de contraste — que é o oposto do ponto.
+ *
+ * A cor `.a` é o vermelho terroso do tema (probabilístico, cuidado) e `.b` é o
+ * verde (determinístico, garantido). Em impressão as duas viram cinza e o
+ * contraste passa a ser feito pela borda esquerda, que fica mais grossa em `.b`.
+ *
+ * Depende das variáveis de `lesson.css`.
+ */
+
+.duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+
+@media (max-width: 34rem) {
+  .duo { grid-template-columns: 1fr; }
+}
+
+.duo-side {
+  background: var(--paper);
+  padding: 1.1rem 1.2rem 1.3rem;
+  border-left: 3px solid transparent;
+}
+
+.duo-side.a { border-left-color: var(--accent); }
+.duo-side.b { border-left-color: var(--good); }
+
+.duo-label {
+  display: block;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 700;
+  margin-bottom: .1rem;
+}
+
+.duo-side.a .duo-label { color: var(--accent); }
+.duo-side.b .duo-label { color: var(--good); }
+
+.duo-lede {
+  font-size: 1.02rem;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0 0 .7rem;
+  line-height: 1.35;
+}
+
+.duo-side p {
+  font-size: .93rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 .6rem;
+}
+
+.duo-side p:last-child { margin-bottom: 0; }
+
+.duo-eg {
+  font-size: .8rem !important;
+  color: var(--ink-faint) !important;
+  border-top: 1px solid var(--rule);
+  padding-top: .55rem;
+  margin-top: .8rem !important;
+}
+
+.duo-eg code {
+  font-size: .95em;
+  background: none;
+  padding: 0;
+}
+
+@media print {
+  .duo { break-inside: avoid; }
+  .duo-side.a { border-left-width: 1px; border-left-color: #999; }
+  .duo-side.b { border-left-width: 4px; border-left-color: #333; }
+}

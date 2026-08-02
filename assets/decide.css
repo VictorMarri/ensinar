@@ -1,0 +1,193 @@
+/* Árvore de decisão — componente reutilizável.
+ *
+ * Uma sequência de perguntas binárias, cada uma com um braço que TERMINA
+ * (`.out`) e um que CONTINUA (`.next`). Serve para qualquer aula cujo produto
+ * final seja "dado o caso X, escolha Y".
+ *
+ * Uso:
+ *
+ *   <div class="decide">
+ *     <div class="decide-q">
+ *       <p class="decide-ask"><span class="decide-n">1</span> Você vai reler isto?</p>
+ *       <div class="decide-branch">
+ *         <div class="decide-arm">
+ *           <span class="decide-if">Sim, ou é rápido</span>
+ *           <span class="decide-then out">Faça na principal</span>
+ *         </div>
+ *         <div class="decide-arm">
+ *           <span class="decide-if">Não — volume descartável</span>
+ *           <span class="decide-then next">Próxima pergunta</span>
+ *         </div>
+ *       </div>
+ *     </div>
+ *     <p class="decide-note">Fonte: …</p>
+ *   </div>
+ *
+ * Regra de autoria: cada pergunta tem NO MÁXIMO um braço `.next` — e a última
+ * pergunta não tem nenhum, os dois braços dela terminam. Se duas saídas
+ * continuassem, não seria árvore: seria tabela, e `<table>` faria melhor. A
+ * força do componente é o usuário conseguir percorrer com o dedo.
+ *
+ * Depende das variáveis de `lesson.css`.
+ */
+
+.decide {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+
+.decide-q {
+  padding: 1.05rem 1.2rem 1.15rem;
+  border-top: 1px solid var(--rule);
+}
+
+.decide-q:first-child {
+  border-top: none;
+}
+
+.decide-ask {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0 0 0.8rem;
+  padding-left: 1.9rem;
+  position: relative;
+}
+
+/* Numeração da pergunta, fora da medida do texto. */
+.decide-n {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--paper);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.decide-branch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  padding-left: 1.9rem;
+}
+
+.decide-arm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* A condição. */
+.decide-if {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.decide-if::before {
+  content: "↳ ";
+  font-style: normal;
+  color: var(--ink-faint);
+}
+
+/* O resultado. */
+.decide-then {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.4;
+  border-radius: 4px;
+  padding: 0.42rem 0.65rem;
+  border: 1px solid transparent;
+}
+
+/* Braço terminal: a decisão acabou aqui. */
+.decide-then.out {
+  background: var(--good-soft);
+  border-color: var(--good);
+  color: var(--ink);
+}
+
+/* Braço que continua: some visualmente, é só passagem. */
+.decide-then.next {
+  background: transparent;
+  border-color: var(--rule);
+  border-style: dashed;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+.decide-then code {
+  font-size: 0.88em;
+  font-weight: 700;
+}
+
+/* Regra que anula a árvore inteira — sempre no fim. */
+.decide-override {
+  padding: 0.85rem 1.2rem 0.95rem;
+  border-top: 1px solid var(--rule);
+  background: var(--accent-soft);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+
+.decide-override .label {
+  display: block;
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.3rem;
+}
+
+.decide-note {
+  margin: 0;
+  padding: 0.6rem 1.2rem 0.75rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+}
+
+.decide-note a {
+  color: inherit;
+}
+
+@media (max-width: 640px) {
+  .decide-branch {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+}
+
+@media print {
+  .decide {
+    break-inside: avoid;
+  }
+
+  .decide-then.out,
+  .decide-override {
+    background: transparent;
+  }
+
+  .decide-n {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+}

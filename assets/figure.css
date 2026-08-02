@@ -1,0 +1,160 @@
+/* Figura — componente reutilizável para diagramas SVG inline.
+ *
+ * Envolve um <svg> desenhado à mão com título e legenda, e garante três
+ * coisas que diagrama solto costuma quebrar: ele acompanha o tema claro/
+ * escuro, rola em vez de estourar a página no celular, e imprime legível.
+ *
+ * Uso:
+ *
+ *   <figure class="fig">
+ *     <p class="fig-title">Onde o Fable passa na frente</p>
+ *     <div class="fig-canvas">
+ *       <svg viewBox="0 0 640 360" role="img" aria-label="...">…</svg>
+ *     </div>
+ *     <figcaption>O eixo x é dificuldade, não importância. Fonte: …</figcaption>
+ *   </figure>
+ *
+ * Regra de autoria: o SVG NUNCA fixa cor em hexadecimal. Use as variáveis de
+ * `lesson.css` — `var(--ink)`, `var(--accent)`, `var(--ink-faint)` — senão o
+ * diagrama some no tema escuro. Toda linha significativa precisa de rótulo
+ * dentro do próprio desenho: legenda separada obriga o leitor a fazer
+ * ping-pong entre duas coisas, e ele desiste.
+ *
+ * Um `role="img"` com `aria-label` descrevendo a conclusão (não a geometria)
+ * é obrigatório. Quem não enxerga o gráfico precisa da mesma informação.
+ *
+ * Depende das variáveis de `lesson.css`.
+ */
+
+.fig {
+  margin: 2.2rem 0;
+  padding: 0;
+}
+
+.fig-title {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.7rem;
+}
+
+/* Rola no celular em vez de espremer o desenho. */
+.fig-canvas {
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1rem 0.9rem 0.6rem;
+}
+
+.fig-canvas svg {
+  display: block;
+  width: 100%;
+  min-width: 30rem;
+  height: auto;
+}
+
+/* Classes usadas dentro do SVG. */
+.fig-axis {
+  stroke: var(--ink-faint);
+  stroke-width: 1;
+  fill: none;
+}
+
+.fig-grid {
+  stroke: var(--rule);
+  stroke-width: 1;
+  fill: none;
+}
+
+.fig-line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.fig-line.muted {
+  stroke: var(--ink-faint);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
+
+.fig-line.mid {
+  stroke: var(--ink-soft);
+}
+
+.fig-line.hot {
+  stroke: var(--accent);
+}
+
+.fig-label {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 13px;
+  fill: var(--ink);
+}
+
+.fig-label.small {
+  font-size: 11px;
+  fill: var(--ink-faint);
+}
+
+.fig-label.hot {
+  fill: var(--accent);
+  font-weight: 600;
+}
+
+.fig-box {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.5;
+  rx: 5;
+}
+
+.fig-box.hot {
+  stroke: var(--accent);
+}
+
+.fig-fill {
+  fill: var(--accent-soft);
+  stroke: none;
+}
+
+.fig-arrow {
+  stroke: var(--ink-soft);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.fig-arrow.hot {
+  stroke: var(--accent);
+}
+
+.fig-dot {
+  fill: var(--accent);
+}
+
+figcaption {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin-top: 0.6rem;
+}
+
+figcaption a {
+  background-image: linear-gradient(var(--ink-faint), var(--ink-faint));
+}
+
+@media print {
+  .fig {
+    break-inside: avoid;
+  }
+  .fig-canvas {
+    border-color: #ccc;
+  }
+  .fig-canvas svg {
+    min-width: 0;
+  }
+}

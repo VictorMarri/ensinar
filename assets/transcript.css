@@ -1,0 +1,154 @@
+/* Transcript anotado — componente reutilizável.
+ *
+ * Mostra uma troca real no terminal, separando quatro coisas que o usuário
+ * costuma confundir: o que ELE digita, o que o Claude faz por baixo, o que
+ * acontece longe dele (na janela do subagent), e o que volta.
+ *
+ * Uso:
+ *
+ *   <div class="transcript">
+ *     <p class="tr-title">Delegar uma busca grande</p>
+ *     <p class="tr-you">Onde o app decide a formação inicial?</p>
+ *     <p class="tr-note">Claude reconhece varredura e chama <code>Explore</code>.</p>
+ *     <div class="tr-away">
+ *       <p class="tr-away-head">Na janela do subagent — você não vê nada disto</p>
+ *       <ul><li>Grep em 240 arquivos</li></ul>
+ *     </div>
+ *     <p class="tr-back">Formação montada em <code>src/lineup/build.ts:88</code>.</p>
+ *     <p class="tr-cost">~31k tokens lidos · 400 voltaram</p>
+ *   </div>
+ *
+ * Regra de autoria: o bloco `.tr-away` é o ponto pedagógico inteiro do
+ * componente — é o trabalho que existiu e que o usuário nunca veria. Não
+ * omita, mesmo quando parecer óbvio.
+ *
+ * Depende das variáveis de `lesson.css`.
+ */
+
+.transcript {
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 1.1rem 1.3rem 1rem;
+  margin: 1.8rem 0;
+}
+
+.tr-title {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.85rem;
+}
+
+/* O que você digita. */
+.tr-you {
+  font-family: ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, monospace;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0 0 0.75rem;
+  padding-left: 1.3rem;
+  position: relative;
+}
+
+.tr-you::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Anotação: o que o Claude faz e você não digitou. */
+.tr-note {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin: 0 0 0.75rem;
+  padding-left: 1.3rem;
+}
+
+/* O trabalho que acontece longe da sua janela. */
+.tr-away {
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+  padding: 0.7rem 0.95rem 0.75rem;
+  margin: 0 0 0.85rem;
+  background: transparent;
+}
+
+.tr-away-head {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.5rem;
+}
+
+.tr-away ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  list-style: none;
+}
+
+.tr-away li {
+  font-family: ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  position: relative;
+}
+
+.tr-away li::before {
+  content: "·";
+  position: absolute;
+  left: -0.85rem;
+  color: var(--ink-faint);
+}
+
+/* O que volta para a conversa principal. */
+.tr-back {
+  border-left: 2px solid var(--good);
+  padding: 0.15rem 0 0.15rem 0.85rem;
+  margin: 0 0 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.tr-back strong {
+  font-weight: 600;
+}
+
+/* Rodapé de custo — a régua da trilha inteira. */
+.tr-cost {
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.55rem;
+  margin: 0;
+}
+
+/* Variante para o contra-exemplo: delegação que foi má ideia. */
+.transcript.bad {
+  border-left-color: var(--bad);
+}
+
+.transcript.bad .tr-you::before {
+  color: var(--bad);
+}
+
+.transcript.bad .tr-back {
+  border-left-color: var(--bad);
+}
+
+@media print {
+  .transcript {
+    break-inside: avoid;
+  }
+}
