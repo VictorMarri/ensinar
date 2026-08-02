@@ -1,0 +1,221 @@
+/* Diagrama didático — cor que REPRESENTA PARTE.
+ *
+ * Complementa `figure.css` (que cuida da moldura, do scroll e da legenda) e
+ * `lesson.css` (que dá tinta e papel). Este arquivo dá as cores das partes.
+ *
+ * Uso:
+ *
+ *   <figure class="fig">
+ *     <p class="fig-title">Irmãos × pilha</p>
+ *     <div class="fig-canvas">
+ *       <svg viewBox="0 0 640 300" role="img" aria-label="…">
+ *         <rect class="d-box d-parte-1 preenchida" x="20" y="20" width="140" height="34"/>
+ *         <text class="d-rotulo" x="30" y="42">camada de base</text>
+ *       </svg>
+ *     </div>
+ *     <div class="d-legenda">
+ *       <span class="d-item"><i class="d-chip d-parte-1"></i>camada de base</span>
+ *       <span class="d-item"><i class="d-chip d-parte-2"></i>camada de cima</span>
+ *     </div>
+ *     <figcaption>…</figcaption>
+ *   </figure>
+ *
+ * ── AS REGRAS ────────────────────────────────────────────────────────────────
+ *
+ * 1. CINCO CORES, E ACABOU. Não é gosto — é medido. As cinco abaixo passaram
+ *    no validador de paleta (`dataviz/scripts/validate_palette.js`) contra a
+ *    superfície destas trilhas (papel claro #fffef9), no modo `--pairs all`,
+ *    que é o certo pra diagrama: num desenho, qualquer parte pode acabar do
+ *    lado de qualquer outra.
+ *
+ *      worst-pair CVD ΔE 8.6 (protan) · visão normal ΔE 16.8
+ *      contraste contra o papel: as cinco acima de 3:1, sem ressalva
+ *
+ *    Eram três porque a paleta precisava sobreviver também ao tema escuro, e
+ *    ali toda quarta cor reprovava (violeta some no azul, ΔE 1.9 protanopia).
+ *    Sem tema escuro, sobrou espaço: magenta e tijolo entraram medidos.
+ *
+ *    A SEXTA reprova por contraste (azul-claro #5eb3e8 dá 2.29:1 no papel) —
+ *    e cinco partes já é o teto do que a memória de trabalho segura num
+ *    desenho só. Precisou de uma sexta? Use `.secundaria` (mesma cor, traço
+ *    tracejado) ou quebre em dois desenhos.
+ *
+ *    ⚠ O par pior fica na faixa 6–8 de CVD, o que só é legal COM segundo
+ *    canal — rótulo dentro e legenda embaixo. Ou seja: a regra 3 aqui não é
+ *    zelo, é o que torna esta paleta válida.
+ *
+ * 2. MESMA PARTE, MESMA COR, A TRILHA INTEIRA. Se a camada de base é azul na
+ *    aula 1, é azul na aula 6. Cor que troca de significado entre aulas custa
+ *    mais do que cor nenhuma.
+ *
+ * 3. NUNCA SÓ COR. Todo desenho tem rótulo dentro e legenda embaixo. Impresso
+ *    em preto e branco, ele tem que continuar ensinando — por isso o bloco
+ *    `@media print` troca as cores por padrões de traço.
+ *
+ * 4. TEXTO USA TINTA, NUNCA A COR DA PARTE. A identidade mora na forma
+ *    colorida; o rótulo fica em tinta ao lado dela. Texto colorido perde
+ *    contraste e vira decoração.
+ *
+ * 5. NADA DE HEX DENTRO DO SVG. Só as variáveis — é o que deixa a paleta
+ *    trocável num arquivo só, sem caçar cor espalhada por dez aulas.
+ *
+ * Trocou as cores? Rode o validador de novo contra o papel claro. Paleta não
+ * se avalia no olho:
+ *
+ *   node scripts/validate_palette.js "#2a78d6,#eb6834,#17a06f,#c0399b,#a12f2f" \
+ *     --mode light --surface "#fffef9" --pairs all
+ */
+
+/* Papel claro, sempre. Não existe bloco escuro aqui de propósito: foi largar
+   o tema escuro que liberou a quarta e a quinta cor. Ver regra 1. */
+
+:root {
+  --parte-1: #2a78d6; /* azul    — a base, o que sustenta                 */
+  --parte-2: #eb6834; /* laranja — o que vem por cima, o que se move      */
+  --parte-3: #17a06f; /* verde   — o terceiro elemento, quando houver     */
+  --parte-4: #c0399b; /* magenta — o que entra depois, o quarto elemento  */
+  --parte-5: #a12f2f; /* tijolo  — o que dá errado, o alerta, onde quebra */
+}
+
+/* Os papéis acima são FIXOS entre aulas e entre trilhas. Azul é a base na
+   aula 1 e na aula 40. Cor que troca de sentido no meio do caminho custa mais
+   caro que desenho sem cor nenhuma — o aluno já tinha aprendido a antiga.
+
+   O verde mudou de #1baf7a pra #17a06f: o antigo dava 2.79:1 contra o papel e
+   só passava com ressalva. O novo passa limpo. É a mesma parte, mesma cor
+   percebida — não é troca de sentido. */
+
+/* ---- Seletores de parte: definem a cor corrente do elemento ---- */
+
+.d-parte-1 { --c: var(--parte-1); }
+.d-parte-2 { --c: var(--parte-2); }
+.d-parte-3 { --c: var(--parte-3); }
+.d-parte-4 { --c: var(--parte-4); }
+.d-parte-5 { --c: var(--parte-5); }
+
+/* Sem parte declarada, cai na tinta neutra: contexto, moldura, o que não é
+   o assunto do desenho. */
+
+/* ---- Formas dentro do SVG ---- */
+
+.d-box {
+  fill: none;
+  stroke: var(--c, var(--ink-soft));
+  stroke-width: 2;
+  rx: 5;
+}
+
+/* Preenchimento fraco: marca território sem competir com o rótulo. */
+.d-box.preenchida {
+  fill: var(--c, var(--ink-soft));
+  fill-opacity: 0.1;
+}
+
+/* O segundo canal, pra quando faltar cor. Também é o que sobrevive à
+   impressão em preto e branco. */
+.d-box.secundaria {
+  stroke-dasharray: 6 4;
+}
+
+.d-linha {
+  fill: none;
+  stroke: var(--c, var(--ink-soft));
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.d-linha.secundaria {
+  stroke-dasharray: 6 4;
+}
+
+.d-seta {
+  fill: none;
+  stroke: var(--c, var(--ink-soft));
+  stroke-width: 2;
+}
+
+.d-ponto {
+  fill: var(--c, var(--ink));
+}
+
+/* ---- Rótulos: tinta, sempre ---- */
+
+.d-rotulo {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+
+.d-rotulo.fraco {
+  font-weight: 400;
+  font-size: 11px;
+  fill: var(--ink-faint);
+}
+
+/* Cabeçalho de painel dentro do desenho ("O QUE VOCÊ TEM HOJE"). */
+.d-painel {
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  fill: var(--ink-faint);
+}
+
+/* ---- Legenda ---- */
+
+.d-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.2rem;
+  margin-top: 0.75rem;
+  font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.d-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.d-chip {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 3px;
+  border: 2px solid var(--c, var(--ink-soft));
+  background: var(--c, transparent);
+  background-clip: content-box;
+  opacity: 1;
+  flex: none;
+}
+
+.d-chip.secundaria {
+  background: none;
+  border-style: dashed;
+}
+
+/* ---- Impressão: a cor vira padrão de traço ---- */
+
+@media print {
+  :root {
+    --parte-1: #000;
+    --parte-2: #000;
+    --parte-3: #000;
+  }
+
+  /* Sem cor, o que distingue as partes é o traço. */
+  .d-box.d-parte-2,
+  .d-linha.d-parte-2,
+  .d-chip.d-parte-2 { stroke-dasharray: 7 4; border-style: dashed; }
+
+  .d-box.d-parte-3,
+  .d-linha.d-parte-3,
+  .d-chip.d-parte-3 { stroke-dasharray: 2 3; border-style: dotted; }
+
+  .d-box.preenchida { fill: none; }
+  .d-chip { background: none; }
+}
