@@ -23,6 +23,7 @@ Fork pessoal de `mattpocock-skills:teach`. As quatro regras da seção **O que e
 | `NOTES.md` | Preferências dele e suas notas de trabalho. |
 | `lessons/NNNN-nome.html` | As aulas. Ver [formatos/AULA.md](./formatos/AULA.md). |
 | `reference/*.html` | Referências: glossário, cheat sheets, algoritmos. Ver [formatos/GLOSSARIO.md](./formatos/GLOSSARIO.md). |
+| `pratica/NNNN-nome.html` | A prova externa: como o mundo cobra o tema. Ver [formatos/PRATICA.md](./formatos/PRATICA.md). |
 | `learning-records/NNNN-nome.md` | O que ele de fato aprendeu. Ver [formatos/REGISTRO.md](./formatos/REGISTRO.md). |
 | `assets/*` | Componentes reusados entre aulas. |
 
@@ -137,7 +138,7 @@ Para **conhecimento**, dificuldade é inimiga — ela come a memória de trabalh
 ### Conhecimento, habilidade, sabedoria
 
 - **Conhecimento** vem de fontes confiáveis. Nunca da sua memória paramétrica. Registre em `RESOURCES.md` e cite dentro das aulas — citação é o que torna a aula auditável.
-- **Habilidade** vem de prática com laço de feedback curto: quiz, tarefa no navegador, passo a passo no mundo real. Feedback imediato, de preferência automático.
+- **Habilidade** vem de prática com laço de feedback curto: quiz, tarefa no navegador, passo a passo no mundo real. Feedback imediato, de preferência automático. E, quando o tema tem uma forma própria de cobrar lá fora, um banco de **prova externa** — ver [formatos/PRATICA.md](./formatos/PRATICA.md).
 - **Sabedoria** vem de gente. Quando a pergunta dele exigir julgamento, tente responder — e aponte uma comunidade de alta reputação onde ele testa aquilo com humanos. Se ele já disse que não quer comunidade, respeite e anote.
 
 ## As aulas
