@@ -19,11 +19,21 @@ _Evite_: branch alvo, branch destino
 
 **Irmãos** — *apelido da trilha, não termo oficial*:
 Duas branches que saíram do mesmo ponto e apontam ambas pra trunk.
+
+**Retarget** (`retarget`) — *provisório, apresentado na aula 4*:
+Trocar a camada de base de um PR sem refazer o PR.
 ```
+
+Duas marcas, dois eixos independentes: `apelido da trilha` diz **de onde o
+termo vem**; `provisório` diz **se ele já é seu**. Um termo pode ter as duas.
 
 ## Regras
 
-- **Só entra termo que ele já entende.** O glossário registra conhecimento comprimido; não é dicionário que se lê pra aprender. Conceito recém-apresentado espera até ele usar corretamente.
+- **Termo entra provisório e é promovido pelo uso.** Batizou na aula, entra na mesma sessão marcado `provisório` — senão ele se perde. A marca cai quando ele **usa o termo corretamente** por conta própria: numa resposta, num comando, numa pergunta. Não quando ele diz que entendeu.
+
+  Isso preserva as duas coisas que brigavam: o glossário não perde termo recém-ensinado, e continua sendo prova de domínio — porque o que conta como domínio é a parte promovida, não a lista inteira.
+
+  A queda da marca é evidência, não burocracia: é exatamente o gatilho de um registro em `learning-records/`.
 - **Nome em português na chave, etiqueta em inglês entre parênteses.** É a regra 3 do `SKILL.md` materializada. A etiqueta existe pra ele reconhecer o termo na documentação e no CLI — não pra ser o jeito dele pensar.
 - **Termo sem tradução honesta fica em inglês, e você diz isso.** Forçar tradução ruim é pior que manter o original. `pull request` é `pull request`. Mas então explique o que é em português nativo.
 - **Marque o que é apelido da trilha.** Se você inventou um termo pra ensinar (útil e legítimo), sinalize. Ele não pode chegar num fórum usando seu apelido achando que é vocabulário oficial e passar vergonha.

@@ -1,6 +1,8 @@
 # Formato de uma aula
 
-Uma aula é **um HTML autocontido** em `lessons/`, numerado `NNNN-nome-em-kebab.html`. Curta, bonita, um ganho tangível, amarrada à missão.
+Uma aula é **um HTML que linka os componentes de `assets/`**, em `lessons/`, numerado `NNNN-nome-em-kebab.html`. Curta, bonita, um ganho tangível, amarrada à missão.
+
+Ela **não** é autocontida, e isso é escolha: os componentes ficam do lado, num arquivo só, pra que consertar o `lesson.css` uma vez conserte as vinte aulas de uma vez. O preço é que a aula não viaja sozinha — mandada por e-mail, sem a pasta `assets/` ao lado, abre sem estilo nenhum.
 
 ## Estrutura
 
@@ -11,6 +13,8 @@ Uma aula é **um HTML autocontido** em `lessons/`, numerado `NNNN-nome-em-kebab.
 ```
 
 Nunca `Aula 1 de ?`. Se você não sabe o M, você não escreveu o mapa — volte e escreva.
+
+**Exceção única: o desvio.** Aula pedida pelo aluno fora do arco não tem "N de M" — ela não é a N-ésima de nada. Arquivo `D001-nome.html`, cabeçalho `Desvio 1 · fora do arco`, com o mesmo link pro mapa. É a única forma de cabeçalho permitida além de `Aula N de M`.
 
 **2. A analogia.** Antes de qualquer termo técnico. Puxada do mundo que ele já conhece, e **com o ponto de ruptura declarado**. Componente: `analogy.css`.
 
@@ -43,13 +47,14 @@ O desenho tem que responder a pergunta da aula **sozinho**, antes do texto. Se p
 
 Rode inteira. Uma falha, a aula volta pra bancada.
 
-- [ ] Cabeçalho diz `Aula N de M` — nunca `de ?`
+- [ ] Cabeçalho diz `Aula N de M` — nunca `de ?`. Desvio usa `Desvio N · fora do arco`
 - [ ] Abre com analogia do mundo dele, **com ponto de ruptura declarado**
 - [ ] No máximo 3 termos novos
 - [ ] Todo termo novo batizado em português **antes** da etiqueta em inglês
 - [ ] **Teste da borracha:** apaguei mentalmente os termos em inglês — a aula ainda ensina?
 - [ ] Nenhuma frase em inglês com terminação portuguesa ("é retargetado", "vou commitar o rebase")
-- [ ] Termos novos entraram no glossário nesta sessão
+- [ ] Termos novos entraram no glossário nesta sessão, marcados `provisório`
+- [ ] Termo que ele usou certo nesta sessão perdeu a marca (e virou registro)
 - [ ] **Tem pelo menos um desenho**, e ele se explica antes do texto
 - [ ] Cada parte tem cor, a cor significa aquilo, e é a mesma cor das aulas anteriores
 - [ ] Os papéis batem com a tabela: azul = base, laranja = movimento, verde = terceiro, magenta = o que entra depois, tijolo = o que dá errado

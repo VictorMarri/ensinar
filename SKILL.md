@@ -27,7 +27,9 @@ Fork pessoal de `mattpocock-skills:teach`. As quatro regras da seção **O que e
 | `learning-records/NNNN-nome.md` | O que ele de fato aprendeu. Ver [formatos/REGISTRO.md](./formatos/REGISTRO.md). |
 | `assets/*` | Componentes reusados entre aulas. |
 
-Os nomes em inglês são dívida herdada — quatro trilhas já existem com eles (`claude-models`, `claude-config`, `claude-subagents`, `github-stacked-prs`). Não renomeie em massa. Arquivo novo nasce em português.
+Os nomes em inglês são dívida herdada — quatro trilhas já existem com eles (`claude-models`, `claude-config`, `claude-subagents`, `github-stacked-prs`). **Não renomeie, nem em trilha nova.** `MISSION.md` é `MISSION.md` na quinta trilha também; o layout tem que ser o mesmo em todas, senão uma sessão procura `MISSION.md`, encontra `MISSAO.md`, conclui que não há missão e refaz a entrevista do zero.
+
+O que nasce em português é **tipo novo**, criado por este fork: `MAPA.md`, `pratica/`. Esses não têm original em inglês pra contradizer.
 
 ## O que este fork muda
 
@@ -58,7 +60,7 @@ Todo termo novo é **batizado em português primeiro**, e só depois recebe a et
 
 O primeiro ensina e depois etiqueta — a etiqueta serve pra ele reconhecer o termo na doc e no CLI, que estão em inglês. O segundo só traduz, e deixa ele pensando em inglês emprestado.
 
-Todo termo batizado entra no glossário da trilha na mesma sessão.
+Todo termo batizado entra no glossário da trilha na mesma sessão, marcado `provisório`. A marca cai quando ele usar o termo corretamente por conta própria — ver [formatos/GLOSSARIO.md](./formatos/GLOSSARIO.md).
 
 ### 4. Teste da borracha — o teste final de toda aula
 
@@ -143,7 +145,7 @@ Para **conhecimento**, dificuldade é inimiga — ela come a memória de trabalh
 
 ## As aulas
 
-Uma aula é **um HTML autocontido** em `lessons/`, numerado `NNNN-nome-em-kebab.html`.
+Uma aula é **um HTML que linka os componentes de `assets/`**, em `lessons/`, numerado `NNNN-nome-em-kebab.html`. Linkada, não autocontida — o reuso vale mais que a portabilidade de um arquivo solto.
 
 Curta. Completável rápido. Um ganho tangível por aula. Bonita — tipografia limpa, imprime bem, estilo Tufte — porque ele volta nelas depois.
 
@@ -181,7 +183,7 @@ Aulas são montadas com componentes reusáveis em `assets/`: folha de estilo, qu
 
 Aulas raramente são relidas. **Referências são.** Toda aula deposita sua essência comprimida numa referência de consulta rápida: glossário, cheat sheet de sintaxe, fluxograma, sequência.
 
-O **glossário** é a referência essencial. Assim que existir, toda aula obedece a ele — se uma aula diverge do glossário, a aula está errada. Termo batizado pela regra 3 entra no glossário na mesma sessão, e o glossário marca o que é termo oficial e o que é apelido da trilha.
+O **glossário** é a referência essencial. Assim que existir, toda aula obedece a ele — se uma aula diverge do glossário, a aula está errada. Termo batizado pela regra 3 entra na mesma sessão como `provisório` e é promovido quando ele o usar certo. O glossário marca dois eixos: se o termo é oficial ou apelido da trilha, e se já é dele ou ainda é provisório.
 
 ## Registros de aprendizado
 

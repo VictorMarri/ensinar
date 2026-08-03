@@ -28,6 +28,10 @@ O mapa mora na raiz da trilha e **é escrito antes da primeira aula**. Ele respo
 
 - {O que deliberadamente não entra, e por quê}
 
+## Desvios
+
+- `D001` — {nome} · {o que ele perguntou que gerou o desvio}
+
 ## Revisões
 
 - {data} — {o que mudou no mapa e o que causou a mudança}
@@ -43,4 +47,6 @@ O mapa mora na raiz da trilha e **é escrito antes da primeira aula**. Ele respo
 - **O mapa é hipótese.** Ele vai mudar quando o aluno mostrar que sabe mais (ou menos) do que você supôs. Mudar é saudável; mudar em silêncio não é.
 - **Registre toda revisão.** O aluno precisa ver que o mapa mudou e por quê. Mapa que muda sem aviso vira mapa em que ele não confia — e aí ele volta a não saber onde está.
 - **Curto.** Se o mapa passar de uma tela, ele virou plano de aula. O valor dele é caber num olhar.
-- **Uma aula pode sair do mapa.** Se o aluno pedir um desvio, atenda — e marque no mapa como desvio, não como aula do arco.
+- **Uma aula pode sair do mapa.** Se o aluno pedir um desvio, atenda — mas ele não entra na contagem do arco. Arquivo `D001-nome.html` (numeração própria, separada das aulas), cabeçalho `Desvio 1 · fora do arco` com link pro mapa, e uma linha numa seção `## Desvios` aqui embaixo.
+
+  A razão de não absorver no arco: `Aula 4 de 8` passaria a incluir uma aula que não é pré-requisito de nada, e a contagem — que é o ponto inteiro da regra 1 — deixaria de significar "quanto falta pra chegar lá".
