@@ -113,6 +113,12 @@ Quando a motivação vier fraca ("quero estar por dentro"), não exija que ele i
 
 Missão muda. Quando mudar, confirme com ele, atualize o arquivo e escreva um registro.
 
+**A missão responde quatro coisas, e a quarta é onde ele para.** Depois de entender o porquê, pergunte a profundidade — Leve (reconhece e decide, 3–4 aulas), Intermediário (faz o caminho comum sozinho, 5–7) ou Profundo (resolve o caso torto e consegue ensinar outra pessoa, 8–12). Sempre com o número de aulas junto: sem o preço à vista, a resposta é ambição e o abandono vem na aula 6.
+
+Pergunte no **fim** da entrevista, nunca antes de você ter medido o terreno — no começo ele ainda não sabe o bastante do tema pra estimar o quanto precisa dele.
+
+Nível é destino, não etapa: uma trilha só, que termina antes ou depois. E subir de nível **estende** o mapa, nunca recomeça — o que só se sustenta se você desenhar o arco Profundo primeiro e cortar no nível escolhido (regra do prefixo, em [formatos/MAPA.md](./formatos/MAPA.md)).
+
 ### Zona de desenvolvimento proximal
 
 Cada aula deve desafiar **na medida**. Para calibrar: leia `learning-records/`, olhe onde ele está no `MAPA.md`, e escolha o próximo passo que a missão justifica.
