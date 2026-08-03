@@ -17,7 +17,7 @@ Fork pessoal de `mattpocock-skills:teach`. As quatro regras da seção **O que e
 
 | Arquivo | O que é |
 |---|---|
-| `MAPA.md` | O mapa do tema. **Vem antes da primeira aula.** Ver [formatos/MAPA.md](./formatos/MAPA.md). |
+| `MAPA.html` | O mapa do tema, e a página de índice da trilha. **Vem antes da primeira aula.** Ver [formatos/MAPA.md](./formatos/MAPA.md). |
 | `MISSION.md` | Por que ele quer aprender isso. Ancora tudo. Ver [formatos/MISSAO.md](./formatos/MISSAO.md). |
 | `RESOURCES.md` | Fontes confiáveis + comunidades. Ver [formatos/RECURSOS.md](./formatos/RECURSOS.md). |
 | `NOTES.md` | Preferências dele e suas notas de trabalho. |
@@ -29,7 +29,7 @@ Fork pessoal de `mattpocock-skills:teach`. As quatro regras da seção **O que e
 
 Os nomes em inglês são dívida herdada — quatro trilhas já existem com eles (`claude-models`, `claude-config`, `claude-subagents`, `github-stacked-prs`). **Não renomeie, nem em trilha nova.** `MISSION.md` é `MISSION.md` na quinta trilha também; o layout tem que ser o mesmo em todas, senão uma sessão procura `MISSION.md`, encontra `MISSAO.md`, conclui que não há missão e refaz a entrevista do zero.
 
-O que nasce em português é **tipo novo**, criado por este fork: `MAPA.md`, `pratica/`. Esses não têm original em inglês pra contradizer.
+O que nasce em português é **tipo novo**, criado por este fork: `MAPA.html`, `pratica/`. Esses não têm original em inglês pra contradizer.
 
 ## O que este fork muda
 
@@ -39,7 +39,7 @@ Seis regras. Toda aula passa pelas seis antes de ser entregue.
 
 O original numerava aulas `0001`, `0002`, indefinidamente. O aluno nunca sabia quantas faltavam, o que já tinha coberto, nem o que era "dominar aquilo". Cabeçalho "Aula 1 de ?" é confissão de que ninguém pensou no arco.
 
-Antes da primeira aula, escreva `MAPA.md`: o tema fatiado em aulas nomeadas, cada uma com **o que ele vai conseguir fazer** ao terminar. O mapa é uma **hipótese**, não um contrato — revise quando a realidade mudar, e registre a revisão. Mas ele existe, e toda aula diz onde o aluno está dentro dele.
+Antes da primeira aula, escreva `MAPA.html`: o tema fatiado em aulas nomeadas, cada uma com **o que ele vai conseguir fazer** ao terminar. Ele é HTML porque também é a página de índice — é dele que o aluno alcança qualquer aula, e markdown não abre no navegador. O mapa é uma **hipótese**, não um contrato — revise quando a realidade mudar, e registre a revisão. Mas ele existe, e toda aula diz onde o aluno está dentro dele.
 
 Toda aula abre com `Aula 3 de 7` e um link pro mapa. Nunca `de ?`.
 
@@ -124,7 +124,7 @@ Nível é destino, não etapa: uma trilha só, que termina antes ou depois. E su
 
 ### Zona de desenvolvimento proximal
 
-Cada aula deve desafiar **na medida**. Para calibrar: leia `learning-records/`, olhe onde ele está no `MAPA.md`, e escolha o próximo passo que a missão justifica.
+Cada aula deve desafiar **na medida**. Para calibrar: leia `learning-records/`, olhe onde ele está no `MAPA.html`, e escolha o próximo passo que a missão justifica.
 
 ### Fluência × retenção
 

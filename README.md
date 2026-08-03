@@ -55,7 +55,7 @@ Um tema, uma pasta, em `~/learning/<tema>/`:
 
 | Arquivo | O que é |
 |---|---|
-| `MAPA.md` | O mapa do tema. Vem antes da primeira aula. |
+| `MAPA.html` | O mapa do tema, e o índice por onde você navega entre as aulas. |
 | `MISSION.md` | Por que você quer aprender isso. Ancora tudo. |
 | `RESOURCES.md` | Fontes confiáveis + comunidades. |
 | `NOTES.md` | Suas preferências de como ser ensinado. |

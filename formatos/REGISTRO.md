@@ -25,7 +25,7 @@ Só quando agregam de verdade:
 1. **Ele demonstrou entender algo não-trivial** — não exposição, evidência de uso correto. Isso sobe o piso do que ensinar em seguida.
 2. **Ele revelou conhecimento prévio** — "isso eu já sei". Registre, e registre a **profundidade** alegada.
 3. **Uma crença errada foi corrigida** — os mais valiosos. Erro corrigido prevê onde ele vai tropeçar em assunto vizinho.
-4. **A missão mudou** — atualize `MISSION.md` e o `MAPA.md` junto.
+4. **A missão mudou** — atualize `MISSION.md` e o `MAPA.html` junto.
 5. **Ele seguiu uma instrução sem entender.** Registre isso como o que é: comportamento mudou, entendimento não. É dívida, e ela cobra depois.
 
 ## O que não vale registro
