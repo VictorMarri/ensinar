@@ -61,6 +61,7 @@ Um tema, uma pasta, em `~/learning/<tema>/`:
 | `NOTES.md` | Suas preferências de como ser ensinado. |
 | `lessons/NNNN-nome.html` | As aulas. |
 | `reference/*.html` | Glossário, cheat sheets, fluxogramas. |
+| `pratica/NNNN-nome.html` | A prova externa: o tema como o mundo cobra. |
 | `learning-records/NNNN-nome.md` | O que você de fato aprendeu. |
 | `assets/*` | Cópia dos componentes desta skill. |
 

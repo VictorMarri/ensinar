@@ -1,8 +1,11 @@
 /* Figura — componente reutilizável para diagramas SVG inline.
  *
- * Envolve um <svg> desenhado à mão com título e legenda, e garante três
- * coisas que diagrama solto costuma quebrar: ele acompanha o tema claro/
- * escuro, rola em vez de estourar a página no celular, e imprime legível.
+ * Envolve um <svg> desenhado à mão com título e rodapé, e garante duas coisas
+ * que diagrama solto costuma quebrar: ele rola em vez de estourar a página no
+ * celular, e imprime legível.
+ *
+ * A moldura é só isto. Quem cuida das cores das partes e da legenda é
+ * `diagrama.css` — as classes `.d-legenda`, `.d-item` e `.d-chip` moram lá.
  *
  * Uso:
  *
@@ -15,10 +18,13 @@
  *   </figure>
  *
  * Regra de autoria: o SVG NUNCA fixa cor em hexadecimal. Use as variáveis de
- * `lesson.css` — `var(--ink)`, `var(--accent)`, `var(--ink-faint)` — senão o
- * diagrama some no tema escuro. Toda linha significativa precisa de rótulo
- * dentro do próprio desenho: legenda separada obriga o leitor a fazer
- * ping-pong entre duas coisas, e ele desiste.
+ * `lesson.css` (`var(--ink)`, `var(--ink-faint)`) e as de `diagrama.css`
+ * (`var(--parte-1)`…) — é o que deixa a paleta trocável num arquivo só.
+ *
+ * Rótulo dentro do desenho E legenda embaixo, sempre — as duas coisas, não uma
+ * ou outra. O rótulo interno evita o ping-pong; a legenda é o segundo canal
+ * que faz o desenho sobreviver ao daltonismo e à impressão em preto e branco,
+ * e sem ela a paleta de `diagrama.css` deixa de ser válida (ver regra 1 lá).
  *
  * Um `role="img"` com `aria-label` descrevendo a conclusão (não a geometria)
  * é obrigatório. Quem não enxerga o gráfico precisa da mesma informação.

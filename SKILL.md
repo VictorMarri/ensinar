@@ -114,7 +114,7 @@ Quando a motivação vier fraca ("quero estar por dentro"), não exija que ele i
 
 Missão muda. Quando mudar, confirme com ele, atualize o arquivo e escreva um registro.
 
-**A missão responde quatro coisas, e a quarta é onde ele para.** Depois de entender o porquê, pergunte a profundidade — Leve (reconhece e decide, 3–4 aulas), Intermediário (faz o caminho comum sozinho, 5–7) ou Profundo (resolve o caso torto e consegue ensinar outra pessoa, 8–12). Sempre com o número de aulas junto: sem o preço à vista, a resposta é ambição e o abandono vem na aula 6.
+**A missão também responde onde ele para.** Depois de entender o porquê, pergunte a profundidade — Leve (reconhece e decide, 3–4 aulas), Intermediário (faz o caminho comum sozinho, 5–7) ou Profundo (resolve o caso torto e consegue ensinar outra pessoa, 8–12). Sempre com o número de aulas junto: sem o preço à vista, a resposta é ambição e o abandono vem na aula 6.
 
 Pergunte no **fim** da entrevista, nunca antes de você ter medido o terreno — no começo ele ainda não sabe o bastante do tema pra estimar o quanto precisa dele.
 

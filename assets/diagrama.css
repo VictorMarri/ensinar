@@ -1,7 +1,8 @@
 /* Diagrama didático — cor que REPRESENTA PARTE.
  *
- * Complementa `figure.css` (que cuida da moldura, do scroll e da legenda) e
- * `lesson.css` (que dá tinta e papel). Este arquivo dá as cores das partes.
+ * Complementa `figure.css` (que cuida da moldura e do scroll) e `lesson.css`
+ * (que dá tinta e papel). Este arquivo dá as cores das partes E a legenda —
+ * `.d-legenda`, `.d-item` e `.d-chip` moram aqui, não no `figure.css`.
  *
  * Uso:
  *
@@ -205,9 +206,16 @@
     --parte-1: #000;
     --parte-2: #000;
     --parte-3: #000;
+    --parte-4: #000;
+    --parte-5: #000;
   }
 
-  /* Sem cor, o que distingue as partes é o traço. */
+  /* Sem cor, o que distingue as partes é o traço. Cinco partes, cinco
+     padrões — se faltar um, duas partes viram a mesma coisa no papel, e é
+     sempre a impressão em preto e branco que revela isso tarde demais. */
+
+  /* parte-1 fica sólida: é a base, e base é o traço cheio. */
+
   .d-box.d-parte-2,
   .d-linha.d-parte-2,
   .d-chip.d-parte-2 { stroke-dasharray: 7 4; border-style: dashed; }
@@ -215,6 +223,14 @@
   .d-box.d-parte-3,
   .d-linha.d-parte-3,
   .d-chip.d-parte-3 { stroke-dasharray: 2 3; border-style: dotted; }
+
+  .d-box.d-parte-4,
+  .d-linha.d-parte-4,
+  .d-chip.d-parte-4 { stroke-dasharray: 10 3 2 3; border-style: double; }
+
+  .d-box.d-parte-5,
+  .d-linha.d-parte-5,
+  .d-chip.d-parte-5 { stroke-dasharray: 15 5; border-style: solid; border-width: 3px; }
 
   .d-box.preenchida { fill: none; }
   .d-chip { background: none; }

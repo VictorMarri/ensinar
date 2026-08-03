@@ -25,24 +25,34 @@ vez de declarado:
 | 4 | *isto quebrou, por quê?* — o caso torto | Profundo |
 
 É assim que entrevista de verdade escala, e é por isso que a escada não é um
-apêndice do Profundo: ela mede qualquer nível. Leve responde 1–2 e para.
-Profundo vai até 4.
+apêndice do Profundo: ela mede qualquer nível. **Leve para no degrau 1.
+Intermediário vai até 2. Profundo, até 4.**
+
+Quem definiu isso foi a própria definição dos níveis em `MISSION.md`: Leve é
+quem "não executa sozinho", e o degrau 2 pergunta *como você faria* — que é
+execução. Um aluno de nível Leve reprovar no degrau 2 não é sinal de que
+faltou ensinar; é o nível funcionando.
 
 ## Modelo
 
-```md
-# Prática: {Tema} — {recorte}
+O arquivo é HTML, como as aulas — usa `lesson.css` e roda a mesma moldura:
 
-> Degraus 1–{N}, do nível {nível}. Fonte das perguntas: {link}.
+```html
+<h1>Prática: {Tema} — {recorte}</h1>
+<p class="eyebrow">Degraus 1–{N}, do nível {nível}</p>
 
-## Degrau 1 — reconhecimento
-**{pergunta, na forma como a fonte a faz}**
-<detalhes>
-  {a resposta que a fonte considera boa}
-  {o que uma resposta fraca esquece}
-  Fonte: {link}
-</detalhes>
+<h2>Degrau 1 — reconhecimento</h2>
+
+<details>
+  <summary><strong>{pergunta, na forma como a fonte a faz}</strong></summary>
+  <p>{a resposta que a fonte considera boa}</p>
+  <p><em>O que uma resposta fraca esquece:</em> {…}</p>
+  <p class="cite">Fonte: <a href="{url}">{fonte}</a> · Cobre: <a href="../lessons/{NNNN}.html">aula {N}</a></p>
+</details>
 ```
+
+`<details>`/`<summary>` é o que esconde a resposta sem JavaScript. A tag é essa
+— `<detalhes>` não existe em HTML e entrega a resposta à vista.
 
 ## Regras
 
