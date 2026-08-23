@@ -65,10 +65,16 @@ acréscimo deste fork nasceu de uma dessas dores:
 |---|---|
 | Aulas numeradas ao infinito. Você nunca sabia quantas faltavam nem o que era "terminar" | **O mapa vem antes da aula 1.** Toda aula diz `Aula 3 de 7`, nunca `de ?`. |
 | Analogia forçada que desmorona três aulas depois | **Analogia só se for isomorfa**: no máximo um ponto de ruptura, declarado. E ela vira o objeto que a figura desenha, não uma frase de efeito. |
-| Jargão em inglês comendo a memória de trabalho | **Três termos novos por aula**, batizados em português primeiro: a **camada de base** (`base branch`), nunca o contrário. |
+| Jargão em inglês comendo a memória de trabalho | **Três termos novos por aula**, batizados na sua língua primeiro: a **camada de base** (`base branch`), nunca o contrário. |
 | Explicação que só parece boa porque está em inglês | **O teste da borracha:** apague mentalmente os termos em inglês. A aula ainda ensina? Se não, foi tradução, não ensino. |
 | Diagramas onde cor é enfeite | **Cor significa.** Tinta desenha o objeto, âmbar marca o que a figura ensina, tijolo marca onde quebra. E o significado não muda da aula 1 à última. |
 | Páginas com cara de documento corporativo | **A pele de aço:** página cinza, figura em painel branco com borda grossa, título em display. Aula é pôster que ensina, e ainda imprime bonito. |
+
+E a língua de ensino é um parâmetro, não uma premissa: cada trilha sai inteira
+na língua nativa de quem aprende (as minhas são em português porque a minha é o
+português), com as etiquetas técnicas em inglês, porque a documentação e o CLI
+vivem em inglês. Quem fala inglês perde só a camada de tradução; o orçamento de
+três termos continua valendo igual.
 
 Detalhe da atribuição em [NOTICE.md](./NOTICE.md).
 
