@@ -120,4 +120,4 @@ referência canônica da pele é a aula 1 da trilha de Docker
 O material derivado de Matt Pocock é MIT. Aviso e texto completos em
 [NOTICE.md](./NOTICE.md).
 
-A licença deste fork **ainda não foi definida**.
+Este fork é [MIT](./LICENSE), como o original.

@@ -53,5 +53,4 @@ SOFTWARE.
 
 ## Licença deste fork
 
-Ainda não definida. **Decidir antes de qualquer publicação.** Manter MIT é o
-caminho de menor atrito, já que o material derivado já é MIT.
+MIT, desde 23/08/2026. Texto completo em [LICENSE](./LICENSE).
