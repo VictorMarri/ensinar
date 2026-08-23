@@ -17,6 +17,22 @@ recomeçar do zero.
 Você fecha o terminal e a trilha continua lá. Meses depois, abre a aula 1 no
 navegador e ela ainda ensina.
 
+## Por que ela existe
+
+Eu sempre aprendi por analogia e por desenho. Conceito novo só gruda em mim
+quando eu consigo espelhar ele em alguma coisa do dia a dia: uma forma de bolo,
+uma tomada, um estagiário. Foi assim na escola, foi assim na carreira, e é
+assim até hoje.
+
+Quando a IA chegou, esse jeito de aprender virou superpoder: agora existe
+alguém disponível o dia inteiro pra achar a analogia certa, desenhar ela, e
+refazer o desenho quando eu não entendo. Essa skill é isso transformado em
+método, com regras pra analogia não desmoronar e pro desenho ensinar de
+verdade.
+
+Fiz pra quem aprende como eu. E também pra quem nunca tentou aprender assim e
+quer experimentar.
+
 ## Como é uma aula
 
 A primeira aula da trilha de Docker não abre com "contêineres são unidades
@@ -24,7 +40,7 @@ padronizadas de software". Ela abre com um desenho grande de uma **forma de
 bolo trancada com cadeado**, e três bolos saindo dela: um no forno, um na
 bancada, um prato vazio.
 
-> Uma forma. Quantos bolos você quiser, inclusive nenhum.
+![A aula 1 da trilha de Docker: a forma de bolo trancada, os três bolos, e a gaveta cheia de formas explicando 1,70 GB de disco](docs/aula-1-docker.png)
 
 Só depois do desenho vem a tradução: a forma é a **imagem** (`image`), o bolo
 é o **contêiner** (`container`). E aí a pergunta que motivou a aula, "por que

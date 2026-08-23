@@ -101,6 +101,7 @@ Rode inteira. Uma falha, a aula volta pra bancada.
 - [ ] Se houver diagrama de partes: sobre painel branco, cada parte com sua cor, mesma cor das aulas anteriores, papéis fixos (azul = base, laranja = movimento, verde = terceiro, magenta = o que entra depois, tijolo = o que dá errado), teto de 5, rótulo dentro + legenda embaixo
 - [ ] **Auditoria de coordenadas do SVG**: nenhum texto estoura o `viewBox` nem invade forma vizinha. Confira com a conta, não no olho: texto mono de 15px ocupa ~9px por caractere (13px ≈ 8px/char) — `x + 9×nº de caracteres` tem que caber no limite direito, e o vão vertical entre texto e forma tem que ser ≥ 10px. Frase da figura e desenho têm que concordar (não escreva "cinco formas" sobre um desenho com quatro)
 - [ ] Nenhum hex dentro do SVG — as cores moram no CSS
+- [ ] Nenhum travessão (—) no texto da aula: reestruture com vírgula, dois-pontos, ponto ou `·`
 - [ ] Pele certa: página cinza-aço, figuras e blocos densos em painel branco — nenhum `prefers-color-scheme: dark` ou `data-theme` na aula
 - [ ] Toda afirmação factual tem citação (`.cite`) pra fonte primária
 - [ ] Contém pelo menos um dado real medido da máquina dele
