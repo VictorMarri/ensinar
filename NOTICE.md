@@ -19,9 +19,10 @@ parte substancial do original.
 
 ## O que é acréscimo deste fork
 
-As seis regras (mapa do tema, analogia com ponto de ruptura, orçamento de
-jargão, teste da borracha, cor representa parte, papel claro),
-`formatos/MAPA.md`, `formatos/AULA.md` com sua checklist, `assets/diagrama.css`,
+As seis regras (mapa do tema, analogia isomorfa desenhada como objeto,
+orçamento de jargão, teste da borracha, cor que significa, pele de aço com
+figura em painel branco), `formatos/MAPA.md`, `formatos/AULA.md` com sua
+checklist, `assets/diagrama.css`, o kit de desenho `.d` do `assets/lesson.css`,
 e a tradução do conjunto para o português.
 
 ## Licença do material original
