@@ -54,7 +54,9 @@ Estrutura de página: mesmo `<head>` das aulas, linkando `../assets/lesson.css`
 
 - **Só vira link a aula que já existe.** Aula prevista é texto simples. Link
   para arquivo inexistente é a pior navegação possível: parece que funciona e
-  dá erro. O estado da coluna e a existência do link têm que concordar.
+  dá erro. O link diz "o arquivo existe"; o estado diz onde o aluno está — a
+  `▶ próxima` publicada tem link E estado `▶`, e isso é concordância, não
+  contradição (ver Manutenção).
 - **O tamanho vem da profundidade escolhida** em `MISSION.md`: Leve 3–4,
   Intermediário 5–7, Profundo 8–12. Estourou muito a faixa pra cima e ou o
   recorte está fino demais, ou são dois temas disfarçados de um.
@@ -91,9 +93,13 @@ Estrutura de página: mesmo `<head>` das aulas, linkando `../assets/lesson.css`
 
 ## Manutenção — toda sessão que entrega uma aula mexe aqui
 
-1. A aula entregue vira `✅ feita` **e ganha link**.
-2. A seguinte vira `▶ próxima`.
-3. Volte na aula anterior e preencha o link "próxima" que ficou vazio quando
+1. Assim que o arquivo da aula existe, ela **ganha link** no mapa — mas continua
+   `▶ próxima`. Publicada não é fechada.
+2. A aula só vira `✅ feita` quando o aluno **responde a pergunta que fecha a
+   aula ou o quiz**. Até lá ela fica `▶ próxima` (com link): é onde ele está,
+   não o que ele terminou.
+3. Quando uma aula fecha, a seguinte vira `▶ próxima`.
+4. Volte na aula anterior e preencha o link "próxima" que ficou vazio quando
    ela foi escrita — ver `AULA.md`. É a única edição retroativa que a skill faz
    numa aula já entregue, e existe porque no momento em que a aula N é escrita a
    aula N+1 ainda não existe pra ser linkada.

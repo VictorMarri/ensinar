@@ -2,6 +2,8 @@
 
 Uma aula é **um HTML que linka os componentes de `assets/`**, em `lessons/`, numerado `NNNN-nome-em-kebab.html`. Curta, bonita, um ganho tangível, amarrada à missão.
 
+**A aula é o veículo completo do ensino** — ela nasce inteira (desenho, prosa curta, quiz, citações) e é aberta no navegador na hora; o chat entra como apoio: apresentação em poucas linhas, dúvidas, e a pergunta única que fecha. Nunca duplique o texto da aula no chat. Ver "HTML primeiro, diálogo como apoio" no `SKILL.md`.
+
 Ela **não** é autocontida, e isso é escolha: os componentes ficam do lado, num arquivo só, pra que consertar o `lesson.css` uma vez conserte as vinte aulas de uma vez. O preço é que a aula não viaja sozinha — mandada por e-mail, sem a pasta `assets/` ao lado, abre sem estilo nenhum.
 
 ## Estrutura
@@ -109,7 +111,8 @@ Rode inteira. Uma falha, a aula volta pra bancada.
 - [ ] Um ganho tangível, e ele amarra na missão
 - [ ] Reusa `assets/` — nada reusável escrito inline
 - [ ] Classes certas: `.eyebrow`, `.subtitle`, `.quiz-score` (não `.score`)
-- [ ] Aberta no navegador pra ele
+- [ ] Aberta no navegador pra ele **assim que o arquivo existe**, com apresentação curta no chat (sem duplicar o texto da aula)
+- [ ] No `MAPA.html`, a aula ganhou link mas segue `▶ próxima` até ele responder a pergunta ou o quiz
 - [ ] A entrega no chat termina com **uma** pergunta
 
 ## Tamanho

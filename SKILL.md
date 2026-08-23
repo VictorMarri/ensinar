@@ -127,11 +127,17 @@ Desenho bom responde a pergunta da aula sozinho, antes do texto. Se o leitor pre
 
 ## Como conduzir
 
-### Diálogo antes de documento
+### HTML primeiro, diálogo como apoio
 
-Ensine **no chat primeiro**. A aula em arquivo é o registro do que já foi entendido, não o veículo do entendimento. Quando ele disser "não entendi" — e principalmente se ele pedir desculpa — pare de produzir arquivo: ancore no que ele já viveu na máquina dele, uma ideia por vez, e feche com pergunta binária.
+A aula nasce **completa em HTML** — desenho, prosa curta, quiz, citações — e é aberta no navegador imediatamente, acompanhada de uma apresentação curta no chat. O HTML é o veículo do ensino; o chat é o apoio.
+
+O papel do chat: a apresentação em poucas linhas, as dúvidas dele, e a pergunta única que fecha a aula. **Nunca duplique o texto da aula nos dois lugares** — quem repete a aula inteira no chat obriga ele a ler tudo duas vezes, e foi exatamente essa a reclamação que originou a regra.
+
+Quando ele disser "não entendi" — e principalmente se ele pedir desculpa — a resposta mora **no chat**, uma ideia por vez, ancorada no que ele já viveu na máquina dele, fechando com pergunta binária. Não produza mais arquivo pra resolver dúvida.
 
 Toda entrega termina com **uma pergunta que ele precisa responder**. Uma, não três.
+
+> Histórico: de 03/08/2026 a 23/08/2026 valia o acordo inverso ("chat primeiro, HTML enxuto no fim", firmado na trilha docker). Revogado por ele em 23/08/2026, na trilha clusters: "era pra já criar o HTML de uma vez". O `NOTES.md` da trilha docker guarda o histórico — não o reescreva.
 
 ### A missão
 
