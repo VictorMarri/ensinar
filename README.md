@@ -1,7 +1,7 @@
 # `/ensinar`
 
-Você já aprendeu alguma coisa numa conversa com IA — de verdade, com aquela
-sensação de "agora entendi" — e duas semanas depois não sobrou nada?
+Você já aprendeu alguma coisa numa conversa com IA? De verdade, com aquela
+sensação de "agora entendi"? E duas semanas depois não sobrou nada?
 
 Não sobrou porque a conversa evaporou. O chat rolou pra cima, a sessão fechou,
 e o que você "aprendeu" nunca existiu fora dela.
@@ -9,8 +9,8 @@ e o que você "aprendeu" nunca existiu fora dela.
 `/ensinar` é uma skill do [Claude Code](https://claude.com/claude-code) que
 resolve isso do jeito mais teimoso possível: **a sua trilha de aprendizado vira
 arquivos no seu disco.** Um mapa que diz quantas aulas faltam. Aulas em HTML
-que parecem pôsteres — imagem grande, poucas palavras, o desenho ensina antes
-do texto. Um glossário que cresce com você. E registros do que você de fato
+com cara de pôster: imagem grande, poucas palavras, o desenho ensina antes do
+texto. Um glossário que cresce com você. E registros do que você de fato
 aprendeu, pra que a próxima sessão continue de onde a anterior parou em vez de
 recomeçar do zero.
 
@@ -21,21 +21,21 @@ navegador e ela ainda ensina.
 
 A primeira aula da trilha de Docker não abre com "contêineres são unidades
 padronizadas de software". Ela abre com um desenho grande de uma **forma de
-bolo trancada com cadeado** — e três bolos saindo dela: um no forno, um na
+bolo trancada com cadeado**, e três bolos saindo dela: um no forno, um na
 bancada, um prato vazio.
 
-> Uma forma. Quantos bolos você quiser — inclusive nenhum.
+> Uma forma. Quantos bolos você quiser, inclusive nenhum.
 
 Só depois do desenho vem a tradução: a forma é a **imagem** (`image`), o bolo
-é o **contêiner** (`container`). E aí a pergunta que motivou a aula — "por que
-tenho 1,70 GB de Postgres no disco e nenhum banco rodando?" — já se responde
+é o **contêiner** (`container`). E aí a pergunta que motivou a aula, "por que
+tenho 1,70 GB de Postgres no disco e nenhum banco rodando?", já se responde
 sozinha: você apagou os bolos; as formas ficaram.
 
 Três termos novos por aula, no máximo. Um quiz pra provar que ficou. Um dado
 real medido **da sua máquina**, não de tutorial. E a aula seguinte diz `Aula 2
-de 11` — porque você tem o direito de saber quantas faltam.
+de 11`, porque você tem o direito de saber quantas faltam.
 
-## De onde vem — e o que foi acrescentado
+## De onde vem, e o que foi acrescentado
 
 Esta skill é um fork da [`teach`](https://github.com/mattpocock/skills), de
 Matt Pocock, e o esqueleto pedagógico dela é excelente: a missão como âncora de
@@ -47,12 +47,12 @@ acréscimo deste fork nasceu de uma dessas dores:
 
 | A dor | O acréscimo |
 |---|---|
-| Aulas numeradas ao infinito — você nunca sabia quantas faltavam nem o que era "terminar" | **O mapa vem antes da aula 1.** Toda aula diz `Aula 3 de 7`, nunca `de ?`. |
-| Analogia forçada que desmorona três aulas depois | **Analogia só se for isomorfa** — no máximo um ponto de ruptura, declarado. E ela vira o objeto que a figura desenha, não uma frase de efeito. |
-| Jargão em inglês comendo a memória de trabalho | **Três termos novos por aula**, batizados em português primeiro: a **camada de base** (`base branch`) — nunca o contrário. |
+| Aulas numeradas ao infinito. Você nunca sabia quantas faltavam nem o que era "terminar" | **O mapa vem antes da aula 1.** Toda aula diz `Aula 3 de 7`, nunca `de ?`. |
+| Analogia forçada que desmorona três aulas depois | **Analogia só se for isomorfa**: no máximo um ponto de ruptura, declarado. E ela vira o objeto que a figura desenha, não uma frase de efeito. |
+| Jargão em inglês comendo a memória de trabalho | **Três termos novos por aula**, batizados em português primeiro: a **camada de base** (`base branch`), nunca o contrário. |
 | Explicação que só parece boa porque está em inglês | **O teste da borracha:** apague mentalmente os termos em inglês. A aula ainda ensina? Se não, foi tradução, não ensino. |
-| Diagramas onde cor é enfeite | **Cor significa.** Tinta desenha o objeto, âmbar marca o que a figura ensina, tijolo marca onde quebra — e o significado não muda da aula 1 à última. |
-| Páginas com cara de documento corporativo | **A pele de aço:** página cinza, figura em painel branco com borda grossa, título em display. Aula é pôster que ensina — e ainda imprime bonito. |
+| Diagramas onde cor é enfeite | **Cor significa.** Tinta desenha o objeto, âmbar marca o que a figura ensina, tijolo marca onde quebra. E o significado não muda da aula 1 à última. |
+| Páginas com cara de documento corporativo | **A pele de aço:** página cinza, figura em painel branco com borda grossa, título em display. Aula é pôster que ensina, e ainda imprime bonito. |
 
 Detalhe da atribuição em [NOTICE.md](./NOTICE.md).
 
@@ -70,11 +70,11 @@ Depois, no Claude Code:
 
 A primeira sessão é uma conversa, não uma apostila: a skill pergunta por que
 você quer aprender aquilo, mede o seu terreno de verdade (abre seu repositório,
-olha sua máquina), e só então desenha o mapa — com o tamanho que a **sua**
+olha sua máquina), e só então desenha o mapa, com o tamanho que a **sua**
 missão justifica, de 3 a 12 aulas.
 
 > A skill só carrega se você digitar `/ensinar`. Pedir "me ensina X" numa
-> conversa comum não aciona nenhuma dessas regras — e é proposital: aula boa
+> conversa comum não aciona nenhuma dessas regras. É proposital: aula boa
 > custa cuidado, e cuidado se pede explicitamente.
 
 ## O que fica no seu disco
@@ -83,9 +83,9 @@ Um tema, uma pasta, em `~/learning/<tema>/`:
 
 ```
 MAPA.html            quantas aulas, o que cada uma te dá, onde você está
-MISSION.md           por que você quer isso — ancora todas as decisões
-lessons/*.html       as aulas-pôster
-reference/*.html     glossário, cheat sheets — o que você consulta depois
+MISSION.md           por que você quer isso; ancora todas as decisões
+lessons/*.html       as aulas com cara de pôster
+reference/*.html     glossário e cheat sheets, o que você consulta depois
 pratica/*.html       o tema como o mundo cobra lá fora
 learning-records/    o que você de fato aprendeu, sessão a sessão
 ```
@@ -101,7 +101,7 @@ referência canônica da pele é a aula 1 da trilha de Docker
 
 ## Licença
 
-O material derivado de Matt Pocock é MIT — aviso e texto completos em
+O material derivado de Matt Pocock é MIT. Aviso e texto completos em
 [NOTICE.md](./NOTICE.md).
 
 A licença deste fork **ainda não foi definida**.
