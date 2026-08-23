@@ -1,134 +1,137 @@
 # `/ensinar`
 
-Você já aprendeu alguma coisa numa conversa com IA? De verdade, com aquela
-sensação de "agora entendi"? E duas semanas depois não sobrou nada?
+> 🇧🇷 [Leia em português](./README.pt-BR.md)
 
-Não sobrou porque a conversa evaporou. O chat rolou pra cima, a sessão fechou,
-e o que você "aprendeu" nunca existiu fora dela.
+Ever learned something in an AI conversation? Truly learned it, with that "now
+I get it" feeling? And two weeks later, nothing was left?
 
-`/ensinar` é uma skill do [Claude Code](https://claude.com/claude-code) que
-resolve isso do jeito mais teimoso possível: **a sua trilha de aprendizado vira
-arquivos no seu disco.** Um mapa que diz quantas aulas faltam. Aulas em HTML
-com cara de pôster: imagem grande, poucas palavras, o desenho ensina antes do
-texto. Um glossário que cresce com você. E registros do que você de fato
-aprendeu, pra que a próxima sessão continue de onde a anterior parou em vez de
-recomeçar do zero.
+Nothing was left because the conversation evaporated. The chat scrolled away,
+the session closed, and what you "learned" never existed outside of it.
 
-Você fecha o terminal e a trilha continua lá. Meses depois, abre a aula 1 no
-navegador e ela ainda ensina.
+`/ensinar` (Portuguese for *to teach*) is a
+[Claude Code](https://claude.com/claude-code) skill that solves this in the
+most stubborn way possible: **your learning track becomes files on your disk.**
+A map that tells you how many lessons are left. HTML lessons that look like
+posters: big drawing, few words, the picture teaches before the text does. A
+glossary that grows with you. And records of what you actually learned, so the
+next session picks up where the last one stopped instead of starting over.
 
-## Por que ela existe
+You close the terminal and the track stays. Months later, you open lesson 1 in
+a browser and it still teaches.
 
-Eu sempre aprendi por analogia e por desenho. Conceito novo só gruda em mim
-quando eu consigo espelhar ele em alguma coisa do dia a dia: uma forma de bolo,
-uma tomada, um estagiário. Foi assim na escola, foi assim na carreira, e é
-assim até hoje.
+## Why it exists
 
-Quando a IA chegou, esse jeito de aprender virou superpoder: agora existe
-alguém disponível o dia inteiro pra achar a analogia certa, desenhar ela, e
-refazer o desenho quando eu não entendo. Essa skill é isso transformado em
-método, com regras pra analogia não desmoronar e pro desenho ensinar de
-verdade.
+I have always learned through analogy and drawing. A new concept only sticks
+for me when I can mirror it onto something from everyday life: a cake mold, a
+power outlet, an intern. It was like that in school, like that through my
+career, and it is like that today.
 
-Fiz pra quem aprende como eu. E também pra quem nunca tentou aprender assim e
-quer experimentar.
+When AI arrived, this way of learning became a superpower: now there is
+someone available all day to find the right analogy, draw it, and redraw it
+when I do not get it. This skill is that turned into a method, with rules to
+keep the analogy from collapsing and to make the drawing actually teach.
 
-## Como é uma aula
+I built it for people who learn the way I do. And for people who never tried
+learning this way and want to see what it feels like.
 
-A primeira aula da trilha de Docker não abre com "contêineres são unidades
-padronizadas de software". Ela abre com um desenho grande de uma **forma de
-bolo trancada com cadeado**, e três bolos saindo dela: um no forno, um na
-bancada, um prato vazio.
+## What a lesson looks like
 
-![A aula 1 da trilha de Docker: a forma de bolo trancada, os três bolos, e a gaveta cheia de formas explicando 1,70 GB de disco](docs/aula-1-docker.png)
+The first lesson of a Docker track does not open with "containers are
+standardized units of software". It opens with a big drawing of a **cake mold
+locked with a padlock**, and three cakes coming out of it: one in the oven,
+one on the counter, one empty plate.
 
-Só depois do desenho vem a tradução: a forma é a **imagem** (`image`), o bolo
-é o **contêiner** (`container`). E aí a pergunta que motivou a aula, "por que
-tenho 1,70 GB de Postgres no disco e nenhum banco rodando?", já se responde
-sozinha: você apagou os bolos; as formas ficaram.
+![Lesson 1 of the Docker track, in Portuguese: the locked cake mold, the three cakes, and a drawer full of molds explaining 1.7 GB of disk](docs/aula-1-docker.png)
 
-Três termos novos por aula, no máximo. Um quiz pra provar que ficou. Um dado
-real medido **da sua máquina**, não de tutorial. E a aula seguinte diz `Aula 2
-de 11`, porque você tem o direito de saber quantas faltam.
+Only after the drawing comes the translation: the mold is the **image**, the
+cake is the **container**. And then the question that motivated the lesson,
+"why do I have 1.7 GB of Postgres on disk and zero running databases?",
+answers itself: you deleted the cakes; the molds stayed.
 
-## De onde vem, e o que foi acrescentado
+Three new terms per lesson, max. A quiz to prove it stuck. One real number
+measured **from your machine**, not from a tutorial. And the next lesson says
+`Lesson 2 of 11`, because you have the right to know how many are left.
 
-Esta skill é um fork da [`teach`](https://github.com/mattpocock/skills), de
-Matt Pocock, e o esqueleto pedagógico dela é excelente: a missão como âncora de
-tudo, fluência × retenção, zona de desenvolvimento proximal, glossário como
-língua oficial, registros de aprendizado. Isso está todo aqui, intacto.
+## Where it comes from, and what was added
 
-Mas usar a original no dia a dia revelou onde ela deixava a desejar. Cada
-acréscimo deste fork nasceu de uma dessas dores:
+This skill is a fork of Matt Pocock's
+[`teach`](https://github.com/mattpocock/skills), and its pedagogical skeleton
+is excellent: the mission anchoring every teaching decision, fluency versus
+retention, zone of proximal development, the glossary as official language,
+learning records. All of that is here, intact.
 
-| A dor | O acréscimo |
+But using the original day after day showed where it fell short. Every
+addition in this fork was born from one of those pains:
+
+| The pain | The addition |
 |---|---|
-| Aulas numeradas ao infinito. Você nunca sabia quantas faltavam nem o que era "terminar" | **O mapa vem antes da aula 1.** Toda aula diz `Aula 3 de 7`, nunca `de ?`. |
-| Analogia forçada que desmorona três aulas depois | **Analogia só se for isomorfa**: no máximo um ponto de ruptura, declarado. E ela vira o objeto que a figura desenha, não uma frase de efeito. |
-| Jargão em inglês comendo a memória de trabalho | **Três termos novos por aula**, batizados na sua língua primeiro: a **camada de base** (`base branch`), nunca o contrário. |
-| Explicação que só parece boa porque está em inglês | **O teste da borracha:** apague mentalmente os termos em inglês. A aula ainda ensina? Se não, foi tradução, não ensino. |
-| Diagramas onde cor é enfeite | **Cor significa.** Tinta desenha o objeto, âmbar marca o que a figura ensina, tijolo marca onde quebra. E o significado não muda da aula 1 à última. |
-| Páginas com cara de documento corporativo | **A pele de aço:** página cinza, figura em painel branco com borda grossa, título em display. Aula é pôster que ensina, e ainda imprime bonito. |
+| Lessons numbered forever. You never knew how many were left or what "done" meant | **The map comes before lesson 1.** Every lesson says `Lesson 3 of 7`, never `of ?`. |
+| A forced analogy that collapses three lessons later | **Only isomorphic analogies**: at most one declared breaking point. And the analogy becomes the object the figure draws, not a turn of phrase. |
+| English jargon eating working memory | **Three new terms per lesson**, named in your language first: the *camada de base* (`base branch`), never the reverse. |
+| An explanation that only sounds good because it is in English | **The eraser test:** mentally delete the jargon terms. Does the lesson still teach? If not, it was translation, not teaching. |
+| Diagrams where color is decoration | **Color means something.** Ink draws the object, amber marks what the figure teaches, brick marks where it breaks. And the meaning never changes from lesson 1 to the last. |
+| Pages that look like corporate documents | **The steel skin:** gray page, figures on white panels with thick ink borders, display-face titles. A lesson is a poster that teaches, and it still prints well. |
 
-E a língua de ensino é um parâmetro, não uma premissa: cada trilha sai inteira
-na língua nativa de quem aprende (as minhas são em português porque a minha é o
-português), com as etiquetas técnicas em inglês, porque a documentação e o CLI
-vivem em inglês. Quem fala inglês perde só a camada de tradução; o orçamento de
-três termos continua valendo igual.
+And the teaching language is a parameter, not a premise: each track is written
+entirely in the learner's native language (mine are in Portuguese because my
+language is Portuguese), with the technical labels in English, because the
+docs and the CLI live in English. English speakers just lose the translation
+layer; the three-term budget still applies in full.
 
-A mesma skill ensinando em inglês, na aula 1 de uma trilha sobre clusters (o
-supermercado que cresce pra cima ou pra os lados):
+The same skill teaching in English, in lesson 1 of a clusters track (the
+supermarket that grows taller or grows wider):
 
 ![Lesson 1 of a clusters track, in English: one beefed-up checkout closes and the store stops; three checkouts survive the one that closes](docs/lesson-1-clusters-en.png)
 
-Detalhe da atribuição em [NOTICE.md](./NOTICE.md).
+Attribution details in [NOTICE.md](./NOTICE.md).
 
-## Instalação
+## Installation
 
 ```bash
 git clone https://github.com/VictorMarri/ensinar ~/.claude/skills/ensinar
 ```
 
-Depois, no Claude Code:
+Then, in Claude Code:
 
 ```
-/ensinar quero aprender Docker
+/ensinar I want to learn Docker
 ```
 
-A primeira sessão é uma conversa, não uma apostila: a skill pergunta por que
-você quer aprender aquilo, mede o seu terreno de verdade (abre seu repositório,
-olha sua máquina), e só então desenha o mapa, com o tamanho que a **sua**
-missão justifica, de 3 a 12 aulas.
+The first session is a conversation, not a handout: the skill asks why you
+want to learn this, measures your actual starting point (it opens your
+repository, looks at your machine), and only then draws the map, sized to what
+**your** mission justifies, from 3 to 12 lessons.
 
-> A skill só carrega se você digitar `/ensinar`. Pedir "me ensina X" numa
-> conversa comum não aciona nenhuma dessas regras. É proposital: aula boa
-> custa cuidado, e cuidado se pede explicitamente.
+> The skill only loads when you type `/ensinar`. Asking "teach me X" in a
+> regular conversation triggers none of these rules. That is on purpose: a
+> good lesson costs care, and care is requested explicitly.
 
-## O que fica no seu disco
+## What stays on your disk
 
-Um tema, uma pasta, em `~/learning/<tema>/`:
+One topic, one folder, in `~/learning/<topic>/`:
 
 ```
-MAPA.html            quantas aulas, o que cada uma te dá, onde você está
-MISSION.md           por que você quer isso; ancora todas as decisões
-lessons/*.html       as aulas com cara de pôster
-reference/*.html     glossário e cheat sheets, o que você consulta depois
-pratica/*.html       o tema como o mundo cobra lá fora
-learning-records/    o que você de fato aprendeu, sessão a sessão
+MAPA.html            how many lessons, what each one gives you, where you are
+MISSION.md           why you want this; anchors every decision
+lessons/*.html       the poster-like lessons
+reference/*.html     glossary and cheat sheets, what you consult later
+pratica/*.html       the topic as the world tests it out there
+learning-records/    what you actually learned, session by session
 ```
 
-Tudo abre no navegador, sem servidor, sem conta, sem app. É seu.
+Everything opens in a browser. No server, no account, no app. It is yours.
 
-## Pra quem quer abrir o capô
+## Under the hood
 
-As seis regras completas, com as medidas de contraste e os contratos de cada
-arquivo, estão em [`SKILL.md`](./SKILL.md) e [`formatos/`](./formatos/). A
-referência canônica da pele é a aula 1 da trilha de Docker
+The six rules in full, with the contrast measurements and the contract for
+every file, live in [`SKILL.md`](./SKILL.md) and [`formatos/`](./formatos/)
+(in Portuguese; the rules themselves are language-agnostic). The canonical
+reference for the visual identity is lesson 1 of the Docker track
 (`0001-molde-e-coisa-viva.html`).
 
-## Licença
+## License
 
-O material derivado de Matt Pocock é MIT. Aviso e texto completos em
+The material derived from Matt Pocock is MIT. Full notice and text in
 [NOTICE.md](./NOTICE.md).
 
-Este fork é [MIT](./LICENSE), como o original.
+This fork is [MIT](./LICENSE), like the original.
