@@ -76,6 +76,11 @@ português), com as etiquetas técnicas em inglês, porque a documentação e o 
 vivem em inglês. Quem fala inglês perde só a camada de tradução; o orçamento de
 três termos continua valendo igual.
 
+A mesma skill ensinando em inglês, na aula 1 de uma trilha sobre clusters (o
+supermercado que cresce pra cima ou pra os lados):
+
+![Lesson 1 of a clusters track, in English: one beefed-up checkout closes and the store stops; three checkouts survive the one that closes](docs/lesson-1-clusters-en.png)
+
 Detalhe da atribuição em [NOTICE.md](./NOTICE.md).
 
 ## Instalação
