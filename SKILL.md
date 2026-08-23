@@ -1,6 +1,6 @@
 ---
 name: ensinar
-description: Ensina um tema ao longo de várias sessões, em português, sob seis regras — mapa do tema, analogia obrigatória, orçamento de jargão, teste da borracha, desenho onde cor significa parte, e papel sempre claro. Fork pessoal do /teach.
+description: Ensina um tema ao longo de várias sessões, em português, sob seis regras — mapa do tema, analogia isomorfa desenhada como objeto, orçamento de jargão, teste da borracha, desenho onde cor significa, e a pele de aço com figura em painel branco. Fork pessoal do /teach.
 argument-hint: "O que você quer aprender?"
 disable-model-invocation: true
 ---
@@ -47,7 +47,15 @@ Toda aula abre com `Aula 3 de 7` e um link pro mapa. Nunca `de ?`.
 
 O conceito entra por uma **analogia do mundo dele**, antes de qualquer termo técnico. Puxe de coisas que ele de fato conhece — futebol e táticas de eFootball, o próprio código dele, a cozinha, o trânsito. Se você não sabe o que ele conhece, **pergunte** e anote em `NOTES.md`.
 
-Toda analogia declara **onde ela quebra**. Analogia sem ponto de ruptura não ensina: instala uma crença errada que só aparece três aulas depois. Componente: `analogy.css`.
+Toda analogia declara **onde ela quebra** — na `figcaption` da figura que a desenha. Analogia sem ponto de ruptura declarado instala uma crença errada que só aparece três aulas depois.
+
+**A analogia só entra se for isomorfa — e o teste é contável.** Procure onde a **estrutura do conceito** já existe no mundo físico: a forma de bolo não é *parecida* com a imagem Docker, ela **é** só-leitura-que-gera-instâncias. O mundo dele (futebol, cozinha, o código dele) é critério de desempate entre candidatas que servem, nunca requisito de entrada. A medida: **quantos pontos de ruptura a analogia precisa declarar.** Zero ou um, é isomorfa — use. Dois ou mais, está esticada — descarte (caso real: esquema tático do eFootball para imagem/contêiner precisava de dois avisos de "aqui mente", e um deles era uma aula inteira de desaprendizado).
+
+**A analogia se desenha antes de se descrever** — e é ela que dá o que desenhar. O estilo aprovado desenha OBJETOS (a forma canelada, o cadeado, o bolo com vapor), e conceito abstrato desenhado "direto" vira caixa com rótulo, que é exatamente o visual que a pele nova existe pra matar. Por isso as duas decisões andam juntas: sem objeto isomorfo, sem desenho de analogia — a aula segue com diagrama sóbrio e sem fantasia forçada.
+
+- **Um mundo por trilha.** Docker mora na cozinha (forma, bolo, etiqueta gravada, os potes na geladeira). Se a aula 3 puxa do futebol e a aula 4 da cozinha, não existe mundo — existem analogias soltas, e ele recomeça a cada aula. O universo se escolhe na primeira aula, fica anotado em `NOTES.md`, e as seguintes moram dentro dele. Prefira universo com **relações prontas** entre os objetos (encaixe, peça que troca, peça que quebra): é relação que o tema precisa ensinar.
+- **O desenho mostra o par.** Duas metades num SVG só, divisor tracejado no meio (`.dash`). O que o par contrasta depende da aula: errado contra certo, antes contra depois, ou os dois conceitos que ele confunde — a forma e o bolo. Desenho de um lado obriga o leitor a imaginar o outro, e a diferença entre os dois é a aula.
+- **A tradução vem depois do desenho.** A figura fala em objeto ("a forma é trancada"); a linha `.traducao` no rodapé dela batiza os termos ("a forma é a **imagem**, `image`) — regra 3 na ordem certa. A tabela do `analogy.css` virou opcional: use só quando a ponte precisar de amarração propriedade por propriedade que não coube na figura.
 
 ### 3. Orçamento de jargão — 3 termos novos por aula, no máximo
 
@@ -72,7 +80,14 @@ Sintoma clássico: parágrafos que só funcionam se o leitor já sabe o que o te
 
 ### 5. Regra do desenho — cor representa parte, não decora
 
-**Toda aula tem pelo menos um desenho.** Conceito com duas ou mais partes que se relacionam não se explica só em prosa — prosa obriga o leitor a montar o desenho na cabeça dele, e é exatamente aí que a memória de trabalho estoura. Componentes: `figure.css` (moldura) + `diagrama.css` (cores das partes).
+**Toda aula tem pelo menos um desenho.** Conceito com duas ou mais partes que se relacionam não se explica só em prosa — prosa obriga o leitor a montar o desenho na cabeça dele, e é exatamente aí que a memória de trabalho estoura.
+
+**Desenhe em toda página que ceder** — aula, referência, prática. Peque pelo excesso: figura a mais custa tempo de autoria; figura a menos custa entendimento, e o preço só aparece quando ele volta na página meses depois e não reconhece nada. Duas famílias, cada uma com seu kit:
+
+- **A analogia desenhada** (kit `.d`, dentro do `lesson.css`) é a padrão: desenha o **objeto** do mundo da trilha em tinta, âmbar no que a figura ensina, tijolo no que quebra ou não existe. Três cores, e chega — a figura de objeto vive de forma, não de paleta.
+- **O diagrama de partes** (`figure.css` + `diagrama.css`, cinco papéis abaixo) entra quando a mecânica técnica tem 3+ partes que a analogia não carrega. **Sempre sobre painel branco** — as cinco cores reprovam sobre o cinza da página (laranja 2,68:1) e passam sobre o branco (pior caso 3,20:1), medido.
+
+As regras de cor abaixo valem pro diagrama de partes:
 
 - **Cada parte tem sua cor, e a cor significa aquilo.** Nada de colorir porque ficou bonito. Se o azul é a camada de base na aula 1, o azul é a camada de base na aula 6. Cor que troca de sentido entre aulas custa mais caro que desenho sem cor nenhuma.
 - **Cinco papéis fixos**, iguais em toda aula e em toda trilha:
@@ -92,13 +107,19 @@ Sintoma clássico: parágrafos que só funcionam se o leitor já sabe o que o te
 - **Trocou as cores? Rode o validador.** Paleta não se avalia no olho:
   `node scripts/validate_palette.js "<hex,…>" --mode light --surface "#fffef9" --pairs all` (skill `dataviz`).
 
-### 6. Regra do papel claro — a aula é documento, não aplicativo
+### 6. Regra da pele — página de aço, figura em papel branco
 
-**Toda aula e toda referência sai em fundo claro.** `lesson.css` não tem tema escuro, e isso é decisão, não esquecimento: a aula é lida de dia, é impressa, e é reaberta meses depois — papel claro é o estado em que ela é revista e o estado em que ela sai na impressora.
+**A aula é pôster que ensina, não documento com figuras.** A pele aprovada (23/08/2026, a partir da página "SOLID na Oficina"): página em cinza-aço `#e9ebec`, todo bloco denso — figura, quiz, aviso, cartão — em **painel branco com borda grossa de tinta**, título em Archivo Black, corpo em IBM Plex Sans, âmbar `#e9a400` como única cor de destaque da página, tijolo `#b03a26` no que quebra. A figura abre a aula, antes de qualquer prosa; a prosa é curta e vira legenda e linha de tradução. Referência canônica: `~/learning/docker/lessons/0001-molde-e-coisa-viva.html`.
 
-E tem um preço embutido que vale saber: manter a paleta legível *nas duas* superfícies era exatamente o que travava o desenho em três cores. O fundo claro é o que paga as cinco. Se um dia o tema escuro voltar, revalide a paleta contra `#16161a` antes — e conte com perder duas cores.
+Continua **sem tema escuro**, e continua decisão: a aula é lida de dia, impressa, e reaberta meses depois. O bloco `@media print` derruba o cinza pra branco e troca tijolo por tracejado.
+
+Duas medidas que sustentam a pele (calculadas, não opinadas):
+- Texto fraco sobre o cinza precisa de `#67675f` (4,77:1) — o `#8a8a82` antigo dava 2,91:1 e reprovava.
+- As cinco cores do diagrama de partes reprovam sobre o cinza e passam sobre o branco — por isso **desenho nunca pousa direto na página**: sempre em painel branco.
 
 Desenho bom responde a pergunta da aula sozinho, antes do texto. Se o leitor precisa ler três parágrafos pra entender o desenho, o desenho está ilustrando — não ensinando.
+
+**Estado da migração:** só `docker` usa a pele nova. As outras cinco trilhas seguem na antiga (creme/Tufte) até serem migradas uma a uma — ao migrar, copie o `lesson.css` novo e abra as aulas antigas da trilha no navegador antes de dar por feito.
 
 ## Como conduzir
 
@@ -165,8 +186,9 @@ Aulas são montadas com componentes reusáveis em `assets/`: folha de estilo, qu
 |---|---|
 | `lesson.css` | Base de tudo. Papel claro, sem tema escuro. Classes: `.eyebrow`, `.subtitle`, `.callout`, `.cite`, `.sidenote`, `.quiz`, `.quiz-score`, `.footer`, `.next-up`. |
 | `quiz.js` | Quiz com feedback imediato e ordem embaralhada. |
-| `analogy.css` | A analogia de abertura. **Obrigatório em toda aula.** |
-| `figure.css` | A moldura do desenho: scroll no celular, impressão. |
+| `lesson.css` | A pele inteira (regra 6) **e o kit de desenho `.d`** da analogia desenhada: `.box`/`.box-acc`/`.dash-bad`, setas, textos, `.frase`, `.canvas`, `.traducao`, `.quote`, `.rows`. Toda aula linka só ele + `quiz.js`, salvo quando precisar dos componentes abaixo. |
+| `analogy.css` | Tabela propriedade-a-propriedade. **Opcional** — só quando a ponte não coube na figura e na `.traducao`. |
+| `figure.css` | A moldura do diagrama de partes: scroll no celular, impressão. Só com `diagrama.css`. |
 | `diagrama.css` | **As cores das partes.** Cinco papéis fixos e validados, legenda, impressão por padrão de traço. |
 | `decide.css` | Árvore de decisão binária, pra aula cujo produto é "no caso X, escolha Y". |
 | `duo.css` | Comparação lado a lado. |
@@ -174,8 +196,10 @@ Aulas são montadas com componentes reusáveis em `assets/`: folha de estilo, qu
 
 **Componente é o que serve a qualquer tema.** Simulador amarrado a um assunto — um medidor de janela de contexto, um tabuleiro tático — mora na trilha que o usa, em `~/learning/<tema>/assets/`, e não sobe pra cá. O teste: outro tema usaria isso? Se não, é da trilha.
 
-⚠️ **Cada trilha tem a própria cópia de cada componente** — não há arquivo compartilhado. Mexeu num componente aqui, propague para todas as trilhas que já o usam, senão a aula 3 de uma trilha fica com regra diferente da aula 3 da outra. Hoje são quatro: `claude-models`, `claude-config`, `claude-subagents`, `github-stacked-prs`. Confira com:
+⚠️ **Cada trilha tem a própria cópia de cada componente** — não há arquivo compartilhado. Mexeu num componente aqui, propague para todas as trilhas que já o usam, senão a aula 3 de uma trilha fica com regra diferente da aula 3 da outra. Confira com:
 `md5sum ~/.claude/skills/ensinar/assets/<componente> ~/learning/*/assets/<componente>` — todas têm que bater.
+
+**Exceção durante a migração de pele (regra 6):** o `lesson.css` daqui é o novo, e só `docker` bate com ele. As trilhas antigas (`claude-models`, `claude-config`, `claude-subagents`, `github-stacked-prs`, `whatsapp-agents`) mantêm o `lesson.css` creme de propósito até serem migradas — pra essas, o md5 do `lesson.css` NÃO deve bater com o daqui, e os outros componentes continuam tendo que bater.
 
 ⚠️ `lesson.css` **não tem** `.score` — o nome certo é `.quiz-score`. A aula 1 de `claude-config` usa o errado e o placar sai sem estilo.
 

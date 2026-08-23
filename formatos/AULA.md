@@ -16,14 +16,31 @@ Nunca `Aula 1 de ?`. Se você não sabe o M, você não escreveu o mapa — volt
 
 **Exceção única: o desvio.** Aula pedida pelo aluno fora do arco não tem "N de M" — ela não é a N-ésima de nada. Arquivo `D001-nome.html`, cabeçalho `Desvio 1 · fora do arco`, com o mesmo link pro mapa. É a única forma de cabeçalho permitida além de `Aula N de M`.
 
-**2. A analogia.** Antes de qualquer termo técnico. Puxada do mundo que ele já conhece, e **com o ponto de ruptura declarado**. Componente: `analogy.css`.
+**2. A figura de abertura — a analogia desenhada como objeto.** A aula abre com ela, antes de qualquer prosa e de qualquer termo técnico. Kit `.d` do `lesson.css`; referência canônica: a aula 1 de docker (`0001-molde-e-coisa-viva.html`).
 
-> A camada de base é como a fundação de um andar: o segundo andar não fica em pé sozinho, ele apoia no primeiro.
-> **Onde quebra:** um prédio real não deixa você mergear o segundo andar levando o primeiro junto. Aqui leva.
+A anatomia da figura, na ordem:
+
+```html
+<figure class="fig">
+  <p class="frase">Uma forma. Quantos bolos você quiser — inclusive nenhum.</p>
+  <div class="canvas d">
+    <svg viewBox="0 0 940 430" role="img" aria-label="{a conclusão, não a geometria}">…</svg>
+  </div>
+  <figcaption>{A lição inteira em prosa corrida: o que o desenho prova, e por quê.}</figcaption>
+  <p class="traducao"><b>no Docker</b>A forma é a <strong>imagem</strong> (<code>image</code>): …</p>
+</figure>
+```
+
+- **`.frase`**: a manchete que o desenho prova. Uma linha.
+- **O desenho fala em objeto**, nunca em termo técnico: desenha a forma canelada, o cadeado, o bolo com vapor — não caixas com rótulo. Duas metades com divisor tracejado (`.dash`); tinta desenha o objeto, âmbar (`.box-acc`, `.line-acc`) marca o que a figura ensina, tijolo (`.line-bad`, `.dash-bad`) o que quebra ou não existe.
+- **`figcaption`**: prosa corrida bem escrita que narra a lição — não rodapé telegráfico. É onde o ponto de ruptura da analogia se declara, quando houver.
+- **`.traducao`**: batiza os termos — objeto em português primeiro, etiqueta em inglês depois (regra 3). É aqui que "forma" vira **imagem** (`image`).
+
+A analogia precisa ser **isomorfa** (regra 2 da skill: no máximo um ponto de ruptura). O objeto vem do mundo da trilha, anotado em `NOTES.md` — a aula 4 aprofunda o objeto da aula 1, não inventa outro. A tabela do `analogy.css` é opcional: só quando a amarração propriedade a propriedade não coube na figura.
 
 **3. O conceito, em português nativo.** No máximo **três termos novos**, cada um batizado em português antes de receber a etiqueta em inglês: **camada de base** (`base branch`). Nunca o contrário.
 
-**4. O desenho.** Pelo menos um por aula. Cada parte com sua cor, e a cor significa aquilo — a mesma parte usa a mesma cor da aula 1 até a última. Os cinco papéis são fixos: azul = a base, laranja = o que se move, verde = o terceiro elemento, magenta = o que entra depois, tijolo = o que dá errado. Teto de **cinco cores** (medido, não opinado — ver regra 5 do `SKILL.md`); sexta parte entra por traço tracejado (`.secundaria`) ou vira um segundo desenho. Rótulo dentro, legenda embaixo, nenhum hex no SVG. Componentes: `figure.css` + `diagrama.css`.
+**4. O desenho da mecânica — quando a analogia não carrega tudo.** A figura de abertura muitas vezes resolve a aula sozinha (a aula 1 de docker resolve com duas figuras de objeto e nenhum diagrama). Quando a mecânica técnica tem 3+ partes que o objeto não representa, entra o diagrama de partes: `figure.css` + `diagrama.css`, **sempre sobre painel branco** (as cinco cores reprovam sobre o cinza da página — medido). Cada parte com sua cor, e a cor significa aquilo, da aula 1 até a última: azul = a base, laranja = o que se move, verde = o terceiro elemento, magenta = o que entra depois, tijolo = o que dá errado. Teto de cinco; sexta parte usa `.secundaria` ou vira outro desenho. Rótulo dentro, legenda embaixo, nenhum hex no SVG.
 
 O desenho tem que responder a pergunta da aula **sozinho**, antes do texto. Se precisa de três parágrafos pra ser entendido, ele está ilustrando, não ensinando.
 
@@ -67,7 +84,13 @@ Rode inteira. Uma falha, a aula volta pra bancada.
 - [ ] Rodapé tem anterior · mapa · próxima, e o mapa aponta pra `MAPA.html`
 - [ ] Nenhum link do rodapé aponta pra arquivo `.md`
 - [ ] A aula anterior teve o link "próxima" preenchido, e o mapa foi atualizado
-- [ ] Abre com analogia do mundo dele, **com ponto de ruptura declarado**
+- [ ] A aula **abre com a figura**, antes de qualquer prosa
+- [ ] A analogia é isomorfa: no máximo **um** ponto de ruptura, declarado na `figcaption`
+- [ ] O desenho fala em **objeto** (forma, bolo, cadeado) — nenhuma caixa com rótulo, nenhum termo técnico dentro do SVG
+- [ ] Duas metades num SVG só, com divisor tracejado (`.dash`)
+- [ ] Objeto em tinta; âmbar só no que a figura ensina; tijolo no que quebra ou não existe
+- [ ] `figcaption` narra a lição em prosa corrida; `.traducao` batiza os termos depois do desenho
+- [ ] O objeto veio do mundo da trilha (`NOTES.md`) — nenhum universo novo no meio da trilha
 - [ ] No máximo 3 termos novos
 - [ ] Todo termo novo batizado em português **antes** da etiqueta em inglês
 - [ ] **Teste da borracha:** apaguei mentalmente os termos em inglês — a aula ainda ensina?
@@ -75,12 +98,10 @@ Rode inteira. Uma falha, a aula volta pra bancada.
 - [ ] Termos novos entraram no glossário nesta sessão, marcados `provisório`
 - [ ] Termo que ele usou certo nesta sessão perdeu a marca (e virou registro)
 - [ ] **Tem pelo menos um desenho**, e ele se explica antes do texto
-- [ ] Cada parte tem cor, a cor significa aquilo, e é a mesma cor das aulas anteriores
-- [ ] Os papéis batem com a tabela: azul = base, laranja = movimento, verde = terceiro, magenta = o que entra depois, tijolo = o que dá errado
-- [ ] No máximo 5 cores; sexta parte usa `.secundaria` ou virou outro desenho
-- [ ] Rótulo dentro do desenho + legenda embaixo — nada depende só de cor
-- [ ] Nenhum hex dentro do SVG; texto em tinta, nunca na cor da parte
-- [ ] Abre em fundo claro — nenhum `prefers-color-scheme: dark` ou `data-theme` na aula
+- [ ] Se houver diagrama de partes: sobre painel branco, cada parte com sua cor, mesma cor das aulas anteriores, papéis fixos (azul = base, laranja = movimento, verde = terceiro, magenta = o que entra depois, tijolo = o que dá errado), teto de 5, rótulo dentro + legenda embaixo
+- [ ] **Auditoria de coordenadas do SVG**: nenhum texto estoura o `viewBox` nem invade forma vizinha. Confira com a conta, não no olho: texto mono de 15px ocupa ~9px por caractere (13px ≈ 8px/char) — `x + 9×nº de caracteres` tem que caber no limite direito, e o vão vertical entre texto e forma tem que ser ≥ 10px. Frase da figura e desenho têm que concordar (não escreva "cinco formas" sobre um desenho com quatro)
+- [ ] Nenhum hex dentro do SVG — as cores moram no CSS
+- [ ] Pele certa: página cinza-aço, figuras e blocos densos em painel branco — nenhum `prefers-color-scheme: dark` ou `data-theme` na aula
 - [ ] Toda afirmação factual tem citação (`.cite`) pra fonte primária
 - [ ] Contém pelo menos um dado real medido da máquina dele
 - [ ] Quiz com opções do mesmo tamanho
