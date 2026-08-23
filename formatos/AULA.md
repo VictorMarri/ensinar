@@ -34,11 +34,11 @@ A anatomia da figura, na ordem:
 - **`.frase`**: a manchete que o desenho prova. Uma linha.
 - **O desenho fala em objeto**, nunca em termo técnico: desenha a forma canelada, o cadeado, o bolo com vapor — não caixas com rótulo. Duas metades com divisor tracejado (`.dash`); tinta desenha o objeto, âmbar (`.box-acc`, `.line-acc`) marca o que a figura ensina, tijolo (`.line-bad`, `.dash-bad`) o que quebra ou não existe.
 - **`figcaption`**: prosa corrida bem escrita que narra a lição — não rodapé telegráfico. É onde o ponto de ruptura da analogia se declara, quando houver.
-- **`.traducao`**: batiza os termos — objeto em português primeiro, etiqueta em inglês depois (regra 3). É aqui que "forma" vira **imagem** (`image`).
+- **`.traducao`**: batiza os termos — objeto na língua da trilha primeiro, etiqueta em inglês depois (regra 3). É aqui que "forma" vira **imagem** (`image`).
 
 A analogia precisa ser **isomorfa** (regra 2 da skill: no máximo um ponto de ruptura). O objeto vem do mundo da trilha, anotado em `NOTES.md` — a aula 4 aprofunda o objeto da aula 1, não inventa outro. A tabela do `analogy.css` é opcional: só quando a amarração propriedade a propriedade não coube na figura.
 
-**3. O conceito, em português nativo.** No máximo **três termos novos**, cada um batizado em português antes de receber a etiqueta em inglês: **camada de base** (`base branch`). Nunca o contrário.
+**3. O conceito, na língua nativa do aluno.** No máximo **três termos novos**, cada um batizado na língua da trilha antes de receber a etiqueta em inglês: **camada de base** (`base branch`). Nunca o contrário.
 
 **4. O desenho da mecânica — quando a analogia não carrega tudo.** A figura de abertura muitas vezes resolve a aula sozinha (a aula 1 de docker resolve com duas figuras de objeto e nenhum diagrama). Quando a mecânica técnica tem 3+ partes que o objeto não representa, entra o diagrama de partes: `figure.css` + `diagrama.css`, **sempre sobre painel branco** (as cinco cores reprovam sobre o cinza da página — medido). Cada parte com sua cor, e a cor significa aquilo, da aula 1 até a última: azul = a base, laranja = o que se move, verde = o terceiro elemento, magenta = o que entra depois, tijolo = o que dá errado. Teto de cinco; sexta parte usa `.secundaria` ou vira outro desenho. Rótulo dentro, legenda embaixo, nenhum hex no SVG.
 
@@ -92,9 +92,9 @@ Rode inteira. Uma falha, a aula volta pra bancada.
 - [ ] `figcaption` narra a lição em prosa corrida; `.traducao` batiza os termos depois do desenho
 - [ ] O objeto veio do mundo da trilha (`NOTES.md`) — nenhum universo novo no meio da trilha
 - [ ] No máximo 3 termos novos
-- [ ] Todo termo novo batizado em português **antes** da etiqueta em inglês
+- [ ] Todo termo novo batizado na língua da trilha **antes** da etiqueta em inglês
 - [ ] **Teste da borracha:** apaguei mentalmente os termos em inglês — a aula ainda ensina?
-- [ ] Nenhuma frase em inglês com terminação portuguesa ("é retargetado", "vou commitar o rebase")
+- [ ] Nenhuma frase em inglês com terminações da língua da trilha (em pt-BR: "é retargetado", "vou commitar o rebase")
 - [ ] Termos novos entraram no glossário nesta sessão, marcados `provisório`
 - [ ] Termo que ele usou certo nesta sessão perdeu a marca (e virou registro)
 - [ ] **Tem pelo menos um desenho**, e ele se explica antes do texto

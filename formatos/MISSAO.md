@@ -17,6 +17,9 @@ Captura **por que** ele quer aprender isso. Toda decisão de ensino — o que ve
 ## Profundidade
 {Leve | Intermediário | Profundo} — {a capacidade que define esse nível pra este tema}
 
+## Língua
+{A língua nativa do aluno, em que toda a trilha é escrita. Ex.: português (pt-BR)}
+
 ## Restrições
 - {Tempo, orçamento, sistema operacional, ferramentas instaladas, preferências de aprendizado}
 
@@ -27,6 +30,7 @@ Captura **por que** ele quer aprender isso. Toda decisão de ensino — o que ve
 ## Regras
 
 - **Uma missão por trilha.** Dois assuntos sem relação são duas pastas.
+- **A língua da trilha se decide aqui, uma vez.** O padrão é a língua em que o aluno fala com você — não pergunte, registre; só pergunte se ele misturar línguas. Aulas, mapa, glossário e desenhos saem inteiros nela. As etiquetas técnicas continuam em inglês (regra 3 do `SKILL.md`), porque doc e CLI estão em inglês. Aluno anglófono é o caso degenerado limpo: não há camada de tradução, e o orçamento de três termos continua valendo igual.
 - **Profundidade é onde ele para, não quanto ele quer.** Pergunte no fim da entrevista, nunca no começo: antes de você ter medido o terreno, a resposta é ambição, não decisão. Os três níveis se definem por capacidade observável:
 
   | Nível | Ao terminar, ele… | Mapa |

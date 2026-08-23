@@ -34,8 +34,8 @@ termo vem**; `provisório` diz **se ele já é seu**. Um termo pode ter as duas.
   Isso preserva as duas coisas que brigavam: o glossário não perde termo recém-ensinado, e continua sendo prova de domínio — porque o que conta como domínio é a parte promovida, não a lista inteira.
 
   A queda da marca é evidência, não burocracia: é exatamente o gatilho de um registro em `learning-records/`.
-- **Nome em português na chave, etiqueta em inglês entre parênteses.** É a regra 3 do `SKILL.md` materializada. A etiqueta existe pra ele reconhecer o termo na documentação e no CLI — não pra ser o jeito dele pensar.
-- **Termo sem tradução honesta fica em inglês, e você diz isso.** Forçar tradução ruim é pior que manter o original. `pull request` é `pull request`. Mas então explique o que é em português nativo.
+- **Nome na língua da trilha na chave, etiqueta em inglês entre parênteses.** É a regra 3 do `SKILL.md` materializada. A etiqueta existe pra ele reconhecer o termo na documentação e no CLI — não pra ser o jeito dele pensar.
+- **Termo sem tradução honesta fica em inglês, e você diz isso.** Forçar tradução ruim é pior que manter o original. `pull request` é `pull request`. Mas então explique o que é na língua nativa do aluno.
 - **Marque o que é apelido da trilha.** Se você inventou um termo pra ensinar (útil e legítimo), sinalize. Ele não pode chegar num fórum usando seu apelido achando que é vocabulário oficial e passar vergonha.
 - **Seja opinativo.** Quando várias palavras existem pro mesmo conceito, escolha a melhor e liste as outras em `_Evite_`. É assim que a língua comprime.
 - **Definições apertadas.** Uma ou duas frases. Defina o que o termo **é**, não o que ele faz nem como se usa.

@@ -1,6 +1,6 @@
 ---
 name: ensinar
-description: Ensina um tema ao longo de várias sessões, em português, sob seis regras — mapa do tema, analogia isomorfa desenhada como objeto, orçamento de jargão, teste da borracha, desenho onde cor significa, e a pele de aço com figura em painel branco. Fork pessoal do /teach.
+description: Ensina um tema ao longo de várias sessões, na língua nativa do aluno, sob seis regras — mapa do tema, analogia isomorfa desenhada como objeto, orçamento de jargão, teste da borracha, desenho onde cor significa, e a pele de aço com figura em painel branco. Fork pessoal do /teach.
 argument-hint: "O que você quer aprender?"
 disable-model-invocation: true
 ---
@@ -8,6 +8,8 @@ disable-model-invocation: true
 # Ensina
 
 O usuário quer aprender um tema. Isso é um pedido **com estado**: a trilha atravessa várias sessões, e o que ele já aprendeu mora em disco, não na sua memória.
+
+**A língua de ensino é a língua nativa do aluno**, registrada no `MISSION.md` da trilha (regra da língua, em [formatos/MISSAO.md](./formatos/MISSAO.md)). O padrão é a língua em que ele fala com você. Aulas, mapa, glossário e desenhos saem inteiros nela; só as etiquetas técnicas ficam em inglês. Este arquivo está escrito em pt-BR e seus exemplos são pt-BR, mas as regras valem em qualquer língua.
 
 Fork pessoal de `mattpocock-skills:teach`. As quatro regras da seção **O que este fork muda** existem porque o original falhava nelas — elas não são enfeite, são o motivo deste arquivo existir.
 
@@ -61,12 +63,14 @@ Toda analogia declara **onde ela quebra** — na `figcaption` da figura que a de
 
 Passou de três, são duas aulas. A memória de trabalho é pequena e o jargão come tudo.
 
-Todo termo novo é **batizado em português primeiro**, e só depois recebe a etiqueta em inglês:
+Todo termo novo é **batizado na língua da trilha primeiro** (a língua nativa do aluno, registrada no `MISSION.md`), e só depois recebe a etiqueta em inglês. Em pt-BR:
 
 > ✅ A **camada de base** (`base branch`) é a branch pra onde o PR aponta.
 > ❌ A `base branch` é a branch pra onde o PR aponta.
 
 O primeiro ensina e depois etiqueta — a etiqueta serve pra ele reconhecer o termo na doc e no CLI, que estão em inglês. O segundo só traduz, e deixa ele pensando em inglês emprestado.
+
+Aluno cuja língua nativa é o inglês é o caso degenerado limpo: não existe camada de tradução, e o orçamento de três termos continua valendo inteiro — que é o espírito da regra.
 
 Todo termo batizado entra no glossário da trilha na mesma sessão, marcado `provisório`. A marca cai quando ele usar o termo corretamente por conta própria — ver [formatos/GLOSSARIO.md](./formatos/GLOSSARIO.md).
 
@@ -74,9 +78,9 @@ Todo termo batizado entra no glossário da trilha na mesma sessão, marcado `pro
 
 > Apague mentalmente todos os termos em inglês da aula. Ela ainda ensina?
 
-Se não, você **traduziu** em vez de ensinar: o entendimento estava pendurado nas palavras em inglês, e o português era só legenda. Reescreva a explicação em português nativo e recoloque os termos em inglês por cima, como etiquetas.
+Se não, você **traduziu** em vez de ensinar: o entendimento estava pendurado nas palavras em inglês, e a língua da trilha era só legenda. Reescreva a explicação na língua nativa do aluno e recoloque os termos em inglês por cima, como etiquetas.
 
-Sintoma clássico: parágrafos que só funcionam se o leitor já sabe o que o termo significa. Ex.: "o PR do meio é retargetado automaticamente" — isso não é uma frase em português, é uma frase em inglês com terminações portuguesas.
+Sintoma clássico: parágrafos que só funcionam se o leitor já sabe o que o termo significa. Em pt-BR: "o PR do meio é retargetado automaticamente" — isso não é uma frase em português, é uma frase em inglês com terminações portuguesas. Toda língua tem a sua versão desse enxerto.
 
 ### 5. Regra do desenho — cor representa parte, não decora
 
