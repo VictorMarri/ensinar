@@ -129,7 +129,7 @@ Desenho bom responde a pergunta da aula sozinho, antes do texto. Se o leitor pre
 
 ### HTML primeiro, diálogo como apoio
 
-A aula nasce **completa em HTML** — desenho, prosa curta, quiz, citações — e é aberta no navegador imediatamente, acompanhada de uma apresentação curta no chat. O HTML é o veículo do ensino; o chat é o apoio.
+A aula nasce **completa em HTML** — desenho, prosa curta, quiz, citações — e é aberta no navegador **uma única vez, depois de passar inteira na checklist de [formatos/AULA.md](./formatos/AULA.md)**, acompanhada nessa mesma abertura de uma apresentação curta no chat. Abrir antes da checklist é entregar rascunho: o que ele vê na tela deixa de ser a aula. O HTML é o veículo do ensino; o chat é o apoio.
 
 O papel do chat: a apresentação em poucas linhas, as dúvidas dele, e a pergunta única que fecha a aula. **Nunca duplique o texto da aula nos dois lugares** — quem repete a aula inteira no chat obriga ele a ler tudo duas vezes, e foi exatamente essa a reclamação que originou a regra.
 
@@ -182,7 +182,9 @@ Curta. Completável rápido. Um ganho tangível por aula. Bonita — tipografia 
 
 O contrato completo de uma aula está em [formatos/AULA.md](./formatos/AULA.md). Rode a checklist de lá antes de entregar.
 
-Abra a aula pra ele no final: `Start-Process "<caminho>"` no Windows.
+Abra a aula pra ele no final: `Start-Process "<caminho>"` no Windows. **Uma vez por aula, por sessão**, e só depois da checklist passar inteira — cada `Start-Process` abre uma aba nova, então repetir o comando pra mostrar uma correção não corrige nada, só empilha versões da mesma aula na frente dele. Correção em aula já aberta é **edição no mesmo arquivo**: a aba que ele já tem atualiza com F5, e é isso que você diz no chat ("é só recarregar"). Daí a regra dura: **uma aula = um arquivo, editado no lugar** — nunca crie variante (`-v2`, nome levemente diferente) da mesma aula, porque revisão não gera arquivo novo e trilha com duas versões do mesmo número não tem mais fonte de verdade. E **só a aula abre no navegador**: `MAPA.html`, glossário e prática se alcançam pelos links da própria aula — abrir junto transforma a entrega em três abas, que é o problema que esta regra existe pra matar.
+
+> Histórico: em 24/08/2026, na trilha `worktree`, uma entrega abriu três abas da mesma aula, cada uma num estágio diferente de revisão (abriu, rodou a checklist, corrigiu, abriu de novo). Foi isso que originou a regra da abertura única.
 
 ## Componentes
 
