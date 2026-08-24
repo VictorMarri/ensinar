@@ -8,11 +8,16 @@
  * furadeira), não caixas com rótulo. O kit de desenho (.d) mora aqui embaixo.
  * Referência canônica: ~/learning/docker/lessons/0001-molde-e-coisa-viva.html.
  *
- * MIGRAÇÃO: só a trilha docker usa esta versão por enquanto. As outras cinco
- * seguem com a antiga (creme/Tufte) até cada uma ser migrada — ao migrar,
- * copie este arquivo e confira as aulas antigas da trilha no navegador antes
- * de dar por feito. O alias --rule existe pra os componentes antigos
- * (analogy/figure/diagrama) continuarem funcionando durante a transição.
+ * MIGRAÇÃO: quem usa esta versão está escrito em cada trilha, não aqui — a
+ * linha `pele: nova` ou `pele: antiga` no NOTES.md dela, e a ausência da linha
+ * vale como antiga. Trilha ainda na antiga (creme/Tufte) guarda a folha velha
+ * de propósito: ao migrar, troque a marca, propague com
+ * `node scripts/sincronizar_componentes.js --aplicar` (que lê a marca e pula
+ * quem não tem) e confira as aulas antigas da trilha no navegador antes de dar
+ * por feito. Mexer neste comentário muda o md5 do arquivo: um --aplicar
+ * resolve nas trilhas de pele nova. O alias --rule existe pra os componentes
+ * antigos (analogy/figure/diagrama) continuarem funcionando durante a
+ * transição.
  *
  * Fontes do Google com fallback real: sem rede, degrada legível.
  */

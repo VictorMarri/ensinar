@@ -71,6 +71,7 @@ acréscimo deste fork nasceu de uma dessas dores:
 | Explicação que só parece boa porque está em inglês | **O teste da borracha:** apague mentalmente os termos em inglês. A aula ainda ensina? Se não, foi tradução, não ensino. |
 | Diagramas onde cor é enfeite | **Cor significa.** Tinta desenha o objeto, âmbar marca o que a figura ensina, tijolo marca onde quebra. E o significado não muda da aula 1 à última. |
 | Páginas com cara de documento corporativo | **A pele de aço:** página cinza, figura em painel branco com borda grossa, título em display. Aula é pôster que ensina, e ainda imprime bonito. |
+| Retenção declarada como objetivo, nunca praticada | **Toda sessão que retoma uma trilha abre com 2–3 perguntas de memória**, puxadas do glossário e dos quizzes anteriores, antes de escrever a aula nova. Espaçamento é o mecanismo; sem esse momento sobra só fluência. |
 
 E a língua de ensino é um parâmetro, não uma premissa: cada trilha sai inteira
 na língua nativa de quem aprende (as minhas são em português porque a minha é o
@@ -113,6 +114,7 @@ Um tema, uma pasta, em `~/learning/<tema>/`:
 ```
 MAPA.html            quantas aulas, o que cada uma te dá, onde você está
 MISSION.md           por que você quer isso; ancora todas as decisões
+NOTES.md             suas preferências, o mundo da analogia da trilha, a pele dela
 lessons/*.html       as aulas com cara de pôster
 reference/*.html     glossário e cheat sheets, o que você consulta depois
 pratica/*.html       o tema como o mundo cobra lá fora
@@ -127,6 +129,24 @@ As seis regras completas, com as medidas de contraste e os contratos de cada
 arquivo, estão em [`SKILL.md`](./SKILL.md) e [`formatos/`](./formatos/). A
 referência canônica da pele é a aula 1 da trilha de Docker
 (`0001-molde-e-coisa-viva.html`).
+
+Dois scripts em [`scripts/`](./scripts/) fazem a parte mecânica, pra que a
+atenção humana sobre pra parte que ensina. Node puro, sem dependência:
+
+```bash
+node scripts/checar_aula.js ~/learning/docker/lessons/0001-*.html
+# confere os itens mecânicos da checklist da aula: "Aula N de ?", link pra
+# arquivo .md, hex dentro do SVG, travessão, classe errada, marca de tema
+# escuro. Falha bloqueia (saída 1); aviso é pra conferir no olho.
+
+node scripts/sincronizar_componentes.js            # compara os componentes de cada trilha com os da skill
+node scripts/sincronizar_componentes.js --aplicar  # propaga o que divergiu
+```
+
+Cada trilha tem a própria cópia dos componentes, então o segundo script é o
+que mantém vinte aulas de seis trilhas sob a mesma regra. Ele pula o
+`lesson.css` das trilhas cujo `NOTES.md` não diz `pele: nova` — trilha ainda
+não migrada guarda a folha antiga de propósito.
 
 ## Licença
 
