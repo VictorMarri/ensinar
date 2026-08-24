@@ -2,7 +2,7 @@
 
 Uma aula é **um HTML que linka os componentes de `assets/`**, em `lessons/`, numerado `NNNN-nome-em-kebab.html`. Curta, bonita, um ganho tangível, amarrada à missão.
 
-**A aula é o veículo completo do ensino** — ela nasce inteira (desenho, prosa curta, quiz, citações) e é aberta no navegador na hora; o chat entra como apoio: apresentação em poucas linhas, dúvidas, e a pergunta única que fecha. Nunca duplique o texto da aula no chat. Ver "HTML primeiro, diálogo como apoio" no `SKILL.md`.
+**A aula é o veículo completo do ensino** — ela nasce inteira (desenho, prosa curta, quiz, citações) e é aberta no navegador uma única vez, depois que a checklist passa inteira; o chat entra como apoio: apresentação em poucas linhas, dúvidas, e a pergunta única que fecha. Nunca duplique o texto da aula no chat. Ver "HTML primeiro, diálogo como apoio" no `SKILL.md`.
 
 Ela **não** é autocontida, e isso é escolha: os componentes ficam do lado, num arquivo só, pra que consertar o `lesson.css` uma vez conserte as vinte aulas de uma vez. O preço é que a aula não viaja sozinha — mandada por e-mail, sem a pasta `assets/` ao lado, abre sem estilo nenhum.
 
@@ -80,7 +80,7 @@ Nada de link para arquivo `.md` no rodapé — não renderiza. Missão e glossá
 
 ## Checklist antes de entregar
 
-Rode inteira. Uma falha, a aula volta pra bancada.
+Rode inteira. Uma falha, a aula volta pra bancada. E a bancada é o arquivo: reprovou, edita no lugar e roda a checklist de novo — o navegador só entra quando ela passa inteira, porque cada abertura é uma aba nova e o aluno não deveria escolher entre três versões da mesma aula.
 
 - [ ] Cabeçalho diz `Aula N de M` — nunca `de ?`. Desvio usa `Desvio N · fora do arco`
 - [ ] Rodapé tem anterior · mapa · próxima, e o mapa aponta pra `MAPA.html`
@@ -111,7 +111,8 @@ Rode inteira. Uma falha, a aula volta pra bancada.
 - [ ] Um ganho tangível, e ele amarra na missão
 - [ ] Reusa `assets/` — nada reusável escrito inline
 - [ ] Classes certas: `.eyebrow`, `.subtitle`, `.quiz-score` (não `.score`)
-- [ ] Aberta no navegador pra ele **assim que o arquivo existe**, com apresentação curta no chat (sem duplicar o texto da aula)
+- [ ] Aberta no navegador pra ele **uma única vez, depois de todos os itens acima passarem**, com apresentação curta no chat (sem duplicar o texto da aula)
+- [ ] Correção depois da abertura **edita o mesmo arquivo** e pede pra ele recarregar a aba — nunca um segundo `Start-Process` (abre aba nova), nunca um arquivo variante da mesma aula (uma aula, um arquivo)
 - [ ] No `MAPA.html`, a aula ganhou link mas segue `▶ próxima` até ele responder a pergunta ou o quiz
 - [ ] A entrega no chat termina com **uma** pergunta
 
