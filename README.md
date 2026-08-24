@@ -71,6 +71,7 @@ addition in this fork was born from one of those pains:
 | An explanation that only sounds good because it is in English | **The eraser test:** mentally delete the jargon terms. Does the lesson still teach? If not, it was translation, not teaching. |
 | Diagrams where color is decoration | **Color means something.** Ink draws the object, amber marks what the figure teaches, brick marks where it breaks. And the meaning never changes from lesson 1 to the last. |
 | Pages that look like corporate documents | **The steel skin:** gray page, figures on white panels with thick ink borders, display-face titles. A lesson is a poster that teaches, and it still prints well. |
+| Retention named as the goal, never actually practiced | **Every session that resumes a track opens with 2–3 questions from memory**, pulled from the glossary and the earlier quizzes, before the new lesson is written. Spacing is the mechanism; without that moment there is only fluency. |
 
 And the teaching language is a parameter, not a premise: each track is written
 entirely in the learner's native language (mine are in Portuguese because my
@@ -113,6 +114,7 @@ One topic, one folder, in `~/learning/<topic>/`:
 ```
 MAPA.html            how many lessons, what each one gives you, where you are
 MISSION.md           why you want this; anchors every decision
+NOTES.md             your preferences, the track's analogy world, which skin it uses
 lessons/*.html       the poster-like lessons
 reference/*.html     glossary and cheat sheets, what you consult later
 pratica/*.html       the topic as the world tests it out there
@@ -128,6 +130,24 @@ every file, live in [`SKILL.md`](./SKILL.md) and [`formatos/`](./formatos/)
 (in Portuguese; the rules themselves are language-agnostic). The canonical
 reference for the visual identity is lesson 1 of the Docker track
 (`0001-molde-e-coisa-viva.html`).
+
+Two scripts in [`scripts/`](./scripts/) do the mechanical part, so that human
+attention is spent on the part that teaches. Plain Node, no dependencies:
+
+```bash
+node scripts/checar_aula.js ~/learning/docker/lessons/0001-*.html
+# checks the mechanical items of the lesson checklist: "Lesson N of ?", links to
+# .md files, hex colors inside the SVG, em dashes, the wrong class, dark-theme
+# markers. Failures block (exit 1); warnings are for the eye.
+
+node scripts/sincronizar_componentes.js            # compare each track's components against the skill's
+node scripts/sincronizar_componentes.js --aplicar  # propagate what diverged
+```
+
+Each track keeps its own copy of the components, so the second script is what
+keeps twenty lessons across six tracks under the same rules. It skips
+`lesson.css` on any track whose `NOTES.md` does not say `pele: nova` — an
+unmigrated track keeps the old stylesheet on purpose.
 
 ## License
 

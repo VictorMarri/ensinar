@@ -82,11 +82,13 @@ Nada de link para arquivo `.md` no rodapé — não renderiza. Missão e glossá
 
 Rode inteira. Uma falha, a aula volta pra bancada. E a bancada é o arquivo: reprovou, edita no lugar e roda a checklist de novo — o navegador só entra quando ela passa inteira, porque cada abertura é uma aba nova e o aluno não deveria escolher entre três versões da mesma aula.
 
-- [ ] Cabeçalho diz `Aula N de M` — nunca `de ?`. Desvio usa `Desvio N · fora do arco`
-- [ ] Rodapé tem anterior · mapa · próxima, e o mapa aponta pra `MAPA.html`
-- [ ] Nenhum link do rodapé aponta pra arquivo `.md`
+**O mecânico roda antes da sua leitura.** Da pasta da skill: `node scripts/checar_aula.js <caminho-da-aula.html>` (aceita vários arquivos). Ele confere sozinho os itens marcados `— script` aqui embaixo: os que se leem no arquivo sem julgamento — `de ?` no cabeçalho, link pra `.md`, hex dentro do SVG, travessão, `.score` no lugar de `.quiz-score`, marca de tema escuro. FALHA bloqueia (saída 1); AVISO é a parte heurística (a figura de abertura e a auditoria de coordenadas), que continua sendo conferência no olho. Rode ele **primeiro**, e só depois leia a lista inteira: atenção humana gasta em vírgula errada é atenção que faltou pra perguntar se a analogia é isomorfa — e é exatamente isso que o script não sabe fazer.
+
+- [ ] Cabeçalho diz `Aula N de M` — nunca `de ?`. Desvio usa `Desvio N · fora do arco` — script
+- [ ] Rodapé tem anterior · mapa · próxima, e o mapa aponta pra `MAPA.html` — script (parcial: confere o `.next-up` e o link do mapa)
+- [ ] Nenhum link do rodapé aponta pra arquivo `.md` — script
 - [ ] A aula anterior teve o link "próxima" preenchido, e o mapa foi atualizado
-- [ ] A aula **abre com a figura**, antes de qualquer prosa
+- [ ] A aula **abre com a figura**, antes de qualquer prosa — script (aviso)
 - [ ] A analogia é isomorfa: no máximo **um** ponto de ruptura, declarado na `figcaption`
 - [ ] O desenho fala em **objeto** (forma, bolo, cadeado) — nenhuma caixa com rótulo, nenhum termo técnico dentro do SVG
 - [ ] Duas metades num SVG só, com divisor tracejado (`.dash`)
@@ -101,18 +103,18 @@ Rode inteira. Uma falha, a aula volta pra bancada. E a bancada é o arquivo: rep
 - [ ] Termo que ele usou certo nesta sessão perdeu a marca (e virou registro)
 - [ ] **Tem pelo menos um desenho**, e ele se explica antes do texto
 - [ ] Se houver diagrama de partes: sobre painel branco, cada parte com sua cor, mesma cor das aulas anteriores, papéis fixos (azul = base, laranja = movimento, verde = terceiro, magenta = o que entra depois, tijolo = o que dá errado), teto de 5, rótulo dentro + legenda embaixo
-- [ ] **Auditoria de coordenadas do SVG**: nenhum texto estoura o `viewBox` nem invade forma vizinha. Confira com a conta, não no olho: texto mono de 15px ocupa ~9px por caractere (13px ≈ 8px/char) — `x + 9×nº de caracteres` tem que caber no limite direito, e o vão vertical entre texto e forma tem que ser ≥ 10px. Frase da figura e desenho têm que concordar (não escreva "cinco formas" sobre um desenho com quatro)
-- [ ] Nenhum hex dentro do SVG — as cores moram no CSS
-- [ ] Nenhum travessão (—) no texto da aula: reestruture com vírgula, dois-pontos, ponto ou `·`
-- [ ] Pele certa: página cinza-aço, figuras e blocos densos em painel branco — nenhum `prefers-color-scheme: dark` ou `data-theme` na aula
+- [ ] **Auditoria de coordenadas do SVG**: nenhum texto estoura o `viewBox` nem invade forma vizinha. Confira com a conta, não no olho: texto mono de 15px ocupa ~9px por caractere (13px ≈ 8px/char) — `x + 9×nº de caracteres` tem que caber no limite direito, e o vão vertical entre texto e forma tem que ser ≥ 10px. Frase da figura e desenho têm que concordar (não escreva "cinco formas" sobre um desenho com quatro) — script (aviso: ele faz a conta dos 9px por caractere; o resto é seu)
+- [ ] Nenhum hex dentro do SVG — as cores moram no CSS — script
+- [ ] Nenhum travessão (—) no texto da aula: reestruture com vírgula, dois-pontos, ponto ou `·` — script
+- [ ] Pele certa: página cinza-aço, figuras e blocos densos em painel branco — nenhum `prefers-color-scheme: dark` ou `data-theme` na aula — script (parcial: ele pega as duas marcas de tema escuro)
 - [ ] Toda afirmação factual tem citação (`.cite`) pra fonte primária
 - [ ] Contém pelo menos um dado real medido da máquina dele
 - [ ] Quiz com opções do mesmo tamanho
 - [ ] Um ganho tangível, e ele amarra na missão
 - [ ] Reusa `assets/` — nada reusável escrito inline
-- [ ] Classes certas: `.eyebrow`, `.subtitle`, `.quiz-score` (não `.score`)
+- [ ] Classes certas: `.eyebrow`, `.subtitle`, `.quiz-score` (não `.score`) — script
 - [ ] Aberta no navegador pra ele **uma única vez, depois de todos os itens acima passarem**, com apresentação curta no chat (sem duplicar o texto da aula)
-- [ ] Correção depois da abertura **edita o mesmo arquivo** e pede pra ele recarregar a aba — nunca um segundo `Start-Process` (abre aba nova), nunca um arquivo variante da mesma aula (uma aula, um arquivo)
+- [ ] Correção depois da abertura **edita o mesmo arquivo** e pede pra ele recarregar a aba — nunca uma segunda abertura no navegador (`Start-Process`, `open`, `xdg-open` — cada uma abre aba nova), nunca um arquivo variante da mesma aula (uma aula, um arquivo)
 - [ ] No `MAPA.html`, a aula ganhou link mas segue `▶ próxima` até ele responder a pergunta ou o quiz
 - [ ] A entrega no chat termina com **uma** pergunta
 

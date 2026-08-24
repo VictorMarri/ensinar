@@ -22,7 +22,7 @@ Fork pessoal de `mattpocock-skills:teach`. As quatro regras da seção **O que e
 | `MAPA.html` | O mapa do tema, e a página de índice da trilha. **Vem antes da primeira aula.** Ver [formatos/MAPA.md](./formatos/MAPA.md). |
 | `MISSION.md` | Por que ele quer aprender isso. Ancora tudo. Ver [formatos/MISSAO.md](./formatos/MISSAO.md). |
 | `RESOURCES.md` | Fontes confiáveis + comunidades. Ver [formatos/RECURSOS.md](./formatos/RECURSOS.md). |
-| `NOTES.md` | Preferências dele e suas notas de trabalho. |
+| `NOTES.md` | Preferências dele, o mundo da analogia da trilha, a marca `pele: nova` / `pele: antiga` (regra 6) e suas notas de trabalho. |
 | `lessons/NNNN-nome.html` | As aulas. Ver [formatos/AULA.md](./formatos/AULA.md). |
 | `reference/*.html` | Referências: glossário, cheat sheets, algoritmos. Ver [formatos/GLOSSARIO.md](./formatos/GLOSSARIO.md). |
 | `pratica/NNNN-nome.html` | A prova externa: como o mundo cobra o tema. Ver [formatos/PRATICA.md](./formatos/PRATICA.md). |
@@ -123,7 +123,9 @@ Duas medidas que sustentam a pele (calculadas, não opinadas):
 
 Desenho bom responde a pergunta da aula sozinho, antes do texto. Se o leitor precisa ler três parágrafos pra entender o desenho, o desenho está ilustrando — não ensinando.
 
-**Estado da migração:** só `docker` usa a pele nova. As outras cinco trilhas seguem na antiga (creme/Tufte) até serem migradas uma a uma — ao migrar, copie o `lesson.css` novo e abra as aulas antigas da trilha no navegador antes de dar por feito.
+**Estado da migração mora na trilha, não aqui.** Cada trilha declara a própria pele no `NOTES.md` dela, numa linha só: `pele: nova` ou `pele: antiga`. **Ausência da linha vale como antiga** — o caso conservador, pra que trilha velha nunca troque de cara por esquecimento. Esta skill **não lista trilha nominalmente**: lista de trilhas migradas envelhece em silêncio e passa a mentir na primeira migração que ninguém veio anotar aqui, e aí a instrução errada é seguida com confiança.
+
+Ao migrar uma trilha, a sessão faz as três coisas juntas: troca a marca no `NOTES.md` dela, copia o `lesson.css` novo (`node scripts/sincronizar_componentes.js --aplicar`, que lê essa marca) e **abre as aulas antigas da trilha no navegador antes de dar por feito** — a folha nova pega aula escrita pra folha velha, e o estrago só aparece na tela.
 
 ## Como conduzir
 
@@ -168,6 +170,12 @@ Retenção se constrói com dificuldade desejável: recuperação ativa (lembrar
 
 Para **conhecimento**, dificuldade é inimiga — ela come a memória de trabalho que faria falta pra entender. Para **habilidade**, dificuldade é a ferramenta.
 
+**Abertura de sessão: 2–3 perguntas antes de escrever a aula nova.** Sessão que retoma uma trilha que já tem pelo menos uma aula fechada não começa escrevendo — começa perguntando, **no chat**. Duas ou três perguntas de recuperação ativa, puxadas do glossário e dos quizzes das aulas anteriores, com prioridade pros termos ainda `provisório` e pro material mais antigo (é o mais antigo que está prestes a sumir, não o da semana passada). Ele responde **de memória**, sem reabrir a aula; você corrige em **uma linha cada**, sem virar aula de revisão. Só então a aula nova começa.
+
+Termo `provisório` que ele acertou aqui conta como uso correto por conta própria: perde a marca no glossário na mesma sessão e vira registro — regra do [formatos/GLOSSARIO.md](./formatos/GLOSSARIO.md).
+
+Não gera arquivo nenhum: isso mora no chat e custa dois minutos. A justificativa é a própria seção — retenção é o objetivo declarado, espaçamento e recuperação ativa são o mecanismo conhecido, e sem um momento fixo em que ele puxa da memória o que ficou da sessão passada a skill declara retenção e entrega fluência, que é justamente a que engana.
+
 ### Conhecimento, habilidade, sabedoria
 
 - **Conhecimento** vem de fontes confiáveis. Nunca da sua memória paramétrica. Registre em `RESOURCES.md` e cite dentro das aulas — citação é o que torna a aula auditável.
@@ -180,9 +188,9 @@ Uma aula é **um HTML que linka os componentes de `assets/`**, em `lessons/`, nu
 
 Curta. Completável rápido. Um ganho tangível por aula. Bonita — tipografia limpa, imprime bem, estilo Tufte — porque ele volta nelas depois.
 
-O contrato completo de uma aula está em [formatos/AULA.md](./formatos/AULA.md). Rode a checklist de lá antes de entregar.
+O contrato completo de uma aula está em [formatos/AULA.md](./formatos/AULA.md). Rode a checklist de lá antes de entregar — e antes dela, `node scripts/checar_aula.js <caminho-da-aula.html>`, que confere sozinho os itens mecânicos e devolve as falhas com o número da linha.
 
-Abra a aula pra ele no final: `Start-Process "<caminho>"` no Windows. **Uma vez por aula, por sessão**, e só depois da checklist passar inteira — cada `Start-Process` abre uma aba nova, então repetir o comando pra mostrar uma correção não corrige nada, só empilha versões da mesma aula na frente dele. Correção em aula já aberta é **edição no mesmo arquivo**: a aba que ele já tem atualiza com F5, e é isso que você diz no chat ("é só recarregar"). Daí a regra dura: **uma aula = um arquivo, editado no lugar** — nunca crie variante (`-v2`, nome levemente diferente) da mesma aula, porque revisão não gera arquivo novo e trilha com duas versões do mesmo número não tem mais fonte de verdade. E **só a aula abre no navegador**: `MAPA.html`, glossário e prática se alcançam pelos links da própria aula — abrir junto transforma a entrega em três abas, que é o problema que esta regra existe pra matar.
+Abra a aula pra ele no final, com o comando do sistema dele: `Start-Process "<caminho>"` no Windows, `open "<caminho>"` no macOS, `xdg-open "<caminho>"` no Linux. **Uma vez por aula, por sessão**, e só depois da checklist passar inteira — cada uma dessas aberturas é uma aba nova, então repetir o comando pra mostrar uma correção não corrige nada, só empilha versões da mesma aula na frente dele. Correção em aula já aberta é **edição no mesmo arquivo**: a aba que ele já tem atualiza com F5, e é isso que você diz no chat ("é só recarregar"). Daí a regra dura: **uma aula = um arquivo, editado no lugar** — nunca crie variante (`-v2`, nome levemente diferente) da mesma aula, porque revisão não gera arquivo novo e trilha com duas versões do mesmo número não tem mais fonte de verdade. E **só a aula abre no navegador**: `MAPA.html`, glossário e prática se alcançam pelos links da própria aula — abrir junto transforma a entrega em três abas, que é o problema que esta regra existe pra matar.
 
 > Histórico: em 24/08/2026, na trilha `worktree`, uma entrega abriu três abas da mesma aula, cada uma num estágio diferente de revisão (abriu, rodou a checklist, corrigiu, abriu de novo). Foi isso que originou a regra da abertura única.
 
@@ -196,9 +204,8 @@ Aulas são montadas com componentes reusáveis em `assets/`: folha de estilo, qu
 
 | Arquivo | Serve pra |
 |---|---|
-| `lesson.css` | Base de tudo. Papel claro, sem tema escuro. Classes: `.eyebrow`, `.subtitle`, `.callout`, `.cite`, `.sidenote`, `.quiz`, `.quiz-score`, `.footer`, `.next-up`. |
+| `lesson.css` | A pele inteira (regra 6) **e o kit de desenho `.d`** da analogia desenhada: `.box`/`.box-acc`/`.dash-bad`, setas, textos, `.frase`, `.canvas`, `.traducao`, `.quote`, `.rows`. Classes da página: `.eyebrow`, `.subtitle`, `.callout`, `.cite`, `.sidenote`, `.quiz`, `.quiz-score`, `.footer`, `.next-up`. Toda aula linka só ele + `quiz.js`, salvo quando precisar dos componentes abaixo. |
 | `quiz.js` | Quiz com feedback imediato e ordem embaralhada. |
-| `lesson.css` | A pele inteira (regra 6) **e o kit de desenho `.d`** da analogia desenhada: `.box`/`.box-acc`/`.dash-bad`, setas, textos, `.frase`, `.canvas`, `.traducao`, `.quote`, `.rows`. Toda aula linka só ele + `quiz.js`, salvo quando precisar dos componentes abaixo. |
 | `analogy.css` | Tabela propriedade-a-propriedade. **Opcional** — só quando a ponte não coube na figura e na `.traducao`. |
 | `figure.css` | A moldura do diagrama de partes: scroll no celular, impressão. Só com `diagrama.css`. |
 | `diagrama.css` | **As cores das partes.** Cinco papéis fixos e validados, legenda, impressão por padrão de traço. |
@@ -208,12 +215,16 @@ Aulas são montadas com componentes reusáveis em `assets/`: folha de estilo, qu
 
 **Componente é o que serve a qualquer tema.** Simulador amarrado a um assunto — um medidor de janela de contexto, um tabuleiro tático — mora na trilha que o usa, em `~/learning/<tema>/assets/`, e não sobe pra cá. O teste: outro tema usaria isso? Se não, é da trilha.
 
-⚠️ **Cada trilha tem a própria cópia de cada componente** — não há arquivo compartilhado. Mexeu num componente aqui, propague para todas as trilhas que já o usam, senão a aula 3 de uma trilha fica com regra diferente da aula 3 da outra. Confira com:
-`md5sum ~/.claude/skills/ensinar/assets/<componente> ~/learning/*/assets/<componente>` — todas têm que bater.
+⚠️ **Cada trilha tem a própria cópia de cada componente** — não há arquivo compartilhado. Mexeu num componente aqui, propague para todas as trilhas que já o usam, senão a aula 3 de uma trilha fica com regra diferente da aula 3 da outra. Quem faz a conferência é o script, não a memória:
 
-**Exceção durante a migração de pele (regra 6):** o `lesson.css` daqui é o novo, e só `docker` bate com ele. As trilhas antigas (`claude-models`, `claude-config`, `claude-subagents`, `github-stacked-prs`, `whatsapp-agents`) mantêm o `lesson.css` creme de propósito até serem migradas — pra essas, o md5 do `lesson.css` NÃO deve bater com o daqui, e os outros componentes continuam tendo que bater.
+- `node scripts/sincronizar_componentes.js` — **confere**: compara o md5 de cada componente da skill com a cópia de cada trilha, não escreve nada, e sai com 1 se algo divergiu.
+- `node scripts/sincronizar_componentes.js --aplicar` — **propaga** da skill pras trilhas o que divergiu.
 
-⚠️ `lesson.css` **não tem** `.score` — o nome certo é `.quiz-score`. A aula 1 de `claude-config` usa o errado e o placar sai sem estilo.
+Componente que a trilha não tem **não é divergência**: cada trilha usa o que precisa, e empurrar `decide.css` pra quem nunca desenhou árvore de decisão só suja a pasta. O script diz "não usa" e segue.
+
+**Exceção durante a migração de pele (regra 6):** o `lesson.css` daqui é o novo, e ele só é conferido e propagado nas trilhas cujo `NOTES.md` tem a marca `pele: nova`. Trilha sem a marca guarda o `lesson.css` creme de propósito até ser migrada — pra essas o script **pula** o `lesson.css` e diz que pulou, enquanto os outros componentes continuam tendo que bater. É a marca na trilha que manda; esta skill não guarda lista de quem já migrou.
+
+⚠️ `lesson.css` **não tem** `.score` — o nome certo é `.quiz-score`. A aula 1 de `claude-config` usa o errado e o placar sai sem estilo. É um dos itens que o `checar_aula.js` pega sozinho.
 
 ## Referências
 
