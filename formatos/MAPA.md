@@ -70,6 +70,12 @@ Estrutura de página: mesmo `<head>` das aulas, linkando `../assets/lesson.css`
   escolhido. É a única forma de o prefixo fechar de verdade. As aulas além do
   corte ficam listadas como `◻ fora do nível atual` — servem de convite, não de
   dívida.
+- **Antes de fechar o mapa, audite as raízes.** Raiz é a aula que não depende de
+  nenhuma anterior — o ponto de partida que você assumiu. Para cada uma,
+  pergunte: isso deriva de algo mais simples, que o aluno aceitaria de cara? Se
+  deriva, empurre a raiz pra baixo e estenda o mapa. Raiz errada contamina toda
+  a trilha construída sobre ela, e corrigir no mapa é muito mais barato do que
+  corrigir no meio da trilha.
 - **Descreva por capacidade, não por assunto.** "Você consegue dizer se duas
   branches são pilha ou irmãs" tem critério de parada. "Sobre branches" não tem
   — e sem critério de parada a aula incha até o aluno cansar.

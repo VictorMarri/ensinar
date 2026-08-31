@@ -40,6 +40,8 @@ A anatomia da figura, na ordem:
 
 A analogia precisa ser **isomorfa** (regra 2 da skill: no máximo um ponto de ruptura). O objeto vem do mundo da trilha, anotado em `NOTES.md` — a aula 4 aprofunda o objeto da aula 1, não inventa outro. A tabela do `analogy.css` é opcional: só quando a amarração propriedade a propriedade não coube na figura.
 
+**A ruptura se repete onde ela é cobrada.** Quando uma aula chega no ponto em que a analogia deixa de valer, ela declara a ruptura ali de novo, no lugar, com link de volta pra `figcaption` da aula que a declarou primeiro. Declarar uma vez não basta: o aviso mora na aula onde foi escrito, e o aluno esbarra no buraco três aulas depois — ele não volta pra reler.
+
 **3. O conceito, na língua nativa do aluno.** No máximo **três termos novos**, cada um batizado na língua da trilha antes de receber a etiqueta em inglês: **camada de base** (`base branch`). Nunca o contrário.
 
 **4. O desenho da mecânica — quando a analogia não carrega tudo.** A figura de abertura muitas vezes resolve a aula sozinha (a aula 1 de docker resolve com duas figuras de objeto e nenhum diagrama). Quando a mecânica técnica tem 3+ partes que o objeto não representa, entra o diagrama de partes: `figure.css` + `diagrama.css`, **sempre sobre painel branco** (as cinco cores reprovam sobre o cinza da página — medido). Cada parte com sua cor, e a cor significa aquilo, da aula 1 até a última: azul = a base, laranja = o que se move, verde = o terceiro elemento, magenta = o que entra depois, tijolo = o que dá errado. Teto de cinco; sexta parte usa `.secundaria` ou vira outro desenho. Rótulo dentro, legenda embaixo, nenhum hex no SVG.
@@ -74,7 +76,10 @@ Nada de link para arquivo `.md` no rodapé — não renderiza. Missão e glossá
 
 ## Regras do quiz
 
-- Todas as opções com **o mesmo número de palavras** e comprimento parecido. Uma opção mais longa ou mais qualificada entrega a resposta pela forma — e aí o item mede leitura de formatação, não conhecimento.
+- **Escreva a correta primeiro; cada distrator nasce mutando ela.** Mesmo esqueleto, mesma granularidade, mesmo registro — troque a peça que carrega o erro e mais nada. Contar palavras era auditoria depois do fato; mutar torna o paralelismo automático, por construção. A razão de fundo continua a mesma: opção que se destaca pela forma entrega a resposta, e aí o item mede leitura de formatação, não conhecimento.
+- **Cada distrator é um erro que o aluno de fato cometeria**, não um erro decorativo. É o que torna a escolha dele diagnóstica: errar revela qual crença errada ele carrega.
+- **Teste final: leia o conjunto pronto sem conhecer o assunto.** Se ainda dá pra identificar a certa, regenere o conjunto — não remende a opção que se destacou.
+- **Nenhuma alternativa carrega o porquê.** Zero justificativa dentro das opções: o motivo aparece só na explicação, depois de responder — no quiz da skill, o campo `why` do `quiz.js`, que já é separado de `options`. A correta vir com "…, porque X" enquanto as outras são secas entrega a resposta pela forma.
 - O feedback explica **por que** as erradas são erradas, não só qual era a certa.
 - Uma pergunta deve puxar de aula anterior sempre que houver aula anterior. Espaçamento e intercalação valem mais que mais uma pergunta nova.
 
@@ -90,6 +95,7 @@ Rode inteira. Uma falha, a aula volta pra bancada. E a bancada é o arquivo: rep
 - [ ] A aula anterior teve o link "próxima" preenchido, e o mapa foi atualizado
 - [ ] A aula **abre com a figura**, antes de qualquer prosa — script (aviso)
 - [ ] A analogia é isomorfa: no máximo **um** ponto de ruptura, declarado na `figcaption`
+- [ ] Aula que esbarra na ruptura repete a ruptura ali, com link pra `figcaption` que a declarou
 - [ ] O desenho fala em **objeto** (forma, bolo, cadeado) — nenhuma caixa com rótulo, nenhum termo técnico dentro do SVG
 - [ ] Duas metades num SVG só, com divisor tracejado (`.dash`)
 - [ ] Objeto em tinta; âmbar só no que a figura ensina; tijolo no que quebra ou não existe
@@ -109,7 +115,7 @@ Rode inteira. Uma falha, a aula volta pra bancada. E a bancada é o arquivo: rep
 - [ ] Pele certa: página cinza-aço, figuras e blocos densos em painel branco — nenhum `prefers-color-scheme: dark` ou `data-theme` na aula — script (parcial: ele pega as duas marcas de tema escuro)
 - [ ] Toda afirmação factual tem citação (`.cite`) pra fonte primária
 - [ ] Contém pelo menos um dado real medido da máquina dele
-- [ ] Quiz com opções do mesmo tamanho
+- [ ] Quiz: distratores mutados da correta, nenhuma opção carrega o porquê — lido sem conhecer o assunto, não dá pra identificar a certa
 - [ ] Um ganho tangível, e ele amarra na missão
 - [ ] Reusa `assets/` — nada reusável escrito inline
 - [ ] Classes certas: `.eyebrow`, `.subtitle`, `.quiz-score` (não `.score`) — script

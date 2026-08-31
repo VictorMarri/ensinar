@@ -45,15 +45,21 @@ Antes da primeira aula, escreva `MAPA.html`: o tema fatiado em aulas nomeadas, c
 
 Toda aula abre com `Aula 3 de 7` e um link pro mapa. Nunca `de ?`.
 
-### 2. Regra da analogia — toda aula abre por algo que ele já conhece
+### 2. Regra da analogia — isomorfa e universal, ou nenhuma
 
-O conceito entra por uma **analogia do mundo dele**, antes de qualquer termo técnico. Puxe de coisas que ele de fato conhece — futebol e táticas de eFootball, o próprio código dele, a cozinha, o trânsito. Se você não sabe o que ele conhece, **pergunte** e anote em `NOTES.md`.
+**Analogia esticada é pior que analogia nenhuma.** Sem candidata aprovada nos critérios desta regra, a aula abre com diagrama sóbrio, sem fantasia forçada. A saída de emergência abre a regra porque título e abertura são o que fica lido: prometer analogia em toda aula empurra pra inventar uma quando não existe nenhuma boa, e a esticada instala crença errada que cobra uma aula de desaprendizado depois.
+
+Havendo candidata, o conceito entra por ela **antes de qualquer termo técnico**.
 
 Toda analogia declara **onde ela quebra** — na `figcaption` da figura que a desenha. Analogia sem ponto de ruptura declarado instala uma crença errada que só aparece três aulas depois.
 
-**A analogia só entra se for isomorfa — e o teste é contável.** Procure onde a **estrutura do conceito** já existe no mundo físico: a forma de bolo não é *parecida* com a imagem Docker, ela **é** só-leitura-que-gera-instâncias. O mundo dele (futebol, cozinha, o código dele) é critério de desempate entre candidatas que servem, nunca requisito de entrada. A medida: **quantos pontos de ruptura a analogia precisa declarar.** Zero ou um, é isomorfa — use. Dois ou mais, está esticada — descarte (caso real: esquema tático do eFootball para imagem/contêiner precisava de dois avisos de "aqui mente", e um deles era uma aula inteira de desaprendizado).
+**A analogia só entra se for isomorfa — e o teste é contável.** Procure onde a **estrutura do conceito** já existe no mundo físico: a forma de bolo não é *parecida* com a imagem Docker, ela **é** só-leitura-que-gera-instâncias. A medida: **quantos pontos de ruptura a analogia precisa declarar.** Zero ou um, é isomorfa — use. Dois ou mais, está esticada — descarte (caso real: esquema tático do eFootball para imagem/contêiner precisava de dois avisos de "aqui mente", e um deles era uma aula inteira de desaprendizado).
 
-**A analogia se desenha antes de se descrever** — e é ela que dá o que desenhar. O estilo aprovado desenha OBJETOS (a forma canelada, o cadeado, o bolo com vapor), e conceito abstrato desenhado "direto" vira caixa com rótulo, que é exatamente o visual que a pele nova existe pra matar. Por isso as duas decisões andam juntas: sem objeto isomorfo, sem desenho de analogia — a aula segue com diagrama sóbrio e sem fantasia forçada.
+**O objeto tem que ser de repertório universal** — conhecido por qualquer pessoa alfabetizada, independente de profissão, país ou idade. O teste: *um adolescente de outro país entenderia esse objeto sem explicação?* Passam forma de bolo, cadeado, receita, fila, geladeira, semáforo, tomada. Não passam esquema tático de videogame, biblioteca de código, pipeline de CI, contrato de um setor específico. O mundo pessoal do aluno não entra aqui: histórico e `NOTES.md` não são fonte de candidatas nem critério de desempate. Repertório de nicho é mais rico em detalhe e por isso estica com mais facilidade; e procurar candidata no histórico faz você escolher uma analogia pior só porque ela apareceu ali.
+
+**A ordem de escolha entre candidatas:** isomorfia (0 ou 1 ponto de ruptura) → repertório universal → simplicidade.
+
+**A analogia se desenha antes de se descrever** — e é ela que dá o que desenhar. O estilo aprovado desenha OBJETOS (a forma canelada, o cadeado, o bolo com vapor), e conceito abstrato desenhado "direto" vira caixa com rótulo, que é exatamente o visual que a pele nova existe pra matar. Por isso as duas decisões andam juntas: sem objeto isomorfo, sem desenho de analogia — e vale a saída de emergência que abre a regra.
 
 - **Um mundo por trilha.** Docker mora na cozinha (forma, bolo, etiqueta gravada, os potes na geladeira). Se a aula 3 puxa do futebol e a aula 4 da cozinha, não existe mundo — existem analogias soltas, e ele recomeça a cada aula. O universo se escolhe na primeira aula, fica anotado em `NOTES.md`, e as seguintes moram dentro dele. Prefira universo com **relações prontas** entre os objetos (encaixe, peça que troca, peça que quebra): é relação que o tema precisa ensinar.
 - **O desenho mostra o par.** Duas metades num SVG só, divisor tracejado no meio (`.dash`). O que o par contrasta depende da aula: errado contra certo, antes contra depois, ou os dois conceitos que ele confunde — a forma e o bolo. Desenho de um lado obriga o leitor a imaginar o outro, e a diferença entre os dois é a aula.
@@ -170,15 +176,26 @@ Retenção se constrói com dificuldade desejável: recuperação ativa (lembrar
 
 Para **conhecimento**, dificuldade é inimiga — ela come a memória de trabalho que faria falta pra entender. Para **habilidade**, dificuldade é a ferramenta.
 
-**Abertura de sessão: 2–3 perguntas antes de escrever a aula nova.** Sessão que retoma uma trilha que já tem pelo menos uma aula fechada não começa escrevendo — começa perguntando, **no chat**. Duas ou três perguntas de recuperação ativa, puxadas do glossário e dos quizzes das aulas anteriores, com prioridade pros termos ainda `provisório` e pro material mais antigo (é o mais antigo que está prestes a sumir, não o da semana passada). Ele responde **de memória**, sem reabrir a aula; você corrige em **uma linha cada**, sem virar aula de revisão. Só então a aula nova começa.
+**Abertura de sessão: 2–3 perguntas antes de escrever a aula nova.** Sessão que retoma uma trilha que já tem pelo menos uma aula fechada não começa escrevendo — começa perguntando, **no chat**. Duas ou três perguntas de recuperação ativa, puxadas do glossário e dos quizzes das aulas anteriores, com prioridade pros termos ainda `provisório` e pro material mais antigo (é o mais antigo que está prestes a sumir, não o da semana passada). Ele responde **de memória**, sem reabrir a aula. Só então a aula nova começa.
+
+**Errou? Não corrija de imediato — sonde antes.** Faça uma pergunta a mais sobre o **mesmo conceito, por outro ângulo**, construída de modo que a resposta errada só faça sentido sob uma crença específica. A sondagem separa os dois casos:
+
+- **Hesitação ou "não sei" → lacuna.** Corrige em uma linha e segue, sem virar aula de revisão.
+- **Resposta errada com confiança → crença errada.** Vira registro de aprendizado, e a próxima aula começa desmontando o modelo antes de empilhar conteúdo novo.
+
+Exemplo: "O que acontece com o que o contêiner gravou quando ele é removido?" → "Fica salvo na imagem", confiante → sondagem: "Então dois contêineres da mesma imagem enxergam os arquivos um do outro?". Outro "sim" confiante nomeia a crença — imagem como armazenamento compartilhado e gravável — e a próxima aula abre desmontando isso; hesitação na sondagem era lacuna, e uma linha resolve.
+
+Sem a sondagem, a abertura mede o que ficou, não o que ficou torto. Numa trilha de oito aulas, crença errada na aula 2 contamina até a 6 e só aparece quando desmontar já é caro.
 
 Termo `provisório` que ele acertou aqui conta como uso correto por conta própria: perde a marca no glossário na mesma sessão e vira registro — regra do [formatos/GLOSSARIO.md](./formatos/GLOSSARIO.md).
 
-Não gera arquivo nenhum: isso mora no chat e custa dois minutos. A justificativa é a própria seção — retenção é o objetivo declarado, espaçamento e recuperação ativa são o mecanismo conhecido, e sem um momento fixo em que ele puxa da memória o que ficou da sessão passada a skill declara retenção e entrega fluência, que é justamente a que engana.
+A abertura mora no chat e custa dois minutos, sem gerar arquivo nenhum — a única exceção é o registro, quando a sondagem confirmar crença errada. A justificativa é a própria seção — retenção é o objetivo declarado, espaçamento e recuperação ativa são o mecanismo conhecido, e sem um momento fixo em que ele puxa da memória o que ficou da sessão passada a skill declara retenção e entrega fluência, que é justamente a que engana.
 
 ### Conhecimento, habilidade, sabedoria
 
 - **Conhecimento** vem de fontes confiáveis. Nunca da sua memória paramétrica. Registre em `RESOURCES.md` e cite dentro das aulas — citação é o que torna a aula auditável.
+
+  **Ao menor sinal de incerteza — um dado, um nome, um número, uma sintaxe, uma definição — pare e cheque na fonte antes de escrever aquilo na aula.** Se a checagem mudar o que você ia ensinar, diga isso abertamente em vez de silenciar a correção. Citação sozinha não proíbe escrever de memória e caçar a fonte depois: a checagem vem antes da afirmação, não atrás dela.
 - **Habilidade** vem de prática com laço de feedback curto: quiz, tarefa no navegador, passo a passo no mundo real. Feedback imediato, de preferência automático. E, quando o tema tem uma forma própria de cobrar lá fora, um banco de **prova externa** — ver [formatos/PRATICA.md](./formatos/PRATICA.md).
 - **Sabedoria** vem de gente. Quando a pergunta dele exigir julgamento, tente responder — e aponte uma comunidade de alta reputação onde ele testa aquilo com humanos. Se ele já disse que não quer comunidade, respeite e anote.
 
@@ -228,7 +245,7 @@ Componente que a trilha não tem **não é divergência**: cada trilha usa o que
 
 ## Referências
 
-Aulas raramente são relidas. **Referências são.** Toda aula deposita sua essência comprimida numa referência de consulta rápida: glossário, cheat sheet de sintaxe, fluxograma, sequência.
+**Referência é o que se consulta.** Toda aula deposita sua essência comprimida numa referência de consulta rápida: glossário, cheat sheet de sintaxe, fluxograma, sequência. A aula é pôster feito pra ser lido inteiro (regra 6); a referência serve o outro uso — achar uma definição em segundos, no meio do trabalho, sem reler aula nenhuma. E é ela que segura a consistência do vocabulário: um termo, uma definição, igual em todas as aulas.
 
 O **glossário** é a referência essencial. Assim que existir, toda aula obedece a ele — se uma aula diverge do glossário, a aula está errada. Termo batizado pela regra 3 entra na mesma sessão como `provisório` e é promovido quando ele o usar certo. O glossário marca dois eixos: se o termo é oficial ou apelido da trilha, e se já é dele ou ainda é provisório.
 
