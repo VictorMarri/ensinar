@@ -14,6 +14,10 @@
  * ensina antes do texto?). Os primeiros são exatamente os que a gente pula
  * quando a aula ficou boa e a vontade é entregar. Esses o script pega.
  *
+ * A posição no mapa é lida dos atributos `data-aula`/`data-de` (ou `data-desvio`)
+ * do `.eyebrow`, pra que a frase saia na língua da trilha; sem esses atributos,
+ * vale a frase em português ("Aula N de M", "Desvio N · fora do arco").
+ *
  * FALHA bloqueia a entrega. AVISO é conferência no olho e NÃO muda o código
  * de saída: são os dois cheques heurísticos (a figura de abertura e a
  * auditoria de coordenadas do SVG), que erram para os dois lados dependendo de
@@ -96,6 +100,63 @@ function checarCabecalho(html, achados) {
     });
     return;
   }
+  const comAtributos = eyebrows.filter((e) => temPosicaoEmAtributo(e));
+  if (comAtributos.length > 0) {
+    checarPosicaoEmAtributo(html, comAtributos, achados);
+    return;
+  }
+  checarPosicaoNaFrase(html, eyebrows, achados);
+}
+
+/** Os três atributos de posição, lidos da tag de abertura do `.eyebrow`. Eles
+ *  guardam número e total independentemente da frase, pra que a frase saia na
+ *  língua da trilha. */
+function posicaoEmAtributo(elemento) {
+  const tag = elemento.inteiro.slice(0, elemento.inteiro.indexOf('>') + 1);
+  const ler = (nome) => {
+    const m = tag.match(new RegExp(`\\b${nome}\\s*=\\s*["']([^"']*)["']`, 'i'));
+    return m ? m[1].trim() : null;
+  };
+  return { aula: ler('data-aula'), de: ler('data-de'), desvio: ler('data-desvio') };
+}
+
+function temPosicaoEmAtributo(elemento) {
+  const p = posicaoEmAtributo(elemento);
+  return p.aula !== null || p.de !== null || p.desvio !== null;
+}
+
+const inteiroPositivo = (valor) => /^\d+$/.test(valor) && Number(valor) > 0;
+
+/** Erro da posição declarada em atributo, ou null se ela está boa. */
+function erroDaPosicao(p) {
+  if (p.desvio !== null) {
+    return inteiroPositivo(p.desvio)
+      ? null
+      : `data-desvio="${p.desvio}" não é inteiro positivo`;
+  }
+  if (p.aula === null) return 'tem data-de mas não tem data-aula: os dois andam juntos';
+  if (p.de === null) return 'tem data-aula mas não tem data-de: os dois andam juntos, e "de ?" não existe';
+  if (!inteiroPositivo(p.aula)) return `data-aula="${p.aula}" não é inteiro positivo`;
+  if (!inteiroPositivo(p.de)) return `data-de="${p.de}" não é inteiro positivo`;
+  if (Number(p.aula) > Number(p.de)) {
+    return `data-aula="${p.aula}" é maior que data-de="${p.de}": a aula não cabe no mapa que ela declara`;
+  }
+  return null;
+}
+
+function checarPosicaoEmAtributo(html, eyebrows, achados) {
+  if (eyebrows.some((e) => erroDaPosicao(posicaoEmAtributo(e)) === null)) return;
+  const primeiro = eyebrows[0];
+  achados.push({
+    nivel: 'FALHA',
+    check: 'cabecalho',
+    linha: linhaDe(html, primeiro.indice),
+    detalhe: `.eyebrow ${erroDaPosicao(posicaoEmAtributo(primeiro))}`,
+  });
+}
+
+/** Compatibilidade: aula sem os atributos vale pela frase em português. */
+function checarPosicaoNaFrase(html, eyebrows, achados) {
   const bom = /Aula\s+\d+\s+de\s+\d+/i;
   const desvio = /Desvio\s+\d+\s*[·|-]\s*fora do arco/i;
   const ok = eyebrows.some((e) => {

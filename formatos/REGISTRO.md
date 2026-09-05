@@ -8,16 +8,20 @@ Ficam em `learning-records/`, numerados `0001-nome.md`. São o equivalente de AD
 # {Título curto do que foi aprendido ou estabelecido}
 
 {1 a 3 frases: o que foi aprendido (ou que conhecimento prévio ficou estabelecido) e por que isso importa pras próximas sessões.}
+
+## Evidência
+{1 ou 2 frases com três coisas: o que ele fez, o que saiu, e quanta ajuda recebeu.}
 ```
 
-Esse é o formato inteiro. Um parágrafo basta. O valor está em registrar **que** isso agora é sabido e **por que** muda o que ensinar em seguida.
+Esse é o formato inteiro: dois blocos curtos. O valor está em registrar **que** isso agora é sabido, **por que** muda o que ensinar em seguida, e **em cima de quê** você concluiu isso.
+
+A Evidência é obrigatória porque sem ela o registro vira opinião: "ele entendeu" não se audita, e o grau de ajuda é o que separa entendimento de acompanhamento. Exemplo: "Identificou a origem da falha sem receber comando pronto, mas precisou de ajuda para justificar a solução."
 
 ## Seções opcionais
 
 Só quando agregam de verdade:
 
 - **Status** (`ativo | substituído por 000N`) — quando um entendimento anterior se mostrou errado.
-- **Evidência** — como ele demonstrou: pergunta respondida, exercício feito, experiência citada, comando rodado.
 - **Implicações** — o que isso libera ou descarta pras próximas sessões.
 
 ## Quando escrever

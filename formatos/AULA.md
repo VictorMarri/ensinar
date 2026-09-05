@@ -11,14 +11,20 @@ Ela **não** é autocontida, e isso é escolha: os componentes ficam do lado, nu
 **1. Cabeçalho.** `.eyebrow` com `Aula N de M` e link pro mapa, `<h1>`, `.subtitle` com a promessa da aula em uma frase.
 
 ```html
-<p class="eyebrow">{Tema} · <a href="../MAPA.html">Aula 3 de 7</a></p>
+<p class="eyebrow" data-aula="3" data-de="7">{Tema} · <a href="../MAPA.html">Aula 3 de 7</a></p>
 ```
+
+Os atributos guardam número e total independentemente da frase, pra que o validador confira a posição e a frase saia na língua da trilha (`Lesson 3 of 7` numa trilha em inglês).
 
 Nunca `Aula 1 de ?`. Se você não sabe o M, você não escreveu o mapa — volte e escreva.
 
-**Exceção única: o desvio.** Aula pedida pelo aluno fora do arco não tem "N de M" — ela não é a N-ésima de nada. Arquivo `D001-nome.html`, cabeçalho `Desvio 1 · fora do arco`, com o mesmo link pro mapa. É a única forma de cabeçalho permitida além de `Aula N de M`.
+**Exceção única: o desvio.** Aula pedida pelo aluno fora do arco não tem "N de M" — ela não é a N-ésima de nada. Arquivo `D001-nome.html`, cabeçalho `Desvio 1 · fora do arco` e atributo `data-desvio="1"` (sem `data-de`), com o mesmo link pro mapa. É a única forma de cabeçalho permitida além de `Aula N de M`.
 
-**2. A figura de abertura — a analogia desenhada como objeto.** A aula abre com ela, antes de qualquer prosa e de qualquer termo técnico. Kit `.d` do `lesson.css`; referência canônica: a aula 1 de docker (`0001-molde-e-coisa-viva.html`).
+Aula antiga sem os atributos continua válida: sem eles, o validador cai na frase em português.
+
+**2. A figura de abertura — a analogia desenhada como objeto, ou o próprio assunto desenhado.** A aula abre com ela, antes de qualquer prosa e de qualquer termo técnico. Kit `.d` do `lesson.css`; referência canônica: a aula 1 de docker (`0001-molde-e-coisa-viva.html`). Sem analogia aprovada (regra 2 do `SKILL.md`), a figura desenha o próprio assunto: as partes com nome e a relação entre elas, sem comparação forçada com objeto de outro contexto.
+
+A forma do desenho segue o conteúdo, com ou sem analogia: comparação vai lado a lado com divisor tracejado (`.dash`), processo vai em sequência, escolha vai em árvore.
 
 A anatomia da figura, na ordem:
 
@@ -34,7 +40,7 @@ A anatomia da figura, na ordem:
 ```
 
 - **`.frase`**: a manchete que o desenho prova. Uma linha.
-- **O desenho fala em objeto**, nunca em termo técnico: desenha a forma canelada, o cadeado, o bolo com vapor — não caixas com rótulo. Duas metades com divisor tracejado (`.dash`); tinta desenha o objeto, âmbar (`.box-acc`, `.line-acc`) marca o que a figura ensina, tijolo (`.line-bad`, `.dash-bad`) o que quebra ou não existe.
+- **O desenho fala em objeto**, nunca em termo técnico: desenha a forma canelada, o cadeado, o bolo com vapor — não caixas com rótulo. Duas metades com divisor tracejado (`.dash`) é o padrão da comparação, não obrigação de toda figura; tinta desenha o objeto, âmbar (`.box-acc`, `.line-acc`) marca o que a figura ensina, tijolo (`.line-bad`, `.dash-bad`) o que quebra ou não existe.
 - **`figcaption`**: prosa corrida bem escrita que narra a lição — não rodapé telegráfico. É onde o ponto de ruptura da analogia se declara, quando houver.
 - **`.traducao`**: batiza os termos — objeto na língua da trilha primeiro, etiqueta em inglês depois (regra 3). É aqui que "forma" vira **imagem** (`image`).
 
@@ -82,6 +88,7 @@ Nada de link para arquivo `.md` no rodapé — não renderiza. Missão e glossá
 - **Nenhuma alternativa carrega o porquê.** Zero justificativa dentro das opções: o motivo aparece só na explicação, depois de responder — no quiz da skill, o campo `why` do `quiz.js`, que já é separado de `options`. A correta vir com "…, porque X" enquanto as outras são secas entrega a resposta pela forma.
 - O feedback explica **por que** as erradas são erradas, não só qual era a certa.
 - Uma pergunta deve puxar de aula anterior sempre que houver aula anterior. Espaçamento e intercalação valem mais que mais uma pergunta nova.
+- **Os textos que o `quiz.js` gera saem em português por padrão**: o rótulo `Pergunta N`, o `Certo.`/`Não.` do feedback, os três estados do placar e a mensagem de quiz malformado. Aula em outra língua troca todos por atributos `data-txt-*` no primeiro elemento `.quiz` da página, conforme documentado no cabeçalho do `quiz.js`. Define todos eles: metade em inglês e metade em português é o pior dos dois.
 
 ## Checklist antes de entregar
 
@@ -89,18 +96,19 @@ Rode inteira. Uma falha, a aula volta pra bancada. E a bancada é o arquivo: rep
 
 **O mecânico roda antes da sua leitura.** Da pasta da skill: `node scripts/checar_aula.js <caminho-da-aula.html>` (aceita vários arquivos). Ele confere sozinho os itens marcados `— script` aqui embaixo: os que se leem no arquivo sem julgamento — `de ?` no cabeçalho, link pra `.md`, hex dentro do SVG, travessão, `.score` no lugar de `.quiz-score`, marca de tema escuro. FALHA bloqueia (saída 1); AVISO é a parte heurística (a figura de abertura e a auditoria de coordenadas), que continua sendo conferência no olho. Rode ele **primeiro**, e só depois leia a lista inteira: atenção humana gasta em vírgula errada é atenção que faltou pra perguntar se a analogia é isomorfa — e é exatamente isso que o script não sabe fazer.
 
-- [ ] Cabeçalho diz `Aula N de M` — nunca `de ?`. Desvio usa `Desvio N · fora do arco` — script
+- [ ] Cabeçalho diz `Aula N de M` — nunca `de ?`. Desvio usa `Desvio N · fora do arco`. Com `data-aula`/`data-de` (ou `data-desvio`) no `.eyebrow` — script
 - [ ] Rodapé tem anterior · mapa · próxima, e o mapa aponta pra `MAPA.html` — script (parcial: confere o `.next-up` e o link do mapa)
 - [ ] Nenhum link do rodapé aponta pra arquivo `.md` — script
 - [ ] A aula anterior teve o link "próxima" preenchido, e o mapa foi atualizado
 - [ ] A aula **abre com a figura**, antes de qualquer prosa — script (aviso)
-- [ ] A analogia é isomorfa: no máximo **um** ponto de ruptura, declarado na `figcaption`
-- [ ] Aula que esbarra na ruptura repete a ruptura ali, com link pra `figcaption` que a declarou
-- [ ] O desenho fala em **objeto** (forma, bolo, cadeado) — nenhuma caixa com rótulo, nenhum termo técnico dentro do SVG
-- [ ] Duas metades num SVG só, com divisor tracejado (`.dash`)
-- [ ] Objeto em tinta; âmbar só no que a figura ensina; tijolo no que quebra ou não existe
-- [ ] `figcaption` narra a lição em prosa corrida; `.traducao` batiza os termos depois do desenho
-- [ ] O objeto veio do mundo da trilha (`NOTES.md`) — nenhum universo novo no meio da trilha
+- [ ] Se houver analogia: a analogia é isomorfa — no máximo **um** ponto de ruptura, declarado na `figcaption`
+- [ ] Se houver analogia: aula que esbarra na ruptura repete a ruptura ali, com link pra `figcaption` que a declarou
+- [ ] Se houver analogia: o desenho fala em **objeto** (forma, bolo, cadeado) — nenhuma caixa com rótulo, nenhum termo técnico dentro do SVG
+- [ ] Se houver analogia: objeto em tinta; âmbar só no que a figura ensina; tijolo no que quebra ou não existe
+- [ ] Se houver analogia: `figcaption` narra a lição em prosa corrida; `.traducao` batiza os termos depois do desenho
+- [ ] Se houver analogia: o objeto veio do mundo da trilha (`NOTES.md`) — nenhum universo novo no meio da trilha
+- [ ] Se não houver analogia: o desenho mostra as partes com nome e a relação entre elas, e é do próprio assunto (nada de comparação forçada)
+- [ ] A forma do desenho casa com o conteúdo: comparação = lado a lado com `.dash`, processo = sequência, escolha = árvore
 - [ ] No máximo 3 termos novos
 - [ ] Todo termo novo batizado na língua da trilha **antes** da etiqueta em inglês
 - [ ] **Teste da borracha:** apaguei mentalmente os termos em inglês — a aula ainda ensina?
@@ -115,14 +123,14 @@ Rode inteira. Uma falha, a aula volta pra bancada. E a bancada é o arquivo: rep
 - [ ] Pele certa: página cinza-aço, figuras e blocos densos em painel branco — nenhum `prefers-color-scheme: dark` ou `data-theme` na aula — script (parcial: ele pega as duas marcas de tema escuro)
 - [ ] Toda afirmação factual tem citação (`.cite`) pra fonte primária
 - [ ] Contém pelo menos um dado real medido da máquina dele
-- [ ] Quiz: distratores mutados da correta, nenhuma opção carrega o porquê — lido sem conhecer o assunto, não dá pra identificar a certa
+- [ ] Quiz: distratores mutados da correta, nenhuma opção carrega o porquê — lido sem conhecer o assunto, não dá pra identificar a certa. Aula fora do português define todos os `data-txt-*`
 - [ ] Um ganho tangível, e ele amarra na missão
 - [ ] Reusa `assets/` — nada reusável escrito inline
 - [ ] Classes certas: `.eyebrow`, `.subtitle`, `.quiz-score` (não `.score`) — script
 - [ ] Aberta no navegador pra ele **uma única vez, depois de todos os itens acima passarem**, com apresentação curta no chat (sem duplicar o texto da aula)
 - [ ] Correção depois da abertura **edita o mesmo arquivo** e pede pra ele recarregar a aba — nunca uma segunda abertura no navegador (`Start-Process`, `open`, `xdg-open` — cada uma abre aba nova), nunca um arquivo variante da mesma aula (uma aula, um arquivo)
-- [ ] No `MAPA.html`, a aula ganhou link mas segue `▶ próxima` até ele responder a pergunta ou o quiz
-- [ ] A entrega no chat termina com **uma** pergunta
+- [ ] No `MAPA.html`, a aula ganhou link mas segue `▶ próxima` até ele responder a pergunta
+- [ ] A entrega no chat termina com **uma** pergunta: situação nova, pede o motivo, cabe na etapa dele, e a aula deu as ferramentas
 
 ## Tamanho
 

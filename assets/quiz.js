@@ -17,6 +17,23 @@
  *
  * A ordem das opções é embaralhada a cada carregamento (Fisher-Yates), então
  * reler a aula é recuperação de verdade, não memória de posição.
+ *
+ * Idioma: todo texto que este arquivo gera sai em português por padrão e é
+ * trocado por atributos `data-txt-*` no PRIMEIRO elemento `.quiz` da página.
+ * Aula fora do português define os sete, nunca metade:
+ *
+ *   <div class="quiz"
+ *     data-txt-pergunta="Question {n}"
+ *     data-txt-certo="Correct."
+ *     data-txt-errado="No."
+ *     data-txt-placar-inicial="{total} questions. Answer to see the score."
+ *     data-txt-placar-parcial="{certas} of {respondidas} so far ({restando} left)."
+ *     data-txt-placar-final="Final score: {certas} of {total}."
+ *     data-txt-malformado="Malformed quiz: {erro}"
+ *     data-quiz='{ … }'></div>
+ *
+ * Os `{…}` são substituídos pelos valores; o que não for reconhecido fica como
+ * está.
  */
 (function () {
   "use strict";
@@ -24,6 +41,20 @@
   var total = 0;
   var correct = 0;
   var answered = 0;
+
+  function texto(chave, padrao) {
+    var origem = document.querySelector(".quiz");
+    var valor = origem ? origem.getAttribute("data-txt-" + chave) : null;
+    return valor ? valor : padrao;
+  }
+
+  function preencher(modelo, valores) {
+    return modelo.replace(/\{(\w+)\}/g, function (tudo, chave) {
+      return Object.prototype.hasOwnProperty.call(valores, chave)
+        ? String(valores[chave])
+        : tudo;
+    });
+  }
 
   function shuffle(n) {
     var idx = Array.from({ length: n }, function (_, i) { return i; });
@@ -37,12 +68,24 @@
   function updateScore() {
     var el = document.querySelector("[data-quiz-score]");
     if (!el) return;
+    var valores = {
+      total: total,
+      certas: correct,
+      respondidas: answered,
+      restando: total - answered,
+    };
     if (answered === 0) {
-      el.textContent = total + (total === 1 ? " pergunta" : " perguntas") + " — responda para ver o placar.";
+      el.textContent = preencher(
+        texto("placar-inicial", total + (total === 1 ? " pergunta" : " perguntas") + " — responda para ver o placar."),
+        valores
+      );
     } else if (answered < total) {
-      el.textContent = correct + " de " + answered + " até aqui (" + (total - answered) + " restando).";
+      el.textContent = preencher(
+        texto("placar-parcial", "{certas} de {respondidas} até aqui ({restando} restando)."),
+        valores
+      );
     } else {
-      el.textContent = "Placar final: " + correct + " de " + total + ".";
+      el.textContent = preencher(texto("placar-final", "Placar final: {certas} de {total}."), valores);
     }
   }
 
@@ -51,7 +94,10 @@
     try {
       spec = JSON.parse(node.getAttribute("data-quiz"));
     } catch (e) {
-      node.innerHTML = '<p class="cite">Quiz malformado: ' + String(e.message) + "</p>";
+      node.innerHTML =
+        '<p class="cite">' +
+        preencher(texto("malformado", "Quiz malformado: {erro}"), { erro: String(e.message) }) +
+        "</p>";
       return;
     }
 
@@ -59,7 +105,7 @@
 
     var num = document.createElement("div");
     num.className = "q-num";
-    num.textContent = "Pergunta " + (i + 1);
+    num.textContent = preencher(texto("pergunta", "Pergunta {n}"), { n: i + 1 });
 
     var q = document.createElement("div");
     q.className = "q-text";
@@ -101,7 +147,7 @@
         fb.className = "feedback show " + (isRight ? "ok" : "no");
         fb.innerHTML =
           "<p><strong>" +
-          (isRight ? "Certo." : "Não.") +
+          (isRight ? texto("certo", "Certo.") : texto("errado", "Não.")) +
           "</strong> " +
           spec.why +
           "</p>";
