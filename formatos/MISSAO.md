@@ -31,13 +31,13 @@ Captura **por que** ele quer aprender isso. Toda decisão de ensino — o que ve
 
 - **Uma missão por trilha.** Dois assuntos sem relação são duas pastas.
 - **A língua da trilha se decide aqui, uma vez.** O padrão é a língua em que o aluno fala com você — não pergunte, registre; só pergunte se ele misturar línguas. Aulas, mapa, glossário e desenhos saem inteiros nela. As etiquetas técnicas continuam em inglês (regra 3 do `SKILL.md`), porque doc e CLI estão em inglês. Aluno anglófono é o caso degenerado limpo: não há camada de tradução, e o orçamento de três termos continua valendo igual.
-- **Profundidade é onde ele para, não quanto ele quer.** Pergunte no fim da entrevista, nunca no começo: antes de você ter medido o terreno, a resposta é ambição, não decisão. Os três níveis se definem por capacidade observável:
+- **Profundidade é onde ele para, não quanto ele quer.** Pergunte no fim da entrevista, nunca no começo: antes de você ter medido o terreno, a resposta é ambição, não decisão. Os três níveis se definem por capacidade observável, sempre a capacidade escrita na missão e não o campo inteiro: o número de aulas mede o percurso, não prova domínio do tema todo.
 
   | Nível | Ao terminar, ele… | Mapa |
   |---|---|---|
   | **Leve** | reconhece e decide. Sabe o que é, quando importa, e a hora de chamar alguém. Não executa sozinho. | 3–4 aulas |
   | **Intermediário** | faz o caminho comum sozinho, e percebe quando saiu dele. | 5–7 aulas |
-  | **Profundo** | resolve o caso torto e **consegue ensinar outra pessoa**. | 8–12 + referências |
+  | **Profundo** | resolve o caso torto e **consegue ensinar outra pessoa**, dentro da capacidade que a missão delimita. | 8–12 + referências |
 
 - **Diga o preço junto com o nível.** O número de aulas entra na pergunta, não depois. Sem custo à vista, todo mundo escolhe Profundo por ambição e desiste na aula 6 — que é justamente o abandono que a regra 1 existe pra evitar.
 - **Nível não é etapa, é destino.** Ninguém faz uma trilha leve e depois outra intermediária. É uma trilha só; o nível decide onde ela termina.

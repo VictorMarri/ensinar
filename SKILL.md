@@ -51,19 +51,21 @@ Toda aula abre com `Aula 3 de 7` e um link pro mapa. Nunca `de ?`.
 
 Havendo candidata, o conceito entra por ela **antes de qualquer termo técnico**.
 
-Toda analogia declara **onde ela quebra** — na `figcaption` da figura que a desenha. Analogia sem ponto de ruptura declarado instala uma crença errada que só aparece três aulas depois.
+Quando houver uma ruptura relevante, a analogia declara **onde ela quebra** — na `figcaption` da figura que a desenha. Esconder uma ruptura instala uma crença errada que só aparece três aulas depois; se não houver ruptura relevante, não invente uma diferença só para preencher esse lugar.
 
 **A analogia só entra se for isomorfa — e o teste é contável.** Procure onde a **estrutura do conceito** já existe no mundo físico: a forma de bolo não é *parecida* com a imagem Docker, ela **é** só-leitura-que-gera-instâncias. A medida: **quantos pontos de ruptura a analogia precisa declarar.** Zero ou um, é isomorfa — use. Dois ou mais, está esticada — descarte (caso real: esquema tático do eFootball para imagem/contêiner precisava de dois avisos de "aqui mente", e um deles era uma aula inteira de desaprendizado).
+
+**Ruptura é a diferença que faz o aluno prever errado sobre o que a aula ensina.** Diferença física que não gera previsão errada não conta e não precisa ser declarada: a forma de bolo esquenta, a imagem Docker não, e nenhuma aula de Docker cobra essa previsão. A contagem de zero ou um vale sobre as rupturas assim definidas, não sobre toda diferença que dá pra apontar entre o objeto e o conceito.
 
 **O objeto tem que ser de repertório universal** — conhecido por qualquer pessoa alfabetizada, independente de profissão, país ou idade. O teste: *um adolescente de outro país entenderia esse objeto sem explicação?* Passam forma de bolo, cadeado, receita, fila, geladeira, semáforo, tomada. Não passam esquema tático de videogame, biblioteca de código, pipeline de CI, contrato de um setor específico. O mundo pessoal do aluno não entra aqui: histórico e `NOTES.md` não são fonte de candidatas nem critério de desempate. Repertório de nicho é mais rico em detalhe e por isso estica com mais facilidade; e procurar candidata no histórico faz você escolher uma analogia pior só porque ela apareceu ali.
 
 **A ordem de escolha entre candidatas:** isomorfia (0 ou 1 ponto de ruptura) → repertório universal → simplicidade.
 
-**A analogia se desenha antes de se descrever** — e é ela que dá o que desenhar. O estilo aprovado desenha OBJETOS (a forma canelada, o cadeado, o bolo com vapor), e conceito abstrato desenhado "direto" vira caixa com rótulo, que é exatamente o visual que a pele nova existe pra matar. Por isso as duas decisões andam juntas: sem objeto isomorfo, sem desenho de analogia — e vale a saída de emergência que abre a regra.
+**A analogia se desenha antes de se descrever** — e é ela que dá o que desenhar. O estilo aprovado desenha OBJETOS (a forma canelada, o cadeado, o bolo com vapor), e conceito abstrato desenhado "direto" vira caixa com rótulo, que é exatamente o visual que a pele nova existe pra matar. Por isso as duas decisões andam juntas: sem objeto isomorfo, sem desenho de analogia — e vale a saída de emergência que abre a regra. Nesse caso o desenho é do próprio assunto: mostra as partes com nome e a relação entre elas, como a trilha do cubo mágico, que abre com o próprio cubo destacando centros, arestas e cantos. E a forma do desenho segue o conteúdo do mesmo jeito.
 
 - **Um mundo por trilha.** Docker mora na cozinha (forma, bolo, etiqueta gravada, os potes na geladeira). Se a aula 3 puxa do futebol e a aula 4 da cozinha, não existe mundo — existem analogias soltas, e ele recomeça a cada aula. O universo se escolhe na primeira aula, fica anotado em `NOTES.md`, e as seguintes moram dentro dele. Prefira universo com **relações prontas** entre os objetos (encaixe, peça que troca, peça que quebra): é relação que o tema precisa ensinar.
-- **O desenho mostra o par.** Duas metades num SVG só, divisor tracejado no meio (`.dash`). O que o par contrasta depende da aula: errado contra certo, antes contra depois, ou os dois conceitos que ele confunde — a forma e o bolo. Desenho de um lado obriga o leitor a imaginar o outro, e a diferença entre os dois é a aula.
-- **A tradução vem depois do desenho.** A figura fala em objeto ("a forma é trancada"); a linha `.traducao` no rodapé dela batiza os termos ("a forma é a **imagem**, `image`) — regra 3 na ordem certa. A tabela do `analogy.css` virou opcional: use só quando a ponte precisar de amarração propriedade por propriedade que não coube na figura.
+- **A forma do desenho segue o que a aula ensina**, inclusive quando há analogia. Comparação (errado contra certo, antes contra depois, ou os dois conceitos que ele confunde, a forma e o bolo): duas metades num SVG só, divisor tracejado no meio (`.dash`), porque desenhar um lado obriga o leitor a imaginar o outro, e a diferença entre os dois é a aula. Processo: os passos em sequência (preparar a massa, pôr na forma, assar, desenformar). Escolha: árvore de decisão. Duas metades deixa de ser obrigatório, é o padrão da comparação.
+- **Quando houver analogia, a tradução vem depois do desenho.** A figura fala em objeto ("a forma é trancada"); a linha `.traducao` no rodapé dela batiza os termos ("a forma é a **imagem**, `image`) — regra 3 na ordem certa. Num desenho direto do assunto, as partes podem ser nomeadas na língua da trilha; a etiqueta técnica em inglês continua vindo depois do entendimento. A tabela do `analogy.css` virou opcional: use só quando a ponte precisar de amarração propriedade por propriedade que não coube na figura.
 
 ### 3. Orçamento de jargão — 3 termos novos por aula, no máximo
 
@@ -145,6 +147,10 @@ Quando ele disser "não entendi" — e principalmente se ele pedir desculpa — 
 
 Toda entrega termina com **uma pergunta que ele precisa responder**. Uma, não três.
 
+**Essa pergunta é o que fecha a aula**: a aula vira `✅ feita` no `MAPA.html` quando a resposta permite avançar pelos critérios abaixo. O quiz não fecha nada, porque ele roda no navegador e você não vê o resultado dele: quiz é treino com feedback imediato. Três exigências da pergunta final: ela apresenta uma **situação nova** e pede que ele use o que aprendeu e explique o motivo da resposta; ela cabe na etapa em que ele está; e a aula deu as ferramentas para chegar até a resposta. Situação nova, ferramentas conhecidas.
+
+**Resposta parcialmente errada não decide sozinha o avanço.** Se o erro compromete o próximo conceito, corrija e peça nova tentativa antes de avançar. Se é detalhe secundário, siga e anote `revisar` no mapa para aquele conteúdo. Responder não é prova de domínio, e também não se exige resposta perfeita para avançar.
+
 > Histórico: de 03/08/2026 a 23/08/2026 valia o acordo inverso ("chat primeiro, HTML enxuto no fim", firmado na trilha docker). Revogado por ele em 23/08/2026, na trilha clusters: "era pra já criar o HTML de uma vez". O `NOTES.md` da trilha docker guarda o histórico — não o reescreva.
 
 ### A missão
@@ -176,20 +182,22 @@ Retenção se constrói com dificuldade desejável: recuperação ativa (lembrar
 
 Para **conhecimento**, dificuldade é inimiga — ela come a memória de trabalho que faria falta pra entender. Para **habilidade**, dificuldade é a ferramenta.
 
-**Abertura de sessão: 2–3 perguntas antes de escrever a aula nova.** Sessão que retoma uma trilha que já tem pelo menos uma aula fechada não começa escrevendo — começa perguntando, **no chat**. Duas ou três perguntas de recuperação ativa, puxadas do glossário e dos quizzes das aulas anteriores, com prioridade pros termos ainda `provisório` e pro material mais antigo (é o mais antigo que está prestes a sumir, não o da semana passada). Ele responde **de memória**, sem reabrir a aula. Só então a aula nova começa.
+**Abertura de sessão: 2–3 perguntas antes de escrever a aula nova.** Sessão que retoma uma trilha que já tem pelo menos uma aula fechada não começa escrevendo — começa perguntando, **no chat**. Duas ou três perguntas de recuperação ativa, puxadas do glossário e dos quizzes das aulas anteriores. A prioridade, nesta ordem: (1) o conteúdo marcado `revisar` no mapa; (2) as aulas sem marca `🔁 lembrou`; (3) as aulas com o `🔁 lembrou` mais antigo (é o mais antigo que está prestes a sumir, não o da semana passada). Os termos ainda `provisório` do glossário continuam sendo fonte das perguntas. Sem calendário fixo: as sessões não têm dia certo, então o espaçamento aqui é ordem de escolha, não agenda. Ele responde **de memória**, sem reabrir a aula. Só então a aula nova começa.
+
+**Acertou de memória, sem ajuda?** A aula ganha no `MAPA.html` a marca `🔁 lembrou: <o que foi lembrado, em poucas palavras> · <data>`. A descrição serve a duas coisas: ela diz o que já foi perguntado, pra próxima pergunta variar, e evita tratar uma resposta sobre parte da aula como verificação da aula inteira. **Esqueceu depois algo que já tinha marca `🔁`?** Mantenha a marca antiga e acrescente `revisar`: esse conteúdo vem primeiro na próxima retomada. Fora o registro de crença errada e a promoção de termo no glossário, essa é a única escrita em arquivo que a abertura faz.
 
 **Errou? Não corrija de imediato — sonde antes.** Faça uma pergunta a mais sobre o **mesmo conceito, por outro ângulo**, construída de modo que a resposta errada só faça sentido sob uma crença específica. A sondagem separa os dois casos:
 
-- **Hesitação ou "não sei" → lacuna.** Corrige em uma linha e segue, sem virar aula de revisão.
-- **Resposta errada com confiança → crença errada.** Vira registro de aprendizado, e a próxima aula começa desmontando o modelo antes de empilhar conteúdo novo.
+- **Hesitação ou "não sei" → pista de lacuna.** Confirmada na sondagem, corrige em uma linha e segue, sem virar aula de revisão. Resposta hesitante também pode ter raciocínio certo por baixo: peça o motivo antes de concluir que falta conteúdo.
+- **Resposta errada com confiança → pista de crença errada.** Confiança não diagnostica sozinha, porque resposta confiante pode ser decorada. A crença errada só vira registro quando a sondagem confirma, ou seja, quando o motivo que ele explica e a pergunta discriminante apontam para o mesmo modelo. Confirmada, a próxima aula começa desmontando esse modelo antes de empilhar conteúdo novo.
 
-Exemplo: "O que acontece com o que o contêiner gravou quando ele é removido?" → "Fica salvo na imagem", confiante → sondagem: "Então dois contêineres da mesma imagem enxergam os arquivos um do outro?". Outro "sim" confiante nomeia a crença — imagem como armazenamento compartilhado e gravável — e a próxima aula abre desmontando isso; hesitação na sondagem era lacuna, e uma linha resolve.
+Exemplo: "O que acontece com o que o contêiner gravou quando ele é removido?" → "Fica salvo na imagem", confiante → sondagem: "Então dois contêineres da mesma imagem enxergam os arquivos um do outro? Por quê?". Um novo "sim" acompanhado da explicação de que ambos escrevem na imagem faz a resposta e o motivo convergirem para a crença — imagem como armazenamento compartilhado e gravável — e a próxima aula abre desmontando isso. Hesitação continua sendo só pista: peça o motivo e use a sondagem antes de decidir se há lacuna e se uma correção curta basta.
 
 Sem a sondagem, a abertura mede o que ficou, não o que ficou torto. Numa trilha de oito aulas, crença errada na aula 2 contamina até a 6 e só aparece quando desmontar já é caro.
 
 Termo `provisório` que ele acertou aqui conta como uso correto por conta própria: perde a marca no glossário na mesma sessão e vira registro — regra do [formatos/GLOSSARIO.md](./formatos/GLOSSARIO.md).
 
-A abertura mora no chat e custa dois minutos, sem gerar arquivo nenhum — a única exceção é o registro, quando a sondagem confirmar crença errada. A justificativa é a própria seção — retenção é o objetivo declarado, espaçamento e recuperação ativa são o mecanismo conhecido, e sem um momento fixo em que ele puxa da memória o que ficou da sessão passada a skill declara retenção e entrega fluência, que é justamente a que engana.
+A abertura mora no chat e custa dois minutos, sem gerar arquivo nenhum — o que ela escreve é a marca `🔁 lembrou` no mapa, a promoção de termo no glossário e, quando a sondagem confirmar crença errada, o registro. A justificativa é a própria seção — retenção é o objetivo declarado, espaçamento e recuperação ativa são o mecanismo conhecido, e sem um momento fixo em que ele puxa da memória o que ficou da sessão passada a skill declara retenção e entrega fluência, que é justamente a que engana.
 
 ### Conhecimento, habilidade, sabedoria
 

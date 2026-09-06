@@ -27,9 +27,11 @@ Não o tema inteiro do mundo — o pedaço que a missão justifica.}</p>
 <table>
   <tr><th>#</th><th>Aula</th><th>Ao terminar, você consegue</th><th>Estado</th></tr>
   <tr><td>1</td><td><a href="lessons/0001-{nome}.html">{nome curto}</a></td><td>{capacidade observável}</td><td>✅ feita</td></tr>
-  <tr><td>2</td><td>{nome curto}</td><td>{capacidade observável}</td><td>▶ próxima</td></tr>
-  <tr><td>3</td><td>{nome curto}</td><td>{capacidade observável}</td><td>◻ prevista</td></tr>
-  <tr><td>4</td><td>{nome curto}</td><td>{capacidade observável}</td><td>◻ fora do nível atual</td></tr>
+  <tr><td>2</td><td><a href="lessons/0002-{nome}.html">{nome curto}</a></td><td>{capacidade observável}</td><td>✅ feita · 🔁 lembrou: diferença entre imagem e contêiner · 12/09</td></tr>
+  <tr><td>3</td><td><a href="lessons/0003-{nome}.html">{nome curto}</a></td><td>{capacidade observável}</td><td>✅ feita · 🔁 lembrou: … · 12/09 · revisar</td></tr>
+  <tr><td>4</td><td>{nome curto}</td><td>{capacidade observável}</td><td>▶ próxima</td></tr>
+  <tr><td>5</td><td>{nome curto}</td><td>{capacidade observável}</td><td>◻ prevista</td></tr>
+  <tr><td>6</td><td>{nome curto}</td><td>{capacidade observável}</td><td>◻ fora do nível atual</td></tr>
 </table>
 </div>
 
@@ -101,11 +103,23 @@ Estrutura de página: mesmo `<head>` das aulas, linkando `../assets/lesson.css`
 
 1. Assim que o arquivo da aula existe, ela **ganha link** no mapa — mas continua
    `▶ próxima`. Publicada não é fechada.
-2. A aula só vira `✅ feita` quando o aluno **responde a pergunta que fecha a
-   aula ou o quiz**. Até lá ela fica `▶ próxima` (com link): é onde ele está,
-   não o que ele terminou.
+2. A aula só vira `✅ feita` quando a resposta à pergunta final, no chat,
+   **permite avançar pelos critérios do `SKILL.md`**: erro que compromete o
+   próximo conceito exige correção e nova tentativa; detalhe secundário vai para
+   `revisar`. O quiz não fecha: ele roda no navegador e o agente não vê o
+   resultado. Até lá ela fica `▶ próxima` (com link): é onde ele está, não o que
+   ele terminou.
 3. Quando uma aula fecha, a seguinte vira `▶ próxima`.
 4. Volte na aula anterior e preencha o link "próxima" que ficou vazio quando
    ela foi escrita — ver `AULA.md`. É a única edição retroativa que a skill faz
    numa aula já entregue, e existe porque no momento em que a aula N é escrita a
    aula N+1 ainda não existe pra ser linkada.
+5. Na abertura de sessão, acerto de memória sem ajuda escreve
+   `🔁 lembrou: <o que> · <data>` na linha daquela aula. A descrição é curta,
+   poucas palavras: ela diz o que já foi perguntado, pra próxima pergunta variar.
+6. Esquecimento posterior **mantém** a marca `🔁` anterior e acrescenta
+   `revisar`. A marca `revisar` sai quando ele recuperar aquilo de novo sem
+   ajuda, e aí a data do `🔁` é atualizada.
+
+O mapa continua tendo que caber numa tela. Se a coluna Estado crescer demais,
+encurte a descrição, não remova a data.
