@@ -103,10 +103,12 @@ Estrutura de página: mesmo `<head>` das aulas, linkando `../assets/lesson.css`
 
 1. Assim que o arquivo da aula existe, ela **ganha link** no mapa — mas continua
    `▶ próxima`. Publicada não é fechada.
-2. A aula só vira `✅ feita` quando o aluno **responde a pergunta que fecha a
-   aula**, no chat. O quiz não fecha: ele roda no navegador e o agente não vê o
-   resultado. Até lá ela fica `▶ próxima` (com link): é onde ele está,
-   não o que ele terminou.
+2. A aula só vira `✅ feita` quando a resposta à pergunta final, no chat,
+   **permite avançar pelos critérios do `SKILL.md`**: erro que compromete o
+   próximo conceito exige correção e nova tentativa; detalhe secundário vai para
+   `revisar`. O quiz não fecha: ele roda no navegador e o agente não vê o
+   resultado. Até lá ela fica `▶ próxima` (com link): é onde ele está, não o que
+   ele terminou.
 3. Quando uma aula fecha, a seguinte vira `▶ próxima`.
 4. Volte na aula anterior e preencha o link "próxima" que ficou vazio quando
    ela foi escrita — ver `AULA.md`. É a única edição retroativa que a skill faz

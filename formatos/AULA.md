@@ -8,7 +8,7 @@ Ela **não** é autocontida, e isso é escolha: os componentes ficam do lado, nu
 
 ## Estrutura
 
-**1. Cabeçalho.** `.eyebrow` com `Aula N de M` e link pro mapa, `<h1>`, `.subtitle` com a promessa da aula em uma frase.
+**1. Cabeçalho.** `.eyebrow` com a posição escrita na língua da trilha e link pro mapa, `<h1>`, `.subtitle` com a promessa da aula em uma frase. Em páginas novas, `data-aula`/`data-de` guardam a estrutura independentemente da frase visível.
 
 ```html
 <p class="eyebrow" data-aula="3" data-de="7">{Tema} · <a href="../MAPA.html">Aula 3 de 7</a></p>
@@ -18,11 +18,11 @@ Os atributos guardam número e total independentemente da frase, pra que o valid
 
 Nunca `Aula 1 de ?`. Se você não sabe o M, você não escreveu o mapa — volte e escreva.
 
-**Exceção única: o desvio.** Aula pedida pelo aluno fora do arco não tem "N de M" — ela não é a N-ésima de nada. Arquivo `D001-nome.html`, cabeçalho `Desvio 1 · fora do arco` e atributo `data-desvio="1"` (sem `data-de`), com o mesmo link pro mapa. É a única forma de cabeçalho permitida além de `Aula N de M`.
+**Exceção única: o desvio.** Aula pedida pelo aluno fora do arco não tem "N de M" — ela não é a N-ésima de nada. Arquivo `D001-nome.html`, cabeçalho equivalente a `Desvio 1 · fora do arco` na língua da trilha e atributo `data-desvio="1"` (sem `data-aula` nem `data-de`), com o mesmo link pro mapa. É o único tipo de cabeçalho permitido além da aula normal.
 
 Aula antiga sem os atributos continua válida: sem eles, o validador cai na frase em português.
 
-**2. A figura de abertura — a analogia desenhada como objeto, ou o próprio assunto desenhado.** A aula abre com ela, antes de qualquer prosa e de qualquer termo técnico. Kit `.d` do `lesson.css`; referência canônica: a aula 1 de docker (`0001-molde-e-coisa-viva.html`). Sem analogia aprovada (regra 2 do `SKILL.md`), a figura desenha o próprio assunto: as partes com nome e a relação entre elas, sem comparação forçada com objeto de outro contexto.
+**2. A figura de abertura — a analogia desenhada como objeto, ou o próprio assunto desenhado.** A aula abre com ela, antes de qualquer prosa. Com analogia, vem antes de qualquer termo técnico; sem analogia aprovada (regra 2 do `SKILL.md`), desenha o próprio assunto, com as partes nomeadas na língua da trilha e a relação entre elas, sem comparação forçada com objeto de outro contexto. Kit `.d` do `lesson.css`; referência canônica: a aula 1 de docker (`0001-molde-e-coisa-viva.html`).
 
 A forma do desenho segue o conteúdo, com ou sem analogia: comparação vai lado a lado com divisor tracejado (`.dash`), processo vai em sequência, escolha vai em árvore.
 
@@ -40,11 +40,11 @@ A anatomia da figura, na ordem:
 ```
 
 - **`.frase`**: a manchete que o desenho prova. Uma linha.
-- **O desenho fala em objeto**, nunca em termo técnico: desenha a forma canelada, o cadeado, o bolo com vapor — não caixas com rótulo. Duas metades com divisor tracejado (`.dash`) é o padrão da comparação, não obrigação de toda figura; tinta desenha o objeto, âmbar (`.box-acc`, `.line-acc`) marca o que a figura ensina, tijolo (`.line-bad`, `.dash-bad`) o que quebra ou não existe.
+- **Com analogia, o desenho fala em objeto**, nunca em termo técnico: desenha a forma canelada, o cadeado, o bolo com vapor — não caixas com rótulo. Sem analogia, desenha e nomeia as partes do próprio assunto na língua da trilha. Duas metades com divisor tracejado (`.dash`) é o padrão da comparação, não obrigação de toda figura; tinta desenha o objeto, âmbar (`.box-acc`, `.line-acc`) marca o que a figura ensina, tijolo (`.line-bad`, `.dash-bad`) o que quebra ou não existe.
 - **`figcaption`**: prosa corrida bem escrita que narra a lição — não rodapé telegráfico. É onde o ponto de ruptura da analogia se declara, quando houver.
-- **`.traducao`**: batiza os termos — objeto na língua da trilha primeiro, etiqueta em inglês depois (regra 3). É aqui que "forma" vira **imagem** (`image`).
+- **`.traducao`**, quando houver analogia: batiza os termos — objeto na língua da trilha primeiro, etiqueta em inglês depois (regra 3). É aqui que "forma" vira **imagem** (`image`). Num desenho direto, a etiqueta em inglês também vem só depois de a parte ser apresentada na língua da trilha.
 
-A analogia precisa ser **isomorfa** (regra 2 da skill: no máximo um ponto de ruptura). O objeto vem do mundo da trilha, anotado em `NOTES.md` — a aula 4 aprofunda o objeto da aula 1, não inventa outro. A tabela do `analogy.css` é opcional: só quando a amarração propriedade a propriedade não coube na figura.
+Se houver analogia, ela precisa ser **isomorfa** (regra 2 da skill: no máximo um ponto de ruptura), e o objeto vem do mundo da trilha, anotado em `NOTES.md` — a aula 4 aprofunda o objeto da aula 1, não inventa outro. Essas exigências não se aplicam ao desenho direto do assunto. A tabela do `analogy.css` é opcional: só quando a amarração propriedade a propriedade não coube na figura.
 
 **A ruptura se repete onde ela é cobrada.** Quando uma aula chega no ponto em que a analogia deixa de valer, ela declara a ruptura ali de novo, no lugar, com link de volta pra `figcaption` da aula que a declarou primeiro. Declarar uma vez não basta: o aviso mora na aula onde foi escrito, e o aluno esbarra no buraco três aulas depois — ele não volta pra reler.
 
@@ -96,12 +96,12 @@ Rode inteira. Uma falha, a aula volta pra bancada. E a bancada é o arquivo: rep
 
 **O mecânico roda antes da sua leitura.** Da pasta da skill: `node scripts/checar_aula.js <caminho-da-aula.html>` (aceita vários arquivos). Ele confere sozinho os itens marcados `— script` aqui embaixo: os que se leem no arquivo sem julgamento — `de ?` no cabeçalho, link pra `.md`, hex dentro do SVG, travessão, `.score` no lugar de `.quiz-score`, marca de tema escuro. FALHA bloqueia (saída 1); AVISO é a parte heurística (a figura de abertura e a auditoria de coordenadas), que continua sendo conferência no olho. Rode ele **primeiro**, e só depois leia a lista inteira: atenção humana gasta em vírgula errada é atenção que faltou pra perguntar se a analogia é isomorfa — e é exatamente isso que o script não sabe fazer.
 
-- [ ] Cabeçalho diz `Aula N de M` — nunca `de ?`. Desvio usa `Desvio N · fora do arco`. Com `data-aula`/`data-de` (ou `data-desvio`) no `.eyebrow` — script
+- [ ] Cabeçalho expressa aula normal ou desvio na língua da trilha — nunca `de ?`. Página nova usa `data-aula`/`data-de` ou, para desvio, somente `data-desvio`; página antiga sem atributos mantém a frase legada em português — script
 - [ ] Rodapé tem anterior · mapa · próxima, e o mapa aponta pra `MAPA.html` — script (parcial: confere o `.next-up` e o link do mapa)
 - [ ] Nenhum link do rodapé aponta pra arquivo `.md` — script
 - [ ] A aula anterior teve o link "próxima" preenchido, e o mapa foi atualizado
 - [ ] A aula **abre com a figura**, antes de qualquer prosa — script (aviso)
-- [ ] Se houver analogia: a analogia é isomorfa — no máximo **um** ponto de ruptura, declarado na `figcaption`
+- [ ] Se houver analogia: a analogia é isomorfa — zero ou no máximo **um** ponto de ruptura; quando houver, ele é declarado na `figcaption`
 - [ ] Se houver analogia: aula que esbarra na ruptura repete a ruptura ali, com link pra `figcaption` que a declarou
 - [ ] Se houver analogia: o desenho fala em **objeto** (forma, bolo, cadeado) — nenhuma caixa com rótulo, nenhum termo técnico dentro do SVG
 - [ ] Se houver analogia: objeto em tinta; âmbar só no que a figura ensina; tijolo no que quebra ou não existe
@@ -129,7 +129,7 @@ Rode inteira. Uma falha, a aula volta pra bancada. E a bancada é o arquivo: rep
 - [ ] Classes certas: `.eyebrow`, `.subtitle`, `.quiz-score` (não `.score`) — script
 - [ ] Aberta no navegador pra ele **uma única vez, depois de todos os itens acima passarem**, com apresentação curta no chat (sem duplicar o texto da aula)
 - [ ] Correção depois da abertura **edita o mesmo arquivo** e pede pra ele recarregar a aba — nunca uma segunda abertura no navegador (`Start-Process`, `open`, `xdg-open` — cada uma abre aba nova), nunca um arquivo variante da mesma aula (uma aula, um arquivo)
-- [ ] No `MAPA.html`, a aula ganhou link mas segue `▶ próxima` até ele responder a pergunta
+- [ ] No `MAPA.html`, a aula ganhou link mas segue `▶ próxima` até a resposta à pergunta final permitir avançar pelos critérios do `SKILL.md`
 - [ ] A entrega no chat termina com **uma** pergunta: situação nova, pede o motivo, cabe na etapa dele, e a aula deu as ferramentas
 
 ## Tamanho

@@ -51,7 +51,7 @@ Toda aula abre com `Aula 3 de 7` e um link pro mapa. Nunca `de ?`.
 
 Havendo candidata, o conceito entra por ela **antes de qualquer termo técnico**.
 
-Toda analogia declara **onde ela quebra** — na `figcaption` da figura que a desenha. Analogia sem ponto de ruptura declarado instala uma crença errada que só aparece três aulas depois.
+Quando houver uma ruptura relevante, a analogia declara **onde ela quebra** — na `figcaption` da figura que a desenha. Esconder uma ruptura instala uma crença errada que só aparece três aulas depois; se não houver ruptura relevante, não invente uma diferença só para preencher esse lugar.
 
 **A analogia só entra se for isomorfa — e o teste é contável.** Procure onde a **estrutura do conceito** já existe no mundo físico: a forma de bolo não é *parecida* com a imagem Docker, ela **é** só-leitura-que-gera-instâncias. A medida: **quantos pontos de ruptura a analogia precisa declarar.** Zero ou um, é isomorfa — use. Dois ou mais, está esticada — descarte (caso real: esquema tático do eFootball para imagem/contêiner precisava de dois avisos de "aqui mente", e um deles era uma aula inteira de desaprendizado).
 
@@ -65,7 +65,7 @@ Toda analogia declara **onde ela quebra** — na `figcaption` da figura que a de
 
 - **Um mundo por trilha.** Docker mora na cozinha (forma, bolo, etiqueta gravada, os potes na geladeira). Se a aula 3 puxa do futebol e a aula 4 da cozinha, não existe mundo — existem analogias soltas, e ele recomeça a cada aula. O universo se escolhe na primeira aula, fica anotado em `NOTES.md`, e as seguintes moram dentro dele. Prefira universo com **relações prontas** entre os objetos (encaixe, peça que troca, peça que quebra): é relação que o tema precisa ensinar.
 - **A forma do desenho segue o que a aula ensina**, inclusive quando há analogia. Comparação (errado contra certo, antes contra depois, ou os dois conceitos que ele confunde, a forma e o bolo): duas metades num SVG só, divisor tracejado no meio (`.dash`), porque desenhar um lado obriga o leitor a imaginar o outro, e a diferença entre os dois é a aula. Processo: os passos em sequência (preparar a massa, pôr na forma, assar, desenformar). Escolha: árvore de decisão. Duas metades deixa de ser obrigatório, é o padrão da comparação.
-- **A tradução vem depois do desenho.** A figura fala em objeto ("a forma é trancada"); a linha `.traducao` no rodapé dela batiza os termos ("a forma é a **imagem**, `image`) — regra 3 na ordem certa. A tabela do `analogy.css` virou opcional: use só quando a ponte precisar de amarração propriedade por propriedade que não coube na figura.
+- **Quando houver analogia, a tradução vem depois do desenho.** A figura fala em objeto ("a forma é trancada"); a linha `.traducao` no rodapé dela batiza os termos ("a forma é a **imagem**, `image`) — regra 3 na ordem certa. Num desenho direto do assunto, as partes podem ser nomeadas na língua da trilha; a etiqueta técnica em inglês continua vindo depois do entendimento. A tabela do `analogy.css` virou opcional: use só quando a ponte precisar de amarração propriedade por propriedade que não coube na figura.
 
 ### 3. Orçamento de jargão — 3 termos novos por aula, no máximo
 
@@ -147,7 +147,7 @@ Quando ele disser "não entendi" — e principalmente se ele pedir desculpa — 
 
 Toda entrega termina com **uma pergunta que ele precisa responder**. Uma, não três.
 
-**Essa pergunta é o que fecha a aula**: é respondendo a ela que a aula vira `✅ feita` no `MAPA.html`. O quiz não fecha nada, porque ele roda no navegador e você não vê o resultado dele: quiz é treino com feedback imediato. Três exigências da pergunta final: ela apresenta uma **situação nova** e pede que ele use o que aprendeu e explique o motivo da resposta; ela cabe na etapa em que ele está; e a aula deu as ferramentas para chegar até a resposta. Situação nova, ferramentas conhecidas.
+**Essa pergunta é o que fecha a aula**: a aula vira `✅ feita` no `MAPA.html` quando a resposta permite avançar pelos critérios abaixo. O quiz não fecha nada, porque ele roda no navegador e você não vê o resultado dele: quiz é treino com feedback imediato. Três exigências da pergunta final: ela apresenta uma **situação nova** e pede que ele use o que aprendeu e explique o motivo da resposta; ela cabe na etapa em que ele está; e a aula deu as ferramentas para chegar até a resposta. Situação nova, ferramentas conhecidas.
 
 **Resposta parcialmente errada não decide sozinha o avanço.** Se o erro compromete o próximo conceito, corrija e peça nova tentativa antes de avançar. Se é detalhe secundário, siga e anote `revisar` no mapa para aquele conteúdo. Responder não é prova de domínio, e também não se exige resposta perfeita para avançar.
 
@@ -191,7 +191,7 @@ Para **conhecimento**, dificuldade é inimiga — ela come a memória de trabalh
 - **Hesitação ou "não sei" → pista de lacuna.** Confirmada na sondagem, corrige em uma linha e segue, sem virar aula de revisão. Resposta hesitante também pode ter raciocínio certo por baixo: peça o motivo antes de concluir que falta conteúdo.
 - **Resposta errada com confiança → pista de crença errada.** Confiança não diagnostica sozinha, porque resposta confiante pode ser decorada. A crença errada só vira registro quando a sondagem confirma, ou seja, quando o motivo que ele explica e a pergunta discriminante apontam para o mesmo modelo. Confirmada, a próxima aula começa desmontando esse modelo antes de empilhar conteúdo novo.
 
-Exemplo: "O que acontece com o que o contêiner gravou quando ele é removido?" → "Fica salvo na imagem", confiante → sondagem: "Então dois contêineres da mesma imagem enxergam os arquivos um do outro?". Outro "sim" confiante nomeia a crença — imagem como armazenamento compartilhado e gravável — e a próxima aula abre desmontando isso; hesitação na sondagem era lacuna, e uma linha resolve.
+Exemplo: "O que acontece com o que o contêiner gravou quando ele é removido?" → "Fica salvo na imagem", confiante → sondagem: "Então dois contêineres da mesma imagem enxergam os arquivos um do outro? Por quê?". Um novo "sim" acompanhado da explicação de que ambos escrevem na imagem faz a resposta e o motivo convergirem para a crença — imagem como armazenamento compartilhado e gravável — e a próxima aula abre desmontando isso. Hesitação continua sendo só pista: peça o motivo e use a sondagem antes de decidir se há lacuna e se uma correção curta basta.
 
 Sem a sondagem, a abertura mede o que ficou, não o que ficou torto. Numa trilha de oito aulas, crença errada na aula 2 contamina até a 6 e só aparece quando desmontar já é caro.
 

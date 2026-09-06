@@ -7,6 +7,7 @@
  *
  *   node scripts/checar_aula.js ~/learning/docker/lessons/0001-molde-e-coisa-viva.html
  *   node scripts/checar_aula.js ~/learning/docker/lessons/*.html
+ *   node --test scripts/checar_aula.test.js   (os testes do próprio validador)
  *
  * O script existe porque a checklist tem duas naturezas misturadas: itens que
  * se leem no arquivo (o cabeçalho diz "de ?", o SVG tem hex, a classe é
@@ -63,17 +64,43 @@ function textoVisivel(html) {
     .trim();
 }
 
+/** Lê um atributo pelo nome inteiro na tag de abertura. Aceita valores entre
+ * aspas duplas, aspas simples ou sem aspas, todos válidos em HTML. */
+function atributoDaTag(tag, nome) {
+  const atributos = tag
+    .replace(/^<[a-z][a-z0-9]*\b/i, '')
+    .replace(/\/?\s*>$/, '');
+  const re = /\s*([^\s"'=<>\x60]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>\x60]+)))?/gy;
+  let m;
+  while (re.lastIndex < atributos.length && (m = re.exec(atributos)) !== null) {
+    if (m[1].toLowerCase() === nome.toLowerCase()) {
+      const valor = m[2] ?? m[3] ?? m[4];
+      return valor === undefined ? '' : valor.trim();
+    }
+  }
+  return null;
+}
+
 /** Todos os elementos cuja lista de classes contém `classe`, com o índice em
  *  que começam. Casamento raso: elemento sem aninhamento do mesmo nome. */
 function elementosComClasse(html, classe) {
   const achados = [];
-  const re = new RegExp(
-    `<([a-z][a-z0-9]*)\\b[^>]*class\\s*=\\s*["'][^"']*\\b${classe}\\b[^"']*["'][^>]*>([\\s\\S]*?)<\\/\\1>`,
-    'gi'
-  );
+  const re = /<([a-z][a-z0-9]*)\b((?:"[^"]*"|'[^']*'|[^'">])*)>/gi;
   let m;
   while ((m = re.exec(html)) !== null) {
-    achados.push({ indice: m.index, inteiro: m[0], dentro: m[2] });
+    const classes = atributoDaTag(m[2], 'class');
+    if (classes && classes.split(/\s+/).includes(classe)) {
+      const fechar = new RegExp(`<\\/${m[1]}\\s*>`, 'gi');
+      fechar.lastIndex = re.lastIndex;
+      const fim = fechar.exec(html);
+      if (!fim) continue;
+      achados.push({
+        indice: m.index,
+        abertura: m[0],
+        inteiro: html.slice(m.index, fechar.lastIndex),
+        dentro: html.slice(re.lastIndex, fim.index),
+      });
+    }
   }
   return achados;
 }
@@ -112,11 +139,8 @@ function checarCabecalho(html, achados) {
  *  guardam número e total independentemente da frase, pra que a frase saia na
  *  língua da trilha. */
 function posicaoEmAtributo(elemento) {
-  const tag = elemento.inteiro.slice(0, elemento.inteiro.indexOf('>') + 1);
-  const ler = (nome) => {
-    const m = tag.match(new RegExp(`\\b${nome}\\s*=\\s*["']([^"']*)["']`, 'i'));
-    return m ? m[1].trim() : null;
-  };
+  const tag = elemento.abertura;
+  const ler = (nome) => atributoDaTag(tag, nome);
   return { aula: ler('data-aula'), de: ler('data-de'), desvio: ler('data-desvio') };
 }
 
@@ -130,6 +154,9 @@ const inteiroPositivo = (valor) => /^\d+$/.test(valor) && Number(valor) > 0;
 /** Erro da posição declarada em atributo, ou null se ela está boa. */
 function erroDaPosicao(p) {
   if (p.desvio !== null) {
+    if (p.aula !== null || p.de !== null) {
+      return 'mistura data-desvio com data-aula/data-de: desvio não pertence ao arco';
+    }
     return inteiroPositivo(p.desvio)
       ? null
       : `data-desvio="${p.desvio}" não é inteiro positivo`;
